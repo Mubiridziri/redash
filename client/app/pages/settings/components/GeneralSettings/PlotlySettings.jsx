@@ -9,12 +9,12 @@ export default function PlotlySettings(props) {
 
   return (
     <DynamicComponent name="OrganizationSettings.PlotlySettings" {...props}>
-      <Form.Item label="Chart Visualization">
+      <Form.Item label="Визуализация диаграммы">
         <Checkbox
           name="hide_plotly_mode_bar"
           checked={values.hide_plotly_mode_bar}
           onChange={e => onChange({ hide_plotly_mode_bar: e.target.checked })}>
-          Hide Plotly mode bar
+          Скрыть панель режимов Plotly
         </Checkbox>
       </Form.Item>
     </DynamicComponent>

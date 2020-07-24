@@ -49,14 +49,14 @@ export default function PieColorsSettings({ options, data, onOptionsChange }) {
 
   const columns = [
     {
-      title: "Values",
+      title: "Значения",
       dataIndex: "key",
     },
     {
-      title: "Color",
+      title: "Цвет",
       dataIndex: "color",
       width: "1%",
-      render: (unused, item) => (
+      render: (item) => (
         <ColorPicker
           data-test={`Chart.Series.${item.key}.Color`}
           interactive

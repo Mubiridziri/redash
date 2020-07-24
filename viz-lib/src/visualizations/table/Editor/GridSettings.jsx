@@ -9,7 +9,7 @@ export default function GridSettings({ options, onOptionsChange }) {
   return (
     <Section>
       <Select
-        label="Items per page"
+        label="Записей на странице"
         data-test="Table.ItemsPerPage"
         defaultValue={options.itemsPerPage}
         onChange={itemsPerPage => onOptionsChange({ itemsPerPage })}>

@@ -6,8 +6,8 @@ import FormatSettings from "./FormatSettings";
 import StyleSettings from "./StyleSettings";
 
 export default createTabbedEditor([
-  { key: "General", title: "General", component: GeneralSettings },
-  { key: "Groups", title: "Groups", component: GroupsSettings },
-  { key: "Format", title: "Format", component: FormatSettings },
-  { key: "Style", title: "Style", component: StyleSettings },
+  { key: "General", title: "Общие", component: GeneralSettings },
+  { key: "Groups", title: "Группы", component: GroupsSettings },
+  { key: "Format", title: "Формат", component: FormatSettings },
+  { key: "Style", title: "Стиль", component: StyleSettings },
 ]);

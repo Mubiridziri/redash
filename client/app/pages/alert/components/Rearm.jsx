@@ -128,7 +128,7 @@ function RearmViewer({ value }) {
       );
   }
 
-  return <span>Notifications are sent {phrase}.</span>;
+  return <span>Уведомления отправлены {phrase}.</span>;
 }
 
 RearmViewer.propTypes = {

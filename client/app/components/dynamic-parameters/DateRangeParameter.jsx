@@ -116,7 +116,7 @@ const DYNAMIC_DATE_OPTIONS = [
 
 const DYNAMIC_DATETIME_OPTIONS = [
   {
-    name: "Today",
+    name: "Cегодня",
     value: getDynamicDateRangeFromString("d_today"),
     label: () =>
       getDynamicDateRangeFromString("d_today")
@@ -124,7 +124,7 @@ const DYNAMIC_DATETIME_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "Yesterday",
+    name: "Вчера",
     value: getDynamicDateRangeFromString("d_yesterday"),
     label: () =>
       getDynamicDateRangeFromString("d_yesterday")

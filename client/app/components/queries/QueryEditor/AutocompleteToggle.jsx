@@ -6,15 +6,15 @@ import "@/redash-font/style.less";
 import recordEvent from "@/services/recordEvent";
 
 export default function AutocompleteToggle({ available, enabled, onToggle }) {
-  let tooltipMessage = "Live Autocomplete Enabled";
+  let tooltipMessage = "Автозаполнение в реальном времени включено";
   let icon = "icon-flash";
   if (!enabled) {
-    tooltipMessage = "Live Autocomplete Disabled";
+    tooltipMessage = "Автозаполнение в реальном времени выключено";
     icon = "icon-flash-off";
   }
 
   if (!available) {
-    tooltipMessage = "Live Autocomplete Not Available (Use Ctrl+Space to Trigger)";
+    tooltipMessage = "Автозаполнение в реальном времени недоступно (используйте Ctrl + Пробел для запуска)";
     icon = "icon-flash-off";
   }
 

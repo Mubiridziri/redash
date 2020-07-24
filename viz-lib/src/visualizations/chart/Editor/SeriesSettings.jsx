@@ -15,9 +15,9 @@ const SortableBodyRow = sortableElement(props => <tr {...props} />);
 function getTableColumns(options, updateSeriesOption, debouncedUpdateSeriesOption) {
   const result = [
     {
-      title: "Order",
+      title: "Порядок",
       dataIndex: "zIndex",
-      render: (unused, item) => (
+      render: (item) => (
         <span className="series-settings-order">
           <DragHandle />
           {item.zIndex + 1}
@@ -25,9 +25,9 @@ function getTableColumns(options, updateSeriesOption, debouncedUpdateSeriesOptio
       ),
     },
     {
-      title: "Label",
+      title: "Метка",
       dataIndex: "name",
-      render: (unused, item) => (
+      render: (item) => (
         <Input
           data-test={`Chart.Series.${item.key}.Label`}
           placeholder={item.key}
@@ -40,26 +40,26 @@ function getTableColumns(options, updateSeriesOption, debouncedUpdateSeriesOptio
 
   if (!includes(["pie", "heatmap"], options.globalSeriesType)) {
     result.push({
-      title: "Y Axis",
+      title: "Y Ось",
       dataIndex: "yAxis",
-      render: (unused, item) => (
+      render: (item) => (
         <Radio.Group
           className="series-settings-y-axis"
           value={item.yAxis === 1 ? 1 : 0}
           onChange={event => updateSeriesOption(item.key, "yAxis", event.target.value)}>
           <Radio value={0} data-test={`Chart.Series.${item.key}.UseLeftAxis`}>
-            left
+            слева
           </Radio>
           <Radio value={1} data-test={`Chart.Series.${item.key}.UseRightAxis`}>
-            right
+            справа
           </Radio>
         </Radio.Group>
       ),
     });
     result.push({
-      title: "Type",
+      title: "Тип",
       dataIndex: "type",
-      render: (unused, item) => (
+      render: (item) => (
         <ChartTypeSelect
           data-test={`Chart.Series.${item.key}.Type`}
           dropdownMatchSelectWidth={false}

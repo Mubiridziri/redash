@@ -4,7 +4,7 @@ import "@percy/cypress"; // eslint-disable-line import/no-extraneous-dependencie
 
 const { each } = Cypress._;
 
-Cypress.Commands.add("login", (email = "admin@redash.io", password = "password") =>
+Cypress.Commands.add("login", (email = "admin@redash.io", password = "пароль") =>
   cy.request({
     url: "/login",
     method: "POST",

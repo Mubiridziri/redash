@@ -23,7 +23,7 @@ export default class SchedulePhrase extends React.Component {
   get content() {
     const { interval: seconds } = this.props.schedule || SchedulePhrase.defaultProps.schedule;
     if (!seconds) {
-      return ["Never"];
+      return ["Никогда"];
     }
     const humanized = durationHumanize(seconds, {
       omitSingleValueNumber: true,
@@ -44,7 +44,7 @@ export default class SchedulePhrase extends React.Component {
 
   render() {
     if (this.props.isNew) {
-      return "Never";
+      return "Никогда";
     }
 
     const [short, full] = this.content;

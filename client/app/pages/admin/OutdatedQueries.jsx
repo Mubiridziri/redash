@@ -51,17 +51,17 @@ class OutdatedQueries extends React.Component {
         </React.Fragment>
       ),
       {
-        title: "Name",
+        title: "Имя",
         field: "name",
         width: null,
       }
     ),
     Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `Created by ${name}`),
-    Columns.dateTime.sortable({ title: "Created At", field: "created_at" }),
-    Columns.duration.sortable({ title: "Runtime", field: "runtime" }),
-    Columns.dateTime.sortable({ title: "Last Executed At", field: "retrieved_at", orderByField: "executed_at" }),
+    Columns.dateTime.sortable({ title: "Создано в", field: "created_at" }),
+    Columns.duration.sortable({ title: "Время выполнения", field: "runtime" }),
+    Columns.dateTime.sortable({ title: "Последнее исполнение в", field: "retrieved_at", orderByField: "executed_at" }),
     Columns.custom.sortable((text, item) => <SchedulePhrase schedule={item.schedule} isNew={item.isNew()} />, {
-      title: "Update Schedule",
+      title: "Расписание обновления",
       field: "schedule",
     }),
   ];
@@ -96,7 +96,7 @@ class OutdatedQueries extends React.Component {
           <Grid.Col span={16}>
             <div>
               <label htmlFor="auto-update-switch" className="m-0">
-                Auto update
+                Автоматическое обновление
               </label>
               <Switch
                 id="auto-update-switch"
@@ -107,7 +107,7 @@ class OutdatedQueries extends React.Component {
             </div>
             {controller.params.lastUpdatedAt && (
               <div className="m-t-5">
-                Last updated: <TimeAgo date={controller.params.lastUpdatedAt * 1000} />
+                Последнее обновление: <TimeAgo date={controller.params.lastUpdatedAt * 1000} />
               </div>
             )}
           </Grid.Col>
@@ -123,7 +123,7 @@ class OutdatedQueries extends React.Component {
         </Grid.Row>
         {!controller.isLoaded && <LoadingState />}
         {controller.isLoaded && controller.isEmpty && (
-          <div className="text-center p-15">There are no outdated queries.</div>
+          <div className="text-center p-15">Устаревших запросов не существует.</div>
         )}
         {controller.isLoaded && !controller.isEmpty && (
           <div className="bg-white tiled table-responsive">
@@ -174,7 +174,7 @@ routes.register(
   "Admin.OutdatedQueries",
   routeWithUserSession({
     path: "/admin/queries/outdated",
-    title: "Outdated Queries",
+    title: "Устаревшие запросы",
     render: pageProps => <OutdatedQueriesPage {...pageProps} currentPage="outdated_queries" />,
   })
 );

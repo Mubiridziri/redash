@@ -81,7 +81,7 @@ function OrganizationSettings({ onError }) {
             <GeneralSettings settings={settings} values={currentValues} onChange={handleChange} />
             <AuthSettings settings={settings} values={currentValues} onChange={handleChange} />
             <Button className="w-100" type="primary" htmlType="submit" loading={isSaving}>
-              Save
+              Сохранить
             </Button>
           </Form>
         )}
@@ -102,7 +102,7 @@ const OrganizationSettingsPage = wrapSettingsTab(
   "Settings.Organization",
   {
     permission: "admin",
-    title: "Settings",
+    title: "Настройки",
     path: "settings/organization",
     order: 6,
   },

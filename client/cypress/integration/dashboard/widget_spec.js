@@ -14,11 +14,11 @@ describe("Widget", () => {
 
   const confirmDeletionInModal = () => {
     cy.get(".ant-modal .ant-btn")
-      .contains("Delete")
+      .contains("Удалить")
       .click({ force: true });
   };
 
-  it("adds widget", function() {
+  it("добавляет виджет", function() {
     createQuery().then(({ id: queryId }) => {
       cy.visit(this.dashboardUrl);
       editDashboard();
@@ -26,13 +26,13 @@ describe("Widget", () => {
       cy.getByTestId("AddWidgetDialog").within(() => {
         cy.get(`.query-selector-result[data-test="QueryId${queryId}"]`).click();
       });
-      cy.contains("button", "Add to Dashboard").click();
+      cy.contains("button", "Добавить в панель мониторинга").click();
       cy.getByTestId("AddWidgetDialog").should("not.exist");
       cy.get(".widget-wrapper").should("exist");
     });
   });
 
-  it("removes widget", function() {
+  it("удаляет виджет", function() {
     createQueryAndAddWidget(this.dashboardId).then(elTestId => {
       cy.visit(this.dashboardUrl);
       editDashboard();
@@ -45,7 +45,7 @@ describe("Widget", () => {
     });
   });
 
-  describe("Auto height for table visualization", () => {
+  describe("Автоматическая высота для визуализации таблицы", () => {
     it("renders correct height for 2 table rows", function() {
       const queryData = {
         query: "select s.a FROM generate_series(1,2) AS s(a)",
@@ -59,7 +59,7 @@ describe("Widget", () => {
       });
     });
 
-    it("renders correct height for 5 table rows", function() {
+    it("отображает правильную высоту для 5 строк таблицы", function() {
       const queryData = {
         query: "select s.a FROM generate_series(1,5) AS s(a)",
       };
@@ -72,7 +72,7 @@ describe("Widget", () => {
       });
     });
 
-    describe("Height behavior on refresh", () => {
+    describe("Поведение высоты при обновлении", () => {
       const paramName = "count";
       const queryData = {
         query: `select s.a FROM generate_series(1,{{ ${paramName} }}) AS s(a)`,
@@ -101,7 +101,7 @@ describe("Widget", () => {
         });
       });
 
-      it("grows when dynamically adding table rows", () => {
+      it("растет при динамическом добавлении строк таблицы", () => {
         // listen to results
         cy.server();
         cy.route("GET", "api/query_results/*").as("FreshResults");
@@ -129,7 +129,7 @@ describe("Widget", () => {
           .should("eq", 435);
       });
 
-      it("revokes auto height after manual height adjustment", () => {
+      it("отменяет автоматическую высоту после ручной регулировки высоты", () => {
         // listen to results
         cy.server();
         cy.route("GET", "api/query_results/*").as("FreshResults");
@@ -167,7 +167,7 @@ describe("Widget", () => {
     });
   });
 
-  it("sets the correct height of table visualization", function() {
+  it("задает правильную высоту визуализации таблицы", function() {
     const queryData = {
       query: `select '${"loremipsum".repeat(15)}' FROM generate_series(1,15)`,
     };
@@ -179,13 +179,13 @@ describe("Widget", () => {
       cy.getByTestId("TableVisualization")
         .its("0.offsetHeight")
         .should("eq", 381);
-      cy.percySnapshot("Shows correct height of table visualization");
+      cy.percySnapshot("Показывает правильную высоту визуализации таблицы");
     });
   });
 
-  it("shows fixed pagination for overflowing tabular content ", function() {
+  it("показывает фиксированную нумерацию страниц при переполнении табличного содержимого ", function() {
     const queryData = {
-      query: "select 'lorem ipsum' FROM generate_series(1,50)",
+      query: "выберите 'lorem ipsum' FROM generate_series(1,50)",
     };
 
     const widgetOptions = { position: { col: 0, row: 0, sizeX: 3, sizeY: 10, autoHeight: false } };
@@ -195,14 +195,14 @@ describe("Widget", () => {
       cy.getByTestId("TableVisualization")
         .next(".ant-pagination.mini")
         .should("be.visible");
-      cy.percySnapshot("Shows fixed mini pagination for overflowing tabular content");
+      cy.percySnapshot("Показывает фиксированное мини-разбиение на страницы для переполнения табличного содержимого");
     });
   });
 
-  it("keeps results on screen while refreshing", function() {
+  it("сохраняет результаты на экране во время обновления", function() {
     const queryData = {
       query: "select pg_sleep({{sleep-time}}), 'sleep time: {{sleep-time}}' as sleeptime",
-      options: { parameters: [{ name: "sleep-time", title: "Sleep time", type: "number", value: 0 }] },
+      options: { parameters: [{ name: "sleep-time", title: "Время сна", type: "number", value: 0 }] },
     };
 
     createQueryAndAddWidget(this.dashboardId, queryData).then(elTestId => {

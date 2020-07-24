@@ -70,7 +70,7 @@ class DestinationsList extends React.Component {
   showCreateSourceDialog = () => {
     CreateSourceDialog.showModal({
       types: reject(this.state.destinationTypes, "deprecated"),
-      sourceType: "Alert Destination",
+      sourceType: "Пункт назначения оповещения",
       imageFolder: IMG_ROOT,
       onCreate: this.createDestination,
     })
@@ -94,13 +94,13 @@ class DestinationsList extends React.Component {
 
     return isEmpty(destinations) ? (
       <div className="text-center">
-        There are no alert destinations yet.
+        Еще нет пунктов назначения оповещений.
         {policy.isCreateDestinationEnabled() && (
           <div className="m-t-5">
             <a className="clickable" onClick={this.showCreateSourceDialog}>
-              Click here
+              Нажмите здесь,
             </a>{" "}
-            to add one.
+            чтобы добавить.
           </div>
         )}
       </div>
@@ -121,7 +121,7 @@ class DestinationsList extends React.Component {
         <div className="m-b-15">
           <Button {...newDestinationProps}>
             <i className="fa fa-plus m-r-5" />
-            New Alert Destination
+            Назначение нового оповещения
           </Button>
         </div>
         {this.state.loading ? <LoadingState className="" /> : this.renderDestinations()}
@@ -134,7 +134,7 @@ const DestinationsListPage = wrapSettingsTab(
   "AlertDestinations.List",
   {
     permission: "admin",
-    title: "Alert Destinations",
+    title: "Оповещения",
     path: "destinations",
     order: 4,
   },
@@ -145,7 +145,7 @@ routes.register(
   "AlertDestinations.List",
   routeWithUserSession({
     path: "/destinations",
-    title: "Alert Destinations",
+    title: "Оповещения",
     render: pageProps => <DestinationsListPage {...pageProps} />,
   })
 );
@@ -153,7 +153,7 @@ routes.register(
   "AlertDestinations.New",
   routeWithUserSession({
     path: "/destinations/new",
-    title: "Alert Destinations",
+    title: "Оповещения",
     render: pageProps => <DestinationsListPage {...pageProps} isNewDestinationPage />,
   })
 );

@@ -71,7 +71,7 @@ UserProfile.defaultProps = {
 const UserProfilePage = wrapSettingsTab(
   "Users.Account",
   {
-    title: "Account",
+    title: "Аккаунт",
     path: "users/me",
     order: 7,
   },
@@ -82,7 +82,7 @@ routes.register(
   "Users.Account",
   routeWithUserSession({
     path: "/users/me",
-    title: "Account",
+    title: "Аккаунт",
     render: pageProps => <UserProfilePage {...pageProps} />,
   })
 );
@@ -90,7 +90,7 @@ routes.register(
   "Users.ViewOrEdit",
   routeWithUserSession({
     path: "/users/:userId",
-    title: "Users",
+    title: "Пользователи",
     render: pageProps => <UserProfilePage {...pageProps} />,
   })
 );

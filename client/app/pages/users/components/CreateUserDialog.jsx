@@ -26,13 +26,12 @@ function CreateUserDialog({ dialog }) {
   const formFields = useMemo(() => {
     const common = { required: true, props: { onPressEnter: createUser } };
     return [
-      { ...common, name: "name", title: "Name", type: "text", autoFocus: true },
+      { ...common, name: "name", title: "Имя", type: "text", autoFocus: true },
       { ...common, name: "email", title: "Email", type: "email" },
     ];
   }, [createUser]);
-
   return (
-    <Modal {...dialog.props} title="Create a New User" okText="Create" onOk={createUser}>
+    <Modal {...dialog.props} title="Создать нового пользователя" cancelText="Отмена" okText="Создать" onOk={createUser}>
       <DynamicForm fields={formFields} ref={formRef} hideSubmitButton />
       {error && <Alert message={error.message} type="error" showIcon />}
     </Modal>

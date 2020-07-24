@@ -53,10 +53,10 @@ function confirmDialogClose(isDirty) {
   return new Promise((resolve, reject) => {
     if (isDirty) {
       Modal.confirm({
-        title: "Visualization Editor",
-        content: "Are you sure you want to close the editor without saving?",
-        okText: "Yes",
-        cancelText: "No",
+        title: "Редактор визуализации",
+        content: "Вы уверены, что хотите закрыть редактор без сохранения?",
+        okText: "Да",
+        cancelText: "Нет",
         onOk: () => resolve(),
         onCancel: () => reject(),
       });
@@ -160,8 +160,8 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
     <Modal
       {...dialog.props}
       wrapClassName="ant-modal-fullscreen"
-      title="Visualization Editor"
-      okText="Save"
+      title="Редактор визуализации"
+      okText="Сохранить"
       okButtonProps={{
         loading: saveInProgress,
         disabled: saveInProgress,
@@ -172,7 +172,7 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
       <div className="edit-visualization-dialog">
         <div className="visualization-settings">
           <div className="m-b-15">
-            <label htmlFor="visualization-type">Visualization Type</label>
+            <label htmlFor="visualization-type">Тип визуализации</label>
             <Select
               data-test="VisualizationType"
               id="visualization-type"
@@ -188,7 +188,7 @@ function EditVisualizationDialog({ dialog, visualization, query, queryResult }) 
             </Select>
           </div>
           <div className="m-b-15">
-            <label htmlFor="visualization-name">Visualization Name</label>
+            <label htmlFor="visualization-name">Название визуализации</label>
             <Input
               data-test="VisualizationName"
               id="visualization-name"

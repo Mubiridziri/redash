@@ -28,7 +28,7 @@ function mount(options, done) {
 }
 
 describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
-  test("Changes axis type", done => {
+  test("Изменяет тип оси", done => {
     const el = mount(
       {
         globalSeriesType: "column",
@@ -45,7 +45,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
       .simulate("click");
   });
 
-  test("Changes axis name", done => {
+  test("Изменение имени оси", done => {
     const el = mount(
       {
         globalSeriesType: "column",
@@ -59,7 +59,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
       .simulate("change", { target: { value: "test" } });
   });
 
-  test("Changes axis min value", done => {
+  test("Изменение минимального значения оси", done => {
     const el = mount(
       {
         globalSeriesType: "column",
@@ -90,7 +90,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
   });
 
   describe("for non-heatmap", () => {
-    test("Right Y Axis should be available", () => {
+    test("Правая ось Y должна быть доступна", () => {
       const el = mount({
         globalSeriesType: "column",
         yAxis: [{ type: "linear" }, { type: "linear", opposite: true }],
@@ -101,7 +101,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
   });
 
   describe("for heatmap", () => {
-    test("Right Y Axis should not be available", () => {
+    test("Правая ось Y не должна быть доступна", () => {
       const el = mount({
         globalSeriesType: "heatmap",
         yAxis: [{ type: "linear" }, { type: "linear", opposite: true }],
@@ -110,7 +110,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
       expect(elementExists(el, "Chart.RightYAxis.Type")).toBeFalsy();
     });
 
-    test("Sets Sort X Values option", done => {
+    test("Устанавливает параметр Сортировать значения X", done => {
       const el = mount(
         {
           globalSeriesType: "heatmap",
@@ -124,7 +124,7 @@ describe("Visualizations -> Chart -> Editor -> Y-Axis Settings", () => {
         .simulate("click");
     });
 
-    test("Sets Reverse Y Values option", done => {
+    test("Параметр устанавливает обратные значения Y", done => {
       const el = mount(
         {
           globalSeriesType: "heatmap",

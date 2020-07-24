@@ -10,7 +10,7 @@ describe("Dashboard", () => {
     cy.login();
   });
 
-  it("creates new dashboard", () => {
+  it("создает новую панель", () => {
     cy.visit("/dashboards");
     cy.getByTestId("CreateButton").click();
     cy.getByTestId("CreateDashboardMenuItem").click();
@@ -35,7 +35,7 @@ describe("Dashboard", () => {
     });
   });
 
-  it("archives dashboard", () => {
+  it("панель управления архивами", () => {
     createDashboard("Foo Bar").then(({ slug }) => {
       cy.visit(`/dashboard/${slug}`);
 
@@ -57,7 +57,7 @@ describe("Dashboard", () => {
     });
   });
 
-  context("viewport width is at 800px", () => {
+  context("ширина области просмотра составляет 800px", () => {
     before(function() {
       cy.login();
       createDashboard("Foo Bar")
@@ -77,7 +77,7 @@ describe("Dashboard", () => {
       cy.viewport(800 + menuWidth, 800);
     });
 
-    it("shows widgets with full width", () => {
+    it("показывает виджеты с полной шириной", () => {
       cy.get("@textboxEl").should($el => {
         expect($el.width()).to.eq(770);
       });
@@ -88,13 +88,13 @@ describe("Dashboard", () => {
       });
     });
 
-    it("hides edit option", () => {
+    it("скрывает возможность редактирования", () => {
       cy.getByTestId("DashboardMoreButton")
         .click()
         .should("be.visible");
 
       cy.getByTestId("DashboardMoreButtonMenu")
-        .contains("Edit")
+        .contains("Редактировать")
         .as("editButton")
         .should("not.be.visible");
 
@@ -102,7 +102,7 @@ describe("Dashboard", () => {
       cy.get("@editButton").should("be.visible");
     });
 
-    it("disables edit mode", function() {
+    it("отключить режим редактирования", function() {
       cy.viewport(801 + menuWidth, 800);
       cy.visit(this.dashboardEditUrl);
       cy.contains("button", "Done Editing")
@@ -114,7 +114,7 @@ describe("Dashboard", () => {
     });
   });
 
-  context("viewport width is at 767px", () => {
+  context("ширина области просмотра составляет 767px", () => {
     before(function() {
       cy.login();
       createDashboard("Foo Bar").then(({ slug }) => {

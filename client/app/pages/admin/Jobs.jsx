@@ -93,30 +93,30 @@ class Jobs extends React.Component {
     return (
       <Layout activeTab="jobs">
         <div className="p-15">
-          {error && <Alert type="error" message="Failed loading status. Please refresh." />}
+          {error && <Alert type="error" message="Не удалось загрузить статус. Пожалуйста, обновите." />}
 
           {!error && (
             <React.Fragment>
               <Grid.Row gutter={15} className="m-b-15">
                 <Grid.Col span={8}>
-                  <CounterCard title="Started Jobs" value={overallCounters.started} loading={isLoading} />
+                  <CounterCard title="Начал работу" value={overallCounters.started} loading={isLoading} />
                 </Grid.Col>
                 <Grid.Col span={8}>
-                  <CounterCard title="Queued Jobs" value={overallCounters.queued} loading={isLoading} />
+                  <CounterCard title="Работа в очереди" value={overallCounters.queued} loading={isLoading} />
                 </Grid.Col>
               </Grid.Row>
 
               <Tabs activeKey={activeTab || "queues"} onTabClick={changeTab} animated={false}>
-                <Tabs.TabPane key="queues" tab="Queues">
+                <Tabs.TabPane key="queues" tab="Очередь">
                   <QueuesTable loading={isLoading} items={queueCounters} />
                 </Tabs.TabPane>
-                <Tabs.TabPane key="workers" tab="Workers">
+                <Tabs.TabPane key="workers" tab="Рабочее">
                   <WorkersTable loading={isLoading} items={workers} />
                 </Tabs.TabPane>
-                <Tabs.TabPane key="queries" tab="Queries">
+                <Tabs.TabPane key="queries" tab="Запросы">
                   <QueryJobsTable loading={isLoading} items={startedQueryJobs} />
                 </Tabs.TabPane>
-                <Tabs.TabPane key="other" tab="Other Jobs">
+                <Tabs.TabPane key="other" tab="Другие рабочие места">
                   <OtherJobsTable loading={isLoading} items={otherStartedJobs} />
                 </Tabs.TabPane>
               </Tabs>
@@ -132,7 +132,7 @@ routes.register(
   "Admin.Jobs",
   routeWithUserSession({
     path: "/admin/queries/jobs",
-    title: "RQ Status",
+    title: "RQ Статус",
     render: pageProps => <Jobs {...pageProps} />,
   })
 );

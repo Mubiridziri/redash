@@ -47,7 +47,7 @@ export default function AppearanceSettings({ options, onOptionsChange }) {
           layout="horizontal"
           label={
             <React.Fragment>
-              Number Values Format
+              Формат числовых значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -60,7 +60,7 @@ export default function AppearanceSettings({ options, onOptionsChange }) {
           layout="horizontal"
           label={
             <React.Fragment>
-              Percent Values Format
+              Формат процентных значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -82,14 +82,14 @@ export default function AppearanceSettings({ options, onOptionsChange }) {
         <Checkbox
           defaultChecked={options.showTooltips}
           onChange={event => onOptionsChange({ showTooltips: event.target.checked })}>
-          Show Tooltips
+          Показать подсказки
         </Checkbox>
       </Section>
       <Section>
         <Checkbox
           defaultChecked={options.percentValues}
           onChange={event => onOptionsChange({ percentValues: event.target.checked })}>
-          Normalize Values to Percentage
+          Нормализовать значения в процентах
         </Checkbox>
       </Section>
     </React.Fragment>

@@ -12,7 +12,7 @@ function Editor({ column, onChange }) {
       <Input
         label={
           <React.Fragment>
-            Date/Time format
+            Формат даты и времени
             <ContextHelp.DateTimeFormatSpecs />
           </React.Fragment>
         }

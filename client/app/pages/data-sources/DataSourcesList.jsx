@@ -81,7 +81,7 @@ class DataSourcesList extends React.Component {
     recordEvent("view", "page", "data_sources/new");
     this.newDataSourceDialog = CreateSourceDialog.showModal({
       types: reject(this.state.dataSourceTypes, "deprecated"),
-      sourceType: "Data Source",
+      sourceType: "Источник данных",
       imageFolder: IMG_ROOT,
       helpTriggerPrefix: "DS_",
       onCreate: this.createDataSource,
@@ -110,13 +110,13 @@ class DataSourcesList extends React.Component {
 
     return isEmpty(dataSources) ? (
       <div className="text-center">
-        There are no data sources yet.
+          Источников данных пока нет.
         {policy.isCreateDataSourceEnabled() && (
           <div className="m-t-5">
             <a className="clickable" onClick={this.showCreateSourceDialog}>
-              Click here
+              Нажми сюда
             </a>{" "}
-            to add one.
+            чтобы добавить один.
           </div>
         )}
       </div>
@@ -137,7 +137,7 @@ class DataSourcesList extends React.Component {
         <div className="m-b-15">
           <Button {...newDataSourceProps}>
             <i className="fa fa-plus m-r-5" />
-            New Data Source
+              Новые источники данных
           </Button>
           <DynamicComponent name="DataSourcesListExtra" />
         </div>
@@ -151,7 +151,7 @@ const DataSourcesListPage = wrapSettingsTab(
   "DataSources.List",
   {
     permission: "admin",
-    title: "Data Sources",
+    title: "Источники данных",
     path: "data_sources",
     order: 1,
   },
@@ -162,7 +162,7 @@ routes.register(
   "DataSources.List",
   routeWithUserSession({
     path: "/data_sources",
-    title: "Data Sources",
+    title: "Источники данных",
     render: pageProps => <DataSourcesListPage {...pageProps} />,
   })
 );
@@ -170,7 +170,7 @@ routes.register(
   "DataSources.New",
   routeWithUserSession({
     path: "/data_sources/new",
-    title: "Data Sources",
+    title: "Источники данных",
     render: pageProps => <DataSourcesListPage {...pageProps} isNewDataSourcePage />,
   })
 );

@@ -25,9 +25,9 @@ const fieldRules = ({ type, required, minLength }) => {
   const emailTypeRule = type === "email";
 
   return [
-    requiredRule && { required, message: "This field is required." },
-    minLengthRule && { min: minLength, message: "This field is too short." },
-    emailTypeRule && { type: "email", message: "This field must be a valid email." },
+    requiredRule && { required, message: "Это поле обязательно к заполнению." },
+    minLengthRule && { min: minLength, message: "Это поле слишком короткое." },
+    emailTypeRule && { type: "email", message: "Это поле должно быть действительным адресом электронной почты." },
   ].filter(rule => rule);
 };
 
@@ -49,7 +49,7 @@ class DynamicForm extends React.Component {
     actions: [],
     feedbackIcons: false,
     hideSubmitButton: false,
-    saveText: "Save",
+    saveText: "Сохранить",
     onSubmit: () => {},
   };
 
@@ -155,7 +155,7 @@ class DynamicForm extends React.Component {
     const upload = (
       <Upload {...props} beforeUpload={() => false}>
         <Button disabled={disabled}>
-          <Icon type="upload" /> Click to upload
+          <Icon type="upload" /> Нажмите, чтобы загрузить
         </Button>
       </Upload>
     );
@@ -291,7 +291,6 @@ class DynamicForm extends React.Component {
     const saveButton = !hideSubmitButton;
     const extraFields = filter(fields, { extra: true });
     const regularFields = difference(fields, extraFields);
-
     return (
       <Form id={id} className="dynamic-form" layout="vertical" onSubmit={this.handleSubmit}>
         {this.renderFields(regularFields)}
@@ -302,7 +301,7 @@ class DynamicForm extends React.Component {
               block
               className="extra-options-button"
               onClick={() => this.setState({ showExtraFields: !showExtraFields })}>
-              Additional Settings
+                Дополнительные настройки
               <i className={cx("fa m-l-5", { "fa-caret-up": showExtraFields, "fa-caret-down": !showExtraFields })} />
             </Button>
             <Collapse collapsed={!showExtraFields} className="extra-options-content">

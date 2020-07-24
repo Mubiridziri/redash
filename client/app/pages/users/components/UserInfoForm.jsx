@@ -28,7 +28,7 @@ export default function UserInfoForm(props) {
 
       User.save(data)
         .then(user => {
-          successCallback("Saved.");
+          successCallback("Сохранено.");
           handleChange(User.convertUserInfo(user));
         })
         .catch(error => {
@@ -44,7 +44,7 @@ export default function UserInfoForm(props) {
         [
           {
             name: "name",
-            title: "Name",
+            title: "Имя",
             type: "text",
             initialValue: user.name,
           },
@@ -57,19 +57,19 @@ export default function UserInfoForm(props) {
           !user.isDisabled && currentUser.id !== user.id
             ? {
                 name: "group_ids",
-                title: "Groups",
+                title: "Группы",
                 type: "select",
                 mode: "multiple",
                 options: map(allGroups, group => ({ name: group.name, value: group.id })),
                 initialValue: map(groups, group => group.id),
                 loading: isLoadingGroups,
-                placeholder: isLoadingGroups ? "Loading..." : "",
+                placeholder: isLoadingGroups ? "Загрузка..." : "",
               }
             : {
                 name: "group_ids",
-                title: "Groups",
+                title: "Группы",
                 type: "content",
-                content: isLoadingGroups ? "Loading..." : <UserGroups data-test="Groups" groups={groups} />,
+                content: isLoadingGroups ? "Загрузка..." : <UserGroups data-test="Groups" groups={groups} />,
               },
         ],
         field => ({ readOnly: user.isDisabled, required: true, ...field })

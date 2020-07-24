@@ -29,7 +29,7 @@ function VisualizationSelect({ query, visualization, onChange }) {
   return (
     <div>
       <div className="form-group">
-        <label htmlFor="choose-visualization">Choose Visualization</label>
+        <label htmlFor="choose-visualization">Выберите Визуализацию</label>
         <Select
           id="choose-visualization"
           className="w-100"
@@ -103,7 +103,7 @@ function AddWidgetDialog({ dialog, dashboard }) {
 
   const saveWidget = useCallback(() => {
     dialog.close({ visualization: selectedVisualization, parameterMappings }).catch(() => {
-      notification.error("Widget could not be added");
+      notification.error("Виджет не удалось добавить");
     });
   }, [dialog, selectedVisualization, parameterMappings]);
 
@@ -112,13 +112,14 @@ function AddWidgetDialog({ dialog, dashboard }) {
   return (
     <Modal
       {...dialog.props}
-      title="Add Widget"
+      title="Добавить виджет"
       onOk={saveWidget}
       okButtonProps={{
         ...dialog.props.okButtonProps,
         disabled: !selectedQuery || dialog.props.okButtonProps.disabled,
       }}
-      okText="Add to Dashboard"
+      okText="Добавить в панель мониторинга"
+      cancelText="Отмена"
       width={700}>
       <div data-test="AddWidgetDialog">
         <QuerySelector onChange={query => selectQuery(query ? query.id : null)} />
@@ -133,7 +134,7 @@ function AddWidgetDialog({ dialog, dashboard }) {
 
         {parameterMappings.length > 0 && [
           <label key="parameters-title" htmlFor="parameter-mappings">
-            Parameters
+            Параметры
           </label>,
           <ParameterMappingListInput
             key="parameters-list"

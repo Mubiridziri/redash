@@ -23,7 +23,7 @@ describe("Query Filters", () => {
   describe("Simple Filter", () => {
     beforeEach(() => {
       const queryData = {
-        name: "Query Filters",
+        name: "Фильтры запросов",
         query: `SELECT stage1 AS "stage1::filter", stage2, value FROM (${SQL}) q`,
       };
 
@@ -53,7 +53,7 @@ describe("Query Filters", () => {
   describe("Multi Filter", () => {
     beforeEach(() => {
       const queryData = {
-        name: "Query Filters",
+        name: "Фильтры запросов",
         query: `SELECT stage1 AS "stage1::multi-filter", stage2, value FROM (${SQL}) q`,
       };
 

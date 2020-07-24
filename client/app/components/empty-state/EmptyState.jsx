@@ -90,60 +90,53 @@ function EmptyState({
         />
       </div>
       <div className="empty-state__steps">
-        <h4>Let&apos;s get started</h4>
+        <h4>Давайте начнем</h4>
         <ol>
           {currentUser.isAdmin && (
             <Step
               show={isAvailable.dataSource}
               completed={isCompleted.dataSource}
               url="data_sources/new"
-              urlText="Connect"
-              text="a Data Source"
+              urlText="Подключите"
+              text="источник данных"
             />
           )}
           {!currentUser.isAdmin && (
             <Step
               show={isAvailable.dataSource}
               completed={isCompleted.dataSource}
-              text="Ask an account admin to connect a data source"
+              text="Попросите администратора аккаунта подключить источник данных"
             />
           )}
           <Step
             show={isAvailable.query}
             completed={isCompleted.query}
             url="queries/new"
-            urlText="Create"
-            text="your first Query"
+            urlText="Создайте"
+            text="свой первый запрос"
           />
           <Step
             show={isAvailable.alert}
             completed={isCompleted.alert}
             url="alerts/new"
-            urlText="Create"
-            text="your first Alert"
+            urlText="Создайте"
+            text="свой первый запрос"
           />
           <Step
             show={isAvailable.dashboard}
             completed={isCompleted.dashboard}
             onClick={showCreateDashboardDialog}
-            urlText="Create"
-            text="your first Dashboard"
+            urlText="Создайте"
+            text="свою первую панель инструментов"
           />
           <Step
             show={isAvailable.inviteUsers}
             completed={isCompleted.inviteUsers}
             url="users/new"
-            urlText="Invite"
-            text="your team members"
+            urlText="Пригласите"
+            text="членов вашей команды"
           />
         </ol>
-        <p>
-          Need more support?{" "}
-          <a href={helpLink} target="_blank" rel="noopener noreferrer">
-            See our Help
-            <i className="fa fa-external-link m-l-5" aria-hidden="true" />
-          </a>
-        </p>
       </div>
     </div>
   );

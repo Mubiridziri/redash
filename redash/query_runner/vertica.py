@@ -41,7 +41,7 @@ class Vertica(BaseSQLQueryRunner):
                 "database": {"type": "string", "title": "Database name"},
                 "port": {"type": "number"},
                 "read_timeout": {"type": "number", "title": "Read Timeout"},
-                "connection_timeout": {"type": "number", "title": "Connection Timeout"},
+                "connection_timeout": {"type": "number", "title": "Время соединения вышло"},
             },
             "required": ["database"],
             "order": [

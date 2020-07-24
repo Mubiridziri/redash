@@ -4,7 +4,7 @@ describe("Create Query", () => {
     cy.visit("/queries/new");
   });
 
-  it("executes and saves a query", () => {
+  it("выполняет и сохраняет запрос", () => {
     cy.clickThrough(`
       SelectDataSource
       SelectDataSource1
@@ -19,7 +19,7 @@ describe("Create Query", () => {
       .click();
 
     cy.getByTestId("TableVisualization").should("exist");
-    cy.percySnapshot("Edit Query");
+    cy.percySnapshot("Редактировать запрос");
 
     cy.getByTestId("SaveButton").click();
     cy.url().should("match", /\/queries\/\d+\/source/);

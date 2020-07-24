@@ -9,14 +9,14 @@ import Group from "@/services/group";
 
 function deleteGroup(event, group, onGroupDeleted) {
   Modal.confirm({
-    title: "Delete Group",
-    content: "Are you sure you want to delete this group?",
-    okText: "Yes",
+    title: "Удалить группу",
+    content: "Вы уверены, что хотите удалить эту группу?",
+    okText: "Да",
     okType: "danger",
-    cancelText: "No",
+    cancelText: "Нет",
     onOk: () => {
       Group.delete(group).then(() => {
-        notification.success("Group deleted successfully.");
+        notification.success("Группа успешно удалена.");
         onGroupDeleted();
       });
     },

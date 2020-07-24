@@ -36,11 +36,11 @@ export default function GroupsSettings({ options, data, onOptionsChange }) {
 
   const columns = [
     {
-      title: "Group",
+      title: "Группа",
       dataIndex: "name",
     },
     {
-      title: "Color",
+      title: "Цвет",
       dataIndex: "color",
       width: "1%",
       render: (unused, item) => (

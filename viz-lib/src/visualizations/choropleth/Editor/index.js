@@ -6,8 +6,8 @@ import FormatSettings from "./FormatSettings";
 import BoundsSettings from "./BoundsSettings";
 
 export default createTabbedEditor([
-  { key: "General", title: "General", component: GeneralSettings },
-  { key: "Colors", title: "Colors", component: ColorsSettings },
-  { key: "Format", title: "Format", component: FormatSettings },
-  { key: "Bounds", title: "Bounds", component: BoundsSettings },
+  { key: "General", title: "Общее", component: GeneralSettings },
+  { key: "Colors", title: "Цвета", component: ColorsSettings },
+  { key: "Format", title: "Формат", component: FormatSettings },
+  { key: "Bounds", title: "Границы", component: BoundsSettings },
 ]);

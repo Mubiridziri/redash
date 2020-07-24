@@ -238,7 +238,7 @@ function QuerySource(props) {
                   isEditable={queryFlags.canEdit}
                   markdown
                   ignoreBlanks={false}
-                  placeholder="Add description"
+                  placeholder="Добавить описание"
                   value={query.description}
                   onDone={updateQueryDescription}
                   multiline
@@ -271,12 +271,12 @@ function QuerySource(props) {
 
                     <QueryEditor.Controls
                       addParameterButtonProps={{
-                        title: "Add New Parameter",
+                        title: "Добавить новый параметр",
                         shortcut: "mod+p",
                         onClick: openAddNewParameterDialog,
                       }}
                       formatButtonProps={{
-                        title: "Format Query",
+                        title: "Формат запроса",
                         shortcut: "mod+shift+f",
                         onClick: formatQuery,
                       }}
@@ -284,7 +284,7 @@ function QuerySource(props) {
                         queryFlags.canEdit && {
                           text: (
                             <React.Fragment>
-                              <span className="hidden-xs">Save</span>
+                              <span className="hidden-xs">Сохранить</span>
                               {isDirty && !isQuerySaving ? "*" : null}
                             </React.Fragment>
                           ),
@@ -298,7 +298,7 @@ function QuerySource(props) {
                         shortcut: "mod+enter, alt+enter, ctrl+enter",
                         onClick: doExecuteQuery,
                         text: (
-                          <span className="hidden-xs">{selectedText === null ? "Execute" : "Execute Selected"}</span>
+                          <span className="hidden-xs">{selectedText === null ? "Выполнить" : "Выполнить выбранное"}</span>
                         ),
                       }}
                       autocompleteToggleProps={{
@@ -385,7 +385,7 @@ function QuerySource(props) {
                           loading={isQueryExecuting}
                           onClick={doExecuteQuery}>
                           {!isQueryExecuting && <i className="zmdi zmdi-refresh m-r-5" aria-hidden="true" />}
-                          Refresh Now
+                          Обновить сейчас
                         </Button>
                       }
                     />

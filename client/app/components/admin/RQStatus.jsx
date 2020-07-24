@@ -34,21 +34,21 @@ CounterCard.defaultProps = {
 // Tables
 
 const queryJobsColumns = [
-  { title: "Queue", dataIndex: "origin" },
-  { title: "Query ID", dataIndex: "meta.query_id" },
+  { title: "Очередь", dataIndex: "origin" },
+  { title: "ID Очередь ", dataIndex: "meta.query_id" },
   { title: "Org ID", dataIndex: "meta.org_id" },
-  { title: "Data Source ID", dataIndex: "meta.data_source_id" },
-  { title: "User ID", dataIndex: "meta.user_id" },
-  Columns.custom(scheduled => scheduled.toString(), { title: "Scheduled", dataIndex: "meta.scheduled" }),
-  Columns.timeAgo({ title: "Start Time", dataIndex: "started_at" }),
-  Columns.timeAgo({ title: "Enqueue Time", dataIndex: "enqueued_at" }),
+  { title: "ID Источника данных", dataIndex: "meta.data_source_id" },
+  { title: "ID Пользователя", dataIndex: "meta.user_id" },
+  Columns.custom(scheduled => scheduled.toString(), { title: "Запланированное", dataIndex: "meta.scheduled" }),
+  Columns.timeAgo({ title: "Время начала", dataIndex: "started_at" }),
+  Columns.timeAgo({ title: "Время запроса", dataIndex: "enqueued_at" }),
 ];
 
 const otherJobsColumns = [
-  { title: "Queue", dataIndex: "origin" },
-  { title: "Job Name", dataIndex: "name" },
-  Columns.timeAgo({ title: "Start Time", dataIndex: "started_at" }),
-  Columns.timeAgo({ title: "Enqueue Time", dataIndex: "enqueued_at" }),
+  { title: "Очередь", dataIndex: "origin" },
+  { title: "Название работы", dataIndex: "name" },
+  Columns.timeAgo({ title: "Время начала", dataIndex: "started_at" }),
+  Columns.timeAgo({ title: "Время запроса", dataIndex: "enqueued_at" }),
 ];
 
 const workersColumns = [
@@ -59,18 +59,18 @@ const workersColumns = [
         {value}
       </span>
     ),
-    { title: "State", dataIndex: "state" }
+    { title: "Состояние", dataIndex: "state" }
   ),
 ]
   .concat(
-    map(["Hostname", "PID", "Name", "Queues", "Current Job", "Successful Jobs", "Failed Jobs"], c => ({
+    map(["Имя хоста", "PID", "Имя", "Очереди", "Текущее место работы", "Успешная работа", "Неудачная работа"], c => ({
       title: c,
       dataIndex: c.toLowerCase().replace(/\s/g, "_"),
     }))
   )
   .concat([
-    Columns.dateTime({ title: "Birth Date", dataIndex: "birth_date" }),
-    Columns.duration({ title: "Total Working Time", dataIndex: "total_working_time" }),
+    Columns.dateTime({ title: "Дата рождения", dataIndex: "birth_date" }),
+    Columns.duration({ title: "Общая продолжительность рабочего времени", dataIndex: "total_working_time" }),
   ]);
 
 const queuesColumns = map(["Name", "Started", "Queued"], c => ({ title: c, dataIndex: c.toLowerCase() }));

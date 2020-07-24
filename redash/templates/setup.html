@@ -24,8 +24,8 @@
 {% block content %}
 <div class="fixed-width-page">
   <div class="bg-white tiled">
-    <h4 class="m-t-0">Welcome to Redash!</h4>
-    <div>Before you can use your instance, you need to do a quick setup.</div>
+    <h4 class="m-t-0">Добро пожаловать!</h4>
+    <div>Прежде чем вы сможете использовать свой экземпляр, вам нужно выполнить быструю настройку.</div>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -36,7 +36,7 @@
     {% endwith %}
 
     <form role="form" method="post" name="create_account">
-      <h4 class="m-t-25">Admin User</h4>
+      <h4 class="m-t-25">Администратор</h4>
       {{ render_field(form.name) }}
       {{ render_field(form.email) }}
       {{ render_field(form.password) }}
@@ -44,22 +44,22 @@
       <div class="checkbox">
         <label>
           {{ form.security_notifications() }}
-          Subscribe to Security Notifications
+          Подписаться на уведомления о безопасности
         </label>
       </div>
 
       <div class="checkbox">
         <label>
           {{ form.newsletter() }}
-          Subscribe to newsletter (version updates, no more than once a month)
+          Подписаться на рассылку (обновления версий, не чаще одного раза в месяц)
         </label>
       </div>
 
-      <h4 class="m-t-25">General</h4>
+      <h4 class="m-t-25">Общее</h4>
 
       {{ render_field(form.org_name, help_block="Used in email notifications and the UI.") }}
 
-      <button type="submit" class="btn btn-primary btn-block m-t-25">Setup</button>
+      <button type="submit" class="btn btn-primary btn-block m-t-25">Настроить</button>
     </form>
   </div>
 </div>

@@ -391,7 +391,7 @@ const QueryService = {
 QueryService.newQuery = function newQuery() {
   return new Query({
     query: "",
-    name: "New Query",
+    name: "Новый запрос",
     schedule: null,
     user: currentUser,
     options: {},

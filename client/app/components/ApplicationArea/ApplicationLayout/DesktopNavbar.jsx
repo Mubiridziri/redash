@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import Button from "antd/lib/button";
 import Menu from "antd/lib/menu";
 import Icon from "antd/lib/icon";
-import HelpTrigger from "@/components/HelpTrigger";
 import CreateDashboardDialog from "@/components/dashboards/CreateDashboardDialog";
 import { Auth, currentUser } from "@/services/auth";
 import settingsMenu from "@/services/settingsMenu";
 import logoUrl from "@/assets/images/redash_icon_small.png";
 
-import VersionInfo from "./VersionInfo";
+// import VersionInfo from "./VersionInfo";
 import "./DesktopNavbar.less";
 
 function NavbarSection({ inlineCollapsed, children, ...props }) {
@@ -47,7 +46,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="dashboards">
             <a href="dashboards">
               <Icon type="desktop" />
-              <span>Dashboards</span>
+              <span>Панель инструментов</span>
             </a>
           </Menu.Item>
         )}
@@ -55,7 +54,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="queries">
             <a href="queries">
               <Icon type="code" />
-              <span>Queries</span>
+              <span>Запросы</span>
             </a>
           </Menu.Item>
         )}
@@ -63,7 +62,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="alerts">
             <a href="alerts">
               <Icon type="alert" />
-              <span>Alerts</span>
+              <span>Оповещения</span>
             </a>
           </Menu.Item>
         )}
@@ -79,28 +78,28 @@ export default function DesktopNavbar() {
               <React.Fragment>
                 <span data-test="CreateButton">
                   <Icon type="plus" />
-                  <span>Create</span>
+                  <span>Создать</span>
                 </span>
               </React.Fragment>
             }>
             {canCreateQuery && (
               <Menu.Item key="new-query">
                 <a href="queries/new" data-test="CreateQueryMenuItem">
-                  New Query
+                  Новый запрос
                 </a>
               </Menu.Item>
             )}
             {canCreateDashboard && (
               <Menu.Item key="new-dashboard">
                 <a data-test="CreateDashboardMenuItem" onMouseUp={() => CreateDashboardDialog.showModal()}>
-                  New Dashboard
+                  Новую панель
                 </a>
               </Menu.Item>
             )}
             {canCreateAlert && (
               <Menu.Item key="new-alert">
                 <a data-test="CreateAlertMenuItem" href="alerts/new">
-                  New Alert
+                  Новые оповещения
                 </a>
               </Menu.Item>
             )}
@@ -109,17 +108,11 @@ export default function DesktopNavbar() {
       </NavbarSection>
 
       <NavbarSection inlineCollapsed={collapsed}>
-        <Menu.Item key="help">
-          <HelpTrigger showTooltip={false} type="HOME">
-            <Icon type="question-circle" />
-            <span>Help</span>
-          </HelpTrigger>
-        </Menu.Item>
         {firstSettingsTab && (
           <Menu.Item key="settings">
             <a href={firstSettingsTab.path} data-test="SettingsLink">
               <Icon type="setting" />
-              <span>Settings</span>
+              <span>Настройки</span>
             </a>
           </Menu.Item>
         )}
@@ -137,23 +130,23 @@ export default function DesktopNavbar() {
             </span>
           }>
           <Menu.Item key="profile">
-            <a href="users/me">Profile</a>
+            <a href="users/me">Профиль</a>
           </Menu.Item>
           {currentUser.hasPermission("super_admin") && (
             <Menu.Item key="status">
-              <a href="admin/status">System Status</a>
+              <a href="admin/status">Состояние системы</a>
             </Menu.Item>
           )}
           <Menu.Divider />
           <Menu.Item key="logout">
             <a data-test="LogOutButton" onClick={() => Auth.logout()}>
-              Log out
+              Выйти из системы
             </a>
           </Menu.Item>
           <Menu.Divider />
-          <Menu.Item key="version" disabled className="version-info">
+          {/* <Menu.Item key="version" disabled className="version-info">
             <VersionInfo />
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu.SubMenu>
       </NavbarSection>
 

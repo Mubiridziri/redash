@@ -13,7 +13,7 @@ export function createQueryAndAddWidget(dashboardId, queryData = {}, widgetOptio
   return createQuery(queryData)
     .then(query => {
       const visualizationId = get(query, "visualizations.0.id");
-      assert.isDefined(visualizationId, "Query api call returns at least one visualization with id");
+      assert.isDefined(visualizationId, "Вызов API запроса возвращает по крайней мере одну визуализацию с идентификатором");
       return addWidget(dashboardId, visualizationId, widgetOptions);
     })
     .then(getWidgetTestId);
@@ -23,13 +23,13 @@ export function editDashboard() {
   cy.getByTestId("DashboardMoreButton").click();
 
   cy.getByTestId("DashboardMoreButtonMenu")
-    .contains("Edit")
+    .contains("Редактировать")
     .click();
 }
 
 export function shareDashboard() {
   cy.clickThrough(
-    { button: "Publish" },
+    { button: "Опубликовать" },
     `OpenShareForm
     PublicAccessEnabled`
   );

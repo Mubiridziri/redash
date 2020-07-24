@@ -36,7 +36,7 @@ function TextboxDialog({ dialog, isNew, ...props }) {
 
   const saveWidget = useCallback(() => {
     dialog.close(text).catch(() => {
-      notification.error(isNew ? "Widget could not be added" : "Widget could not be saved");
+      notification.error(isNew ? "Виджет не может быть добавлен" : "Виджет не может быть сохранен");
     });
   }, [dialog, isNew, text]);
 
@@ -44,9 +44,9 @@ function TextboxDialog({ dialog, isNew, ...props }) {
     const originalText = props.text;
     if (text !== originalText) {
       Modal.confirm({
-        title: "Quit editing?",
-        content: "Changes you made so far will not be saved. Are you sure?",
-        okText: "Yes, quit",
+        title: "Прекратить редактирование?",
+        content: "Изменения, внесенные вами, не будут сохранены. Вы уверены?",
+        okText: "Да, выйти",
         okType: "danger",
         onOk: () => dialog.dismiss(),
         maskClosable: true,
@@ -61,10 +61,11 @@ function TextboxDialog({ dialog, isNew, ...props }) {
   return (
     <Modal
       {...dialog.props}
-      title={isNew ? "Add Textbox" : "Edit Textbox"}
+      title={isNew ? "Добавить текстовое поле" : "Редактировать текстовое поле"}
       onOk={saveWidget}
       onCancel={confirmDialogDismiss}
-      okText={isNew ? "Add to Dashboard" : "Save"}
+      okText={isNew ? "Добавить в панель мониторинга" : "Сохранить"}
+      cancelText="Отмена"
       width={500}
       wrapProps={{ "data-test": "TextboxDialog" }}>
       <div className="textbox-dialog">
@@ -74,19 +75,19 @@ function TextboxDialog({ dialog, isNew, ...props }) {
           value={text}
           onChange={handleInputChange}
           autoFocus
-          placeholder="This is where you write some text"
+          placeholder="Вот здесь вы пишете какой-то текст"
         />
         <small>
-          Supports basic{" "}
+          Поддерживает базовую {" "}
           <a target="_blank" rel="noopener noreferrer" href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">
-            <Tooltip title="Markdown guide opens in new window">Markdown</Tooltip>
+            <Tooltip title="Руководство по уценке откроется в новом окне">Markdown-разметку</Tooltip>
           </a>
           .
         </small>
         {text && (
           <React.Fragment>
             <Divider dashed />
-            <strong className="preview-title">Preview:</strong>
+            <strong className="preview-title">Предварительный просмотр:</strong>
             <HtmlContent className="preview markdown">{preview}</HtmlContent>
           </React.Fragment>
         )}

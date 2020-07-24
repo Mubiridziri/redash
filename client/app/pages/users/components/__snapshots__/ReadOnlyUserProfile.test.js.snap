@@ -20,10 +20,10 @@ exports[`renders correctly 1`] = `
     className="profile__dl"
   >
     <dt>
-      Name:
+      Имя:
     </dt>
     <dd>
-      John Doe
+      Джон Доу
     </dd>
     <dt>
       Email:
@@ -34,10 +34,10 @@ exports[`renders correctly 1`] = `
     <dt
       className="m-b-5"
     >
-      Groups:
+      Группы:
     </dt>
     <dd>
-      Loading...
+      Загрузка...
     </dd>
   </dl>
 </div>

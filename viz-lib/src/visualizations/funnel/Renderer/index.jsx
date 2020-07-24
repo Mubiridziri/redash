@@ -64,14 +64,14 @@ export default function Renderer({ data, options }) {
         ),
       },
       {
-        title: "% Max",
+        title: "% Максимум",
         dataIndex: "pctMax",
         width: "15%",
         align: "center",
         render: value => formatPercentValue(value),
       },
       {
-        title: "% Previous",
+        title: "% Назад",
         dataIndex: "pctPrevious",
         width: "15%",
         align: "center",
@@ -93,7 +93,7 @@ export default function Renderer({ data, options }) {
       <Table
         columns={columns}
         dataSource={funnelData}
-        rowKey={(record, index) => rowKeyPrefix + index}
+        rowKey={(index) => rowKeyPrefix + index}
         pagination={false}
       />
     </div>

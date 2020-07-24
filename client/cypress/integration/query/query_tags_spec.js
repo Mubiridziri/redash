@@ -6,7 +6,7 @@ describe("Query Tags", () => {
     cy.login();
 
     const queryData = {
-      name: "Query Tags",
+      name: "Теги запроса",
       query: "SELECT 1 as value",
     };
 

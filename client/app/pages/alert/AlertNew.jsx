@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import HelpTrigger from "@/components/HelpTrigger";
 import { Alert as AlertType } from "@/components/proptypes";
 
 import Form from "antd/lib/form";
@@ -39,11 +38,11 @@ export default class AlertNew extends React.Component {
           <div className="d-flex">
             <Form className="flex-fill">
               <div className="m-b-30">
-                Start by selecting the query that you would like to monitor using the search bar.
+                Начните с выбора запроса, который вы хотите отслеживать с помощью строки поиска.
                 <br />
-                Keep in mind that Alerts do not work with queries that use parameters.
+                Имейте в виду, что оповещения не работают с запросами, которые используют параметры.
               </div>
-              <HorizontalFormItem label="Query">
+              <HorizontalFormItem label="Запрос">
                 <Query query={query} queryResult={queryResult} onChange={onQuerySelected} editMode />
               </HorizontalFormItem>
               {queryResult && options && (
@@ -77,13 +76,10 @@ export default class AlertNew extends React.Component {
               <HorizontalFormItem>
                 <Button type="primary" onClick={this.save} disabled={!query} className="btn-create-alert">
                   {saving && <i className="fa fa-spinner fa-pulse m-r-5" />}
-                  Create Alert
+                    Создать оповещение
                 </Button>
               </HorizontalFormItem>
             </Form>
-            <HelpTrigger className="f-13" type="ALERT_SETUP">
-              Setup Instructions <i className="fa fa-question-circle" />
-            </HelpTrigger>
           </div>
         </div>
       </>

@@ -106,7 +106,7 @@ function QueryView(props) {
               shortcut="mod+enter, alt+enter, ctrl+enter"
               disabled={!queryFlags.canExecute || isExecuting || areParametersDirty}
               onClick={doExecuteQuery}>
-              Refresh
+              Обновить
             </QueryViewButton>
           }
           tagsExtra={
@@ -116,7 +116,7 @@ function QueryView(props) {
             !fullscreen && (
               <a className="label label-tag hidden-xs" role="none" onClick={() => setAddingDescription(true)}>
                 <i className="zmdi zmdi-plus m-r-5" />
-                Add description
+                Добавить описание
               </a>
             )
           }
@@ -129,7 +129,7 @@ function QueryView(props) {
               isEditable={queryFlags.canEdit}
               onDone={updateQueryDescription}
               onStopEditing={() => setAddingDescription(false)}
-              placeholder="Add description"
+              placeholder="Добавить описание"
               ignoreBlanks={false}
               editorProps={{ autosize: { minRows: 2, maxRows: 4 } }}
               defaultEditing={addingDescription}
@@ -169,7 +169,7 @@ function QueryView(props) {
                   loading={isExecuting}
                   onClick={doExecuteQuery}>
                   {!isExecuting && <i className="zmdi zmdi-refresh m-r-5" aria-hidden="true" />}
-                  Refresh Now
+                  Обновить сейчас
                 </Button>
               }
             />
@@ -186,7 +186,7 @@ function QueryView(props) {
                 extraActions={
                   <QueryViewButton
                     className="icon-button m-r-5 hidden-xs"
-                    title="Toggle Fullscreen"
+                    title="Включить полноэкранный режим"
                     type="default"
                     shortcut="alt+f"
                     onClick={toggleFullscreen}>

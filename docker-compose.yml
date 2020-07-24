@@ -23,6 +23,7 @@ services:
       - postgres
       - redis
     ports:
+      - "5431:5432"
       - "5000:5000"
       - "5678:5678"
     environment:

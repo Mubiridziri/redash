@@ -63,7 +63,7 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
   return (
     <div data-test="Criteria">
       <div className="input-title">
-        <span>Value column</span>
+        <span>Столбец значений</span>
         {editMode ? (
           <Select
             value={alertOptions.column}
@@ -79,7 +79,7 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
         )}
       </div>
       <div className="input-title">
-        <span>Condition</span>
+        <span>Состояние</span>
         {editMode ? (
           <Select
             value={alertOptions.op}
@@ -88,28 +88,28 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
             dropdownMatchSelectWidth={false}
             style={{ width: 55 }}>
             <Select.Option value=">" label={CONDITIONS[">"]}>
-              {CONDITIONS[">"]} greater than
+              {CONDITIONS[">"]} лучше чем
             </Select.Option>
             <Select.Option value=">=" label={CONDITIONS[">="]}>
-              {CONDITIONS[">="]} greater than or equals
+              {CONDITIONS[">="]} больше или равно
             </Select.Option>
             <Select.Option disabled key="dv1">
               <Divider className="select-option-divider m-t-10 m-b-5" />
             </Select.Option>
             <Select.Option value="<" label={CONDITIONS["<"]}>
-              {CONDITIONS["<"]} less than
+              {CONDITIONS["<"]} меньше чем
             </Select.Option>
             <Select.Option value="<=" label={CONDITIONS["<="]}>
-              {CONDITIONS["<="]} less than or equals
+              {CONDITIONS["<="]} меньше или равно
             </Select.Option>
             <Select.Option disabled key="dv2">
               <Divider className="select-option-divider m-t-10 m-b-5" />
             </Select.Option>
             <Select.Option value="==" label={CONDITIONS["=="]}>
-              {CONDITIONS["=="]} equals
+              {CONDITIONS["=="]} равняется
             </Select.Option>
             <Select.Option value="!=" label={CONDITIONS["!="]}>
-              {CONDITIONS["!="]} not equal to
+              {CONDITIONS["!="]} не равны
             </Select.Option>
           </Select>
         ) : (
@@ -117,7 +117,7 @@ export default function Criteria({ columnNames, resultValues, alertOptions, onCh
         )}
       </div>
       <div className="input-title">
-        <span>Threshold</span>
+        <span>Порог</span>
         {editMode ? (
           <Input style={{ width: 90 }} value={alertOptions.value} onChange={e => onChange({ value: e.target.value })} />
         ) : (

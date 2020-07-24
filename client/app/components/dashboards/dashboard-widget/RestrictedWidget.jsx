@@ -9,7 +9,7 @@ function RestrictedWidget(props) {
           <h1>
             <span className="zmdi zmdi-lock" />
           </h1>
-          <p className="text-muted">This widget requires access to a data source you don&apos;t have access to.</p>
+          <p className="text-muted">Этот виджет требует доступа к источнику данных, к которому у вас нет доступа.</p>
         </div>
       </div>
     </Widget>

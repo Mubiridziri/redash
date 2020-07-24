@@ -73,11 +73,11 @@ function regenerateApiKey(user) {
   return axios
     .post(`api/users/${user.id}/regenerate_api_key`)
     .then(data => {
-      notification.success("The API Key has been updated.");
+      notification.success("Ключ API был обновлен.");
       return data.api_key;
     })
     .catch(error => {
-      notification.error("Failed regenerating API Key", getErrorMessage(error));
+      notification.error("Не удалось восстановить ключ API", getErrorMessage(error));
     });
 }
 
@@ -86,13 +86,13 @@ function sendPasswordReset(user) {
     .post(`api/users/${user.id}/reset_password`)
     .then(data => {
       if (clientConfig.mailSettingsMissing) {
-        notification.warning("The mail server is not configured.");
+        notification.warning("Почтовый сервер не настроен.");
         return data.reset_link;
       }
-      notification.success("Password reset email sent.");
+      notification.success("Отправлено электронное письмо для сброса пароля.");
     })
     .catch(error => {
-      notification.error("Failed to send password reset email", getErrorMessage(error));
+      notification.error("Не удалось отправить электронное письмо для сброса пароля", getErrorMessage(error));
     });
 }
 
@@ -101,13 +101,13 @@ function resendInvitation(user) {
     .post(`api/users/${user.id}/invite`)
     .then(data => {
       if (clientConfig.mailSettingsMissing) {
-        notification.warning("The mail server is not configured.");
+        notification.warning("Почтовый сервер не настроен.");
         return data.invite_link;
       }
-      notification.success("Invitation sent.");
+      notification.success("Приглашение отправлено.");
     })
     .catch(error => {
-      notification.error("Failed to resend invitation", getErrorMessage(error));
+      notification.error("Не удалось отправить приглашение повторно", getErrorMessage(error));
     });
 }
 

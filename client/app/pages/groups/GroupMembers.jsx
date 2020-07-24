@@ -40,19 +40,19 @@ class GroupMembers extends React.Component {
     {
       key: "users",
       href: `groups/${this.groupId}`,
-      title: "Members",
+      title: "Участники",
     },
     {
       key: "datasources",
       href: `groups/${this.groupId}/data_sources`,
-      title: "Data Sources",
+      title: "Источники данных",
       isAvailable: () => currentUser.isAdmin,
     },
   ];
 
   listColumns = [
     Columns.custom((text, user) => <UserPreviewCard user={user} withLink />, {
-      title: "Name",
+      title: "Имя",
       field: "name",
       width: null,
     }),
@@ -68,7 +68,7 @@ class GroupMembers extends React.Component {
         }
         return (
           <Button className="w-100" type="danger" onClick={event => this.removeGroupMember(event, user)}>
-            Remove
+            Удалить
           </Button>
         );
       },
@@ -97,15 +97,15 @@ class GroupMembers extends React.Component {
         this.props.controller.update();
       })
       .catch(() => {
-        notification.error("Failed to remove member from group.");
+        notification.error("Не удалось удалить участника из группы.");
       });
 
   addMembers = () => {
     const alreadyAddedUsers = map(this.props.controller.allItems, u => u.id);
     SelectItemsDialog.showModal({
-      dialogTitle: "Add Members",
-      inputPlaceholder: "Search users...",
-      selectedItemsTitle: "New Members",
+      dialogTitle: "Добавить участников",
+      inputPlaceholder: "Поиск пользователей...",
+      selectedItemsTitle: "Новые участники",
       searchItems: searchTerm => User.query({ q: searchTerm }).then(({ results }) => results),
       renderItem: (item, { isSelected }) => {
         const alreadyInGroup = includes(alreadyAddedUsers, item.id);
@@ -152,11 +152,11 @@ class GroupMembers extends React.Component {
             {!controller.isLoaded && <LoadingState className="" />}
             {controller.isLoaded && controller.isEmpty && (
               <div className="text-center">
-                <p>There are no members in this group yet.</p>
+                <p>В этой группе еще нет участников.</p>
                 {currentUser.isAdmin && (
                   <Button type="primary" onClick={this.addMembers}>
                     <i className="fa fa-plus m-r-5" />
-                    Add Members
+                    Добавить участников
                   </Button>
                 )}
               </div>
@@ -210,7 +210,7 @@ routes.register(
   "Groups.Members",
   routeWithUserSession({
     path: "/groups/:groupId",
-    title: "Group Members",
+    title: "Группа участников",
     render: pageProps => <GroupMembersPage {...pageProps} currentPage="users" />,
   })
 );

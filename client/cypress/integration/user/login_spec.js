@@ -3,21 +3,21 @@ describe("Login", () => {
     cy.visit("/login");
   });
 
-  it("greets the user and take a screenshot", () => {
+  it("рендерит страницу и делает скриншот", () => {
     cy.contains("h3", "Login to Redash");
 
     cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.percySnapshot("Login");
   });
 
-  it("shows message on failed login", () => {
+  it("показывает сообщение о неудачном входе в систему", () => {
     cy.getByTestId("Email").type("admin@redash.io");
     cy.getByTestId("Password").type("wrongpassword{enter}");
 
-    cy.getByTestId("ErrorMessage").should("contain", "Wrong email or password.");
+    cy.getByTestId("ErrorMessage").should("contain", "Неверный адрес электронной почты или пароль.");
   });
 
-  it("navigates to homepage with successful login", () => {
+  it("перенаправление на домашнюю страницу с успешным входом в систему", () => {
     cy.getByTestId("Email").type("admin@redash.io");
     cy.getByTestId("Password").type("password{enter}");
 

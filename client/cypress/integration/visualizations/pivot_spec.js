@@ -37,7 +37,7 @@ function createPivotThroughUI(visualizationName, options = {}) {
     .find("table")
     .should("exist");
   cy.getByTestId("EditVisualizationDialog")
-    .contains("button", "Save")
+    .contains("button", "Сохранить")
     .click();
 }
 
@@ -159,7 +159,7 @@ describe("Pivot", () => {
             cy.getByTestId("PivotTableVisualization").should("exist")
           );
         });
-        cy.percySnapshot("Visualizations - Pivot Table");
+        cy.percySnapshot("Визуализации - сводная таблица");
       });
   });
 });

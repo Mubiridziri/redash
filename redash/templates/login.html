@@ -21,15 +21,15 @@
     {% endif %}
 
     {% if show_saml_login %}
-      <a href="{{ url_for('saml_auth.sp_initiated', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">SAML Login</a>
+      <a href="{{ url_for('saml_auth.sp_initiated', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">SAML Логин</a>
     {% endif %}
 
     {% if show_remote_user_login %}
-      <a href="{{ url_for('remote_user_auth.login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">Remote User Login</a>
+      <a href="{{ url_for('remote_user_auth.login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">Удаленный вход пользователя</a>
     {% endif %}
 
     {% if show_ldap_login %}
-      <a href="{{ url_for('ldap_auth.login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">LDAP/SSO Login</a>
+      <a href="{{ url_for('ldap_auth.login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">LDAP/SSO Логин</a>
     {% endif %}
 
     {% if show_password_login %}
@@ -44,15 +44,15 @@
         <input type="text" class="form-control" id="inputEmail" name="email" value="{{email}}" data-test="Email">
       </div>
       <div class="form-group">
-        <label for="inputPassword">Password</label>
+        <label for="inputPassword">Пароль</label>
         <input type="password" class="form-control" id="inputPassword" name="password" data-test="Password">
       </div>
 
-      <button type="submit" class="btn btn-primary btn-block m-t-25">Log In</button>
+      <button type="submit" class="btn btn-primary btn-block m-t-25">Авторизоваться</button>
     </form>
     {% if not hide_forgot_password %}
       <div class="m-t-25">
-        <a href="{{ url_for("redash.forgot_password", org_slug=org_slug) }}">I forgot my password</a>
+        <a href="{{ url_for("redash.forgot_password", org_slug=org_slug) }}">Я забыл свой пароль</a>
       </div>
     {% endif %}
     {% endif %}

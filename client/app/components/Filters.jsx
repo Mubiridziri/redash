@@ -113,13 +113,13 @@ function Filters({ filters, onChange }) {
                     {filter.multiple && [
                       <Select.Option key={NONE_VALUES} data-test="ClearOption">
                         <i className="fa fa-square-o m-r-5" />
-                        Clear
+                        Очистить
                       </Select.Option>,
                       <Select.Option key={ALL_VALUES} data-test="SelectAllOption">
                         <i className="fa fa-check-square-o m-r-5" />
-                        Select All
+                        Выбрать все
                       </Select.Option>,
-                      <Select.OptGroup key="Values" title="Values">
+                      <Select.OptGroup key="Values" title="Значения">
                         {options}
                       </Select.OptGroup>,
                     ]}

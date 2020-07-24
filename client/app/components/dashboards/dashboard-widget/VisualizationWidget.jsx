@@ -31,39 +31,39 @@ function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParameters
     <Menu.Item key="download_csv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <a href={downloadLink("csv")} download={downloadName("csv")} target="_self">
-          Download as CSV File
+         Скачать как файл CSV
         </a>
       ) : (
-        "Download as CSV File"
+        "Скачать как файл CSV"
       )}
     </Menu.Item>,
     <Menu.Item key="download_tsv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <a href={downloadLink("tsv")} download={downloadName("tsv")} target="_self">
-          Download as TSV File
+          Скачать как файл TSV
         </a>
       ) : (
-        "Download as TSV File"
+        "Скачать как файл TSV"
       )}
     </Menu.Item>,
     <Menu.Item key="download_excel" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <a href={downloadLink("xlsx")} download={downloadName("xlsx")} target="_self">
-          Download as Excel File
+          Скачать как файл Excel
         </a>
       ) : (
-        "Download as Excel File"
+        "Скачать как файл Excel"
       )}
     </Menu.Item>,
     (canViewQuery || canEditParameters) && <Menu.Divider key="divider" />,
     canViewQuery && (
       <Menu.Item key="view_query">
-        <a href={widget.getQuery().getUrl(true, widget.visualization.id)}>View Query</a>
+        <a href={widget.getQuery().getUrl(true, widget.visualization.id)}>Посмотреть запрос</a>
       </Menu.Item>
     ),
     canEditParameters && (
       <Menu.Item key="edit_parameters" onClick={onParametersEdit}>
-        Edit Parameters
+        Изменить параметры
       </Menu.Item>
     ),
   ]);

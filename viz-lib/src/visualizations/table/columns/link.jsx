@@ -12,7 +12,7 @@ function Editor({ column, onChange }) {
     <React.Fragment>
       <Section>
         <Input
-          label="URL template"
+          label="Шаблон URL"
           data-test="Table.ColumnEditor.Link.UrlTemplate"
           defaultValue={column.linkUrlTemplate}
           onChange={event => onChangeDebounced({ linkUrlTemplate: event.target.value })}
@@ -21,7 +21,7 @@ function Editor({ column, onChange }) {
 
       <Section>
         <Input
-          label="Text template"
+          label="Текстовый шаблон"
           data-test="Table.ColumnEditor.Link.TextTemplate"
           defaultValue={column.linkTextTemplate}
           onChange={event => onChangeDebounced({ linkTextTemplate: event.target.value })}
@@ -30,7 +30,7 @@ function Editor({ column, onChange }) {
 
       <Section>
         <Input
-          label="Title template"
+          label="Шаблон заголовка"
           data-test="Table.ColumnEditor.Link.TitleTemplate"
           defaultValue={column.linkTitleTemplate}
           onChange={event => onChangeDebounced({ linkTitleTemplate: event.target.value })}
@@ -42,7 +42,7 @@ function Editor({ column, onChange }) {
           data-test="Table.ColumnEditor.Link.OpenInNewTab"
           checked={column.linkOpenInNewTab}
           onChange={event => onChange({ linkOpenInNewTab: event.target.checked })}>
-          Open in new tab
+          Открыть в новой вкладке
         </Checkbox>
       </Section>
 
@@ -50,14 +50,14 @@ function Editor({ column, onChange }) {
         <ContextHelp
           placement="topLeft"
           arrowPointAtCenter
-          icon={<span style={{ cursor: "default" }}>Format specs {ContextHelp.defaultIcon}</span>}>
+          icon={<span style={{ cursor: "по умолчанию" }}>Спецификации формата {ContextHelp.defaultIcon}</span>}>
           <div>
-            All columns can be referenced using <code>{"{{ column_name }}"}</code> syntax.
+          На все столбцы можно ссылаться с использованием <code>{"{{ column_name }}"}</code> синтаксиса.
           </div>
           <div>
-            Use <code>{"{{ @ }}"}</code> to reference current (this) column.
+            Используйте <code>{"{{ @ }}"}</code> для ссылки на текущий (этот) столбец.
           </div>
-          <div>This syntax is applicable to URL, Text and Title options.</div>
+          <div>Этот синтаксис применим к параметрам URL, текста и заголовка.</div>
         </ContextHelp>
       </Section>
     </React.Fragment>

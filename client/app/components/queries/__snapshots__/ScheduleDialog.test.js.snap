@@ -274,9 +274,9 @@ exports[`ScheduleDialog Sets correct schedule settings Sets to "1 Day 22:15" Set
                       "opacity": 1,
                     }
                   }
-                  title="1 day"
+                  title="1 день"
                 >
-                  1 day
+                  1 день
                 </div>
               </div>
               <span
@@ -1265,9 +1265,9 @@ exports[`ScheduleDialog Sets correct schedule settings Sets to "2 Weeks 22:15 Tu
                       "opacity": 1,
                     }
                   }
-                  title="2 weeks"
+                  title="2 недели"
                 >
-                  2 weeks
+                  2 недели
                 </div>
               </div>
               <span
@@ -2295,9 +2295,9 @@ exports[`ScheduleDialog Sets correct schedule settings Sets to "5 Minutes" 1`] =
                       "opacity": 1,
                     }
                   }
-                  title="5 minutes"
+                  title="5 минут"
                 >
-                  5 minutes
+                  5 минут
                 </div>
               </div>
               <span
@@ -3028,7 +3028,7 @@ exports[`ScheduleDialog Sets correct schedule settings Until feature Until is se
             </span>
           </Checkbox>
           <span>
-            Never
+            Никогда
           </span>
         </label>
       </Radio>
@@ -3564,7 +3564,7 @@ exports[`ScheduleDialog Sets correct schedule settings Until feature Until not s
             </span>
           </Checkbox>
           <span>
-            Never
+            Никогда
           </span>
         </label>
       </Radio>

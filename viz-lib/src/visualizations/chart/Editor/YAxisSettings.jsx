@@ -9,7 +9,7 @@ export default function YAxisSettings({ options, onOptionsChange }) {
 
   return (
     <React.Fragment>
-      <Section.Title>Left Y Axis</Section.Title>
+      <Section.Title>Левая ось Y</Section.Title>
 
       <Section>
         <AxisSettings
@@ -22,7 +22,7 @@ export default function YAxisSettings({ options, onOptionsChange }) {
 
       {options.globalSeriesType !== "heatmap" && (
         <React.Fragment>
-          <Section.Title>Right Y Axis</Section.Title>
+          <Section.Title>Правая ось Y</Section.Title>
 
           <Section>
             <AxisSettings
@@ -43,7 +43,7 @@ export default function YAxisSettings({ options, onOptionsChange }) {
               data-test="Chart.LeftYAxis.Sort"
               defaultChecked={options.sortY}
               onChange={sortY => onOptionsChange({ sortY })}>
-              Sort Values
+              Сортировать значения
             </Switch>
           </Section>
 
@@ -53,7 +53,7 @@ export default function YAxisSettings({ options, onOptionsChange }) {
               data-test="Chart.LeftYAxis.Reverse"
               defaultChecked={options.reverseY}
               onChange={reverseY => onOptionsChange({ reverseY })}>
-              Reverse Order
+              Обратный порядок
             </Switch>
           </Section>
         </React.Fragment>

@@ -32,7 +32,7 @@ export default function HeatmapColorsSettings({ options, onOptionsChange }) {
         <Select
           label="Color Scheme"
           data-test="Chart.Colors.Heatmap.ColorScheme"
-          placeholder="Choose Color Scheme..."
+          placeholder="Выберите цветовую схему(гамму)..."
           allowClear
           value={options.colorScheme || undefined}
           onChange={value => onOptionsChange({ colorScheme: value || null })}>

@@ -9,7 +9,7 @@ export function createDashboard(name) {
 export function createQuery(data, shouldPublish = true) {
   const merged = extend(
     {
-      name: "Test Query",
+      name: "Тестовый запрос",
       query: "select 1",
       data_source_id: 1,
       options: {
@@ -113,13 +113,13 @@ export function createUser({ name, email, password }) {
         throw new Error(xhr);
       }
 
-      if (status === 400 && body.message === "Email already taken.") {
+      if (status === 400 && body.message === "Электронная почта уже занята.") {
         // all is good, do nothing
         return;
       }
 
       const id = get(body, "id");
-      assert.isDefined(id, "User api call returns user id");
+      assert.isDefined(id, "Пользователь api возвращает id пользователя");
 
       return cy.request({
         url: body.invite_link,
@@ -148,7 +148,7 @@ export function addDestinationSubscription(alertId, destinationName) {
     .then(destinations => {
       const destination = find(destinations, { name: destinationName });
       if (!destination) {
-        throw new Error("Destination not found");
+        throw new Error("Пункт назначения не найден");
       }
       return cy.request("POST", `api/alerts/${alertId}/subscriptions`, {
         alert_id: alertId,
@@ -157,7 +157,7 @@ export function addDestinationSubscription(alertId, destinationName) {
     })
     .then(({ body }) => {
       const id = get(body, "id");
-      assert.isDefined(id, "Subscription api call returns subscription id");
+      assert.isDefined(id, "Вызов api подписки возвращает id подписки");
       return body;
     });
 }

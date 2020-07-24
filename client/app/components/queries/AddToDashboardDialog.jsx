@@ -72,11 +72,12 @@ function AddToDashboardDialog({ dialog, visualization }) {
   return (
     <Modal
       {...dialog.props}
-      title="Add to Dashboard"
+      title="Добавить в панель мониторинга"
       okButtonProps={{ disabled: !selectedDashboard || saveInProgress, loading: saveInProgress }}
+      cancelText="Отмена"
       cancelButtonProps={{ disabled: saveInProgress }}
       onOk={addWidgetToDashboard}>
-      <label htmlFor="add-to-dashboard-dialog-dashboard">Choose the dashboard to add this query to:</label>
+      <label htmlFor="add-to-dashboard-dialog-dashboard">Выберите панель мониторинга (управления) для добавления этого запроса:</label>
 
       {!selectedDashboard && (
         <Input
@@ -84,7 +85,7 @@ function AddToDashboardDialog({ dialog, visualization }) {
           className="w-100"
           autoComplete="off"
           autoFocus
-          placeholder="Search a dashboard by name"
+          placeholder="Поиск панели мониторинга по имени"
           value={searchTerm}
           onChange={event => setSearchTerm(event.target.value)}
           suffix={

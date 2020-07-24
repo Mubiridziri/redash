@@ -6,24 +6,24 @@ import EmptyState from "@/components/empty-state/EmptyState";
 
 export default function QueriesListEmptyState({ page, searchTerm, selectedTags }) {
   if (searchTerm !== "") {
-    return <BigMessage message="Sorry, we couldn't find anything." icon="fa-search" />;
+    return <BigMessage message="Извините, мы ничего не смогли найти." icon="fa-search" />;
   }
   if (selectedTags.length > 0) {
     return <NoTaggedObjectsFound objectType="queries" tags={selectedTags} />;
   }
   switch (page) {
     case "favorites":
-      return <BigMessage message="Mark queries as Favorite to list them here." icon="fa-star" />;
+      return <BigMessage message="Отметьте запросы как избранные, чтобы они оказались здесь." icon="fa-star" />;
     case "archive":
-      return <BigMessage message="Archived queries will be listed here." icon="fa-archive" />;
+      return <BigMessage message="Архивные запросы будут перечислены здесь." icon="fa-archive" />;
     case "my":
       return (
         <div className="tiled bg-white p-15">
           <a href="queries/new" className="btn btn-primary btn-sm">
-            Create your first query
+            Создайте свой первый запрос
           </a>{" "}
-          to populate My Queries list. Need help? Check out our{" "}
-          <a href="https://redash.io/help/user-guide/querying/writing-queries">query writing documentation</a>.
+          чтобы заполнить мой список запросов. Нужна помощь? Ознакомьтесь с нашей{" "}
+          <a href="https://redash.io/help/user-guide/querying/writing-queries">документацией по написанию запросов</a>.
         </div>
       );
     default:
@@ -31,7 +31,7 @@ export default function QueriesListEmptyState({ page, searchTerm, selectedTags }
         <EmptyState
           icon="fa fa-code"
           illustration="query"
-          description="Getting the data from your datasources."
+          description="Получение данных из ваших источников данных."
           helpLink="https://help.redash.io/category/21-querying"
         />
       );

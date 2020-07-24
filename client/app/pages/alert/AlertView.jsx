@@ -65,10 +65,10 @@ export default class AlertView extends React.Component {
     return (
       <>
         <Title name={name} alert={alert}>
-          <Tooltip title={canEdit ? "" : "You do not have sufficient permissions to edit this alert"}>
+          <Tooltip title={canEdit ? "" : "У вас недостаточно прав для редактирования этого оповещения"}>
             <Button type="default" onClick={canEdit ? onEdit : null} className={cx({ disabled: !canEdit })}>
               <i className="fa fa-edit m-r-5" />
-              Edit
+              Редактировать
             </Button>
             {menuButton}
           </Tooltip>
@@ -80,7 +80,7 @@ export default class AlertView extends React.Component {
                 <HorizontalFormItem>
                   <AlertState state={alert.state} lastTriggered={alert.last_triggered_at} />
                 </HorizontalFormItem>
-                <HorizontalFormItem label="Query">
+                <HorizontalFormItem label="Запрос">
                   <Query query={query} queryResult={queryResult} />
                 </HorizontalFormItem>
                 {queryResult && options && (
@@ -95,8 +95,7 @@ export default class AlertView extends React.Component {
                     <HorizontalFormItem label="Notifications" className="form-item-line-height-normal">
                       <Rearm value={rearm || 0} />
                       <br />
-                      Set to {options.custom_subject || options.custom_body ? "custom" : "default"} notification
-                      template.
+                      Установите {options.custom_subject || options.custom_body ? "custom" : "default"} шаблон уведомления.
                     </HorizontalFormItem>
                   </>
                 )}
@@ -108,23 +107,23 @@ export default class AlertView extends React.Component {
                   className="m-b-20"
                   message={
                     <>
-                      <i className="fa fa-bell-slash-o" /> Notifications are muted
+                      <i className="fa fa-bell-slash-o" /> Уведомления отключены
                     </>
                   }
                   description={
                     <>
-                      Notifications for this alert will not be sent.
+                      Уведомления для этого оповещения не будут отправлены.
                       <br />
                       {canEdit && (
                         <>
-                          To restore notifications click
+                          Чтобы восстановить уведомления Нажмите кнопку
                           <Button
                             size="small"
                             type="primary"
                             onClick={this.unmute}
                             loading={this.state.unmuting}
                             className="m-t-5 m-l-5">
-                            Unmute
+                            Включить звук
                           </Button>
                         </>
                       )}
@@ -135,7 +134,7 @@ export default class AlertView extends React.Component {
               )}
               <h4>
                 Destinations{" "}
-                <Tooltip title="Open Alert Destinations page in a new tab.">
+                <Tooltip title="Откройте страницу назначения оповещений на новой вкладке.">
                   <a href="destinations" target="_blank">
                     <i className="fa fa-external-link f-13" />
                   </a>

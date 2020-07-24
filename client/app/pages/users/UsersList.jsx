@@ -38,18 +38,18 @@ function UsersListActions({ user, enableUser, disableUser, deleteUser }) {
   }
   if (user.is_invitation_pending) {
     return (
-      <Button type="danger" className="w-100" onClick={event => deleteUser(event, user)}>
-        Delete
+      <Button type="danger" className="w-100" cancelText="Отмена" onClick={event => deleteUser(event, user)}>
+        Удалить
       </Button>
     );
   }
   return user.is_disabled ? (
     <Button type="primary" className="w-100" onClick={event => enableUser(event, user)}>
-      Enable
+      Включить
     </Button>
   ) : (
     <Button className="w-100" onClick={event => disableUser(event, user)}>
-      Disable
+      Выключить
     </Button>
   );
 }
@@ -74,24 +74,24 @@ class UsersList extends React.Component {
     {
       key: "active",
       href: "users",
-      title: "Active Users",
+      title: "Активные пользователи",
     },
     {
       key: "pending",
       href: "users/pending",
-      title: "Pending Invitations",
+      title: "Ожидающие приглашения",
     },
     {
       key: "disabled",
       href: "users/disabled",
-      title: "Disabled Users",
+      title: "Пользователи с ограниченными возможностями",
       isAvailable: () => policy.canCreateUser(),
     },
   ];
 
   listColumns = [
     Columns.custom.sortable((text, user) => <UserPreviewCard user={user} withLink />, {
-      title: "Name",
+      title: "Имя",
       field: "name",
       width: null,
     }),
@@ -103,18 +103,18 @@ class UsersList extends React.Component {
           </a>
         )),
       {
-        title: "Groups",
+        title: "Группы",
         field: "groups",
       }
     ),
     Columns.timeAgo.sortable({
-      title: "Joined",
+      title: "Регистрация",
       field: "created_at",
       className: "text-nowrap",
       width: "1%",
     }),
     Columns.timeAgo.sortable({
-      title: "Last Active At",
+      title: "Последний актив",
       field: "active_at",
       className: "text-nowrap",
       width: "1%",
@@ -144,14 +144,14 @@ class UsersList extends React.Component {
   createUser = values =>
     User.create(values)
       .then(user => {
-        notification.success("Saved.");
+        notification.success("Сохранено.");
         if (user.invite_link) {
           Modal.warning({
-            title: "Email not sent!",
+            title: "Email не присылать!",
             content: (
               <React.Fragment>
                 <p>
-                  The mail server is not configured, please send the following link to <b>{user.name}</b>:
+                Почтовый сервер не настроен, пожалуйста, отправьте следующую ссылку на <b>{user.name}</b>:
                 </p>
                 <InputWithCopy value={absoluteUrl(user.invite_link)} readOnly />
               </React.Fragment>
@@ -197,7 +197,7 @@ class UsersList extends React.Component {
       <div className="m-b-15">
         <Button type="primary" disabled={!policy.isCreateUserEnabled()} onClick={this.showCreateUserDialog}>
           <i className="fa fa-plus m-r-5" />
-          New User
+            Новый пользователь
         </Button>
         <DynamicComponent name="UsersListExtra" />
       </div>
@@ -252,7 +252,7 @@ const UsersListPage = wrapSettingsTab(
   "Users.List",
   {
     permission: "list_users",
-    title: "Users",
+    title: "Пользователи",
     path: "users",
     isActive: path => path.startsWith("/users") && path !== "/users/me",
     order: 2,
@@ -288,7 +288,7 @@ routes.register(
   "Users.New",
   routeWithUserSession({
     path: "/users/new",
-    title: "Users",
+    title: "Пользователи",
     render: pageProps => <UsersListPage {...pageProps} currentPage="active" isNewUserPage />,
   })
 );
@@ -296,7 +296,7 @@ routes.register(
   "Users.List",
   routeWithUserSession({
     path: "/users",
-    title: "Users",
+    title: "Пользователи",
     render: pageProps => <UsersListPage {...pageProps} currentPage="active" />,
   })
 );
@@ -304,7 +304,7 @@ routes.register(
   "Users.Pending",
   routeWithUserSession({
     path: "/users/pending",
-    title: "Pending Invitations",
+    title: "Ожидающие приглашения",
     render: pageProps => <UsersListPage {...pageProps} currentPage="pending" />,
   })
 );
@@ -312,7 +312,7 @@ routes.register(
   "Users.Disabled",
   routeWithUserSession({
     path: "/users/disabled",
-    title: "Disabled Users",
+    title: "Пользователи с ограниченными возможностями",
     render: pageProps => <UsersListPage {...pageProps} currentPage="disabled" />,
   })
 );

@@ -1,7 +1,7 @@
 import { createDashboard } from "../../support/redash-api";
 import { createQueryAndAddWidget } from "../../support/dashboard";
 
-describe("Parameter Mapping", () => {
+describe("Отображение параметров", () => {
   beforeEach(function() {
     cy.login();
     createDashboard("Foo Bar")
@@ -11,7 +11,7 @@ describe("Parameter Mapping", () => {
       })
       .then(() => {
         const queryData = {
-          name: "Text Parameter",
+          name: "Текстовый параметр",
           query: "SELECT '{{test-parameter}}' AS parameter",
           options: {
             parameters: [{ name: "test-parameter", title: "Test Parameter", type: "text", value: "example" }],
@@ -31,7 +31,7 @@ describe("Parameter Mapping", () => {
     });
 
     cy.getByTestId("WidgetDropdownButtonMenu")
-      .contains("Edit Parameters")
+      .contains("Изменить параметры")
       .click();
 
     cy.getByTestId(`EditParamMappingButon-${paramName}`).click();
@@ -45,7 +45,7 @@ describe("Parameter Mapping", () => {
     cy.contains("button", "OK").click();
   };
 
-  it("supports widget parameters", function() {
+  it("поддерживает параметры виджета", function() {
     // widget parameter mapping is the default for the API
     cy.getByTestId(this.widgetTestId).within(() => {
       cy.getByTestId("TableVisualization").should("contain", "example");
@@ -62,7 +62,7 @@ describe("Parameter Mapping", () => {
     cy.getByTestId("DashboardParameters").should("not.exist");
   });
 
-  it("supports dashboard parameters", function() {
+  it("поддерживает параметры панели", function() {
     openMappingOptions(this.widgetTestId, "test-parameter");
 
     cy.getByTestId("NewDashboardParameterOption").click();
@@ -86,7 +86,7 @@ describe("Parameter Mapping", () => {
     });
   });
 
-  it("supports static values for parameters", function() {
+  it("поддерживает статические значения для параметров", function() {
     openMappingOptions(this.widgetTestId, "test-parameter");
 
     cy.getByTestId("StaticValueOption").click();

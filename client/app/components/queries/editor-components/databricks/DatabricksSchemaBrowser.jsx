@@ -85,7 +85,7 @@ export default function DatabricksSchemaBrowser({
       <div className="schema-control">
         <Input
           className={isDatabaseSelectOpen ? "database-select-open" : ""}
-          placeholder="Filter tables & columns..."
+          placeholder="Фильтр таблиц и столбцов..."
           disabled={loadingDatabases || loadingSchema}
           onChange={event => handleFilterChange(event.target.value)}
           addonBefore={
@@ -100,7 +100,7 @@ export default function DatabricksSchemaBrowser({
               onDropdownVisibleChange={setIsDatabaseSelectOpen}
               placeholder={
                 <>
-                  <i className="fa fa-database m-r-5" /> Database
+                  <i className="fa fa-database m-r-5" /> База данных
                 </>
               }>
               {limitedDatabases.map(database => (
@@ -111,7 +111,7 @@ export default function DatabricksSchemaBrowser({
               ))}
               {limitedDatabases.length < filteredDatabases.length && (
                 <Select.Option key="hidden_options" value={-1} disabled>
-                  Some databases were hidden due to a large set, search to limit results.
+                  Некоторые БД были скрыты из-за большого набора поиска, чтобы ограничить результаты.
                 </Select.Option>
               )}
             </Select>

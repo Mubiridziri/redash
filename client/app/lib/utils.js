@@ -2,12 +2,12 @@ import moment from "moment";
 import { clientConfig } from "@/services/auth";
 
 export const IntervalEnum = {
-  NEVER: "Never",
-  SECONDS: "second",
-  MINUTES: "minute",
-  HOURS: "hour",
-  DAYS: "day",
-  WEEKS: "week",
+  NEVER: "Никогда",
+  SECONDS: "сек.",
+  MINUTES: "мин.",
+  HOURS: "час.",
+  DAYS: "день",
+  WEEKS: "недель",
 };
 
 export function formatDateTime(value) {
@@ -73,7 +73,7 @@ export function secondsToInterval(count) {
 
 export function pluralize(text, count) {
   const should = count !== 1;
-  return text + (should ? "s" : "");
+  return text + (should ? "" : "");
 }
 
 export function durationHumanize(duration, options = {}) {

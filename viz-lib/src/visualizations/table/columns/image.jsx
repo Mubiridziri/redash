@@ -25,22 +25,22 @@ function Editor({ column, onChange }) {
             <React.Fragment>
               Size
               <ContextHelp placement="topLeft" arrowPointAtCenter>
-                <div style={{ marginBottom: 5 }}>Any positive integer value that specifies size in pixels.</div>
-                <div>Leave empty to use default value.</div>
+                <div style={{ marginBottom: 5 }}>Любое положительное целое значение, задающее размер в пикселях.</div>
+                <div>Оставьте пустым, чтобы использовать значение по умолчанию.</div>
               </ContextHelp>
             </React.Fragment>
           }>
           <div className="image-dimension-selector">
             <Input
               data-test="Table.ColumnEditor.Image.Width"
-              placeholder="Width"
+              placeholder="Ширина"
               defaultValue={column.imageWidth}
               onChange={event => onChangeDebounced({ imageWidth: event.target.value })}
             />
             <span className="image-dimension-selector-spacer">&times;</span>
             <Input
               data-test="Table.ColumnEditor.Image.Height"
-              placeholder="Height"
+              placeholder="Высота"
               defaultValue={column.imageHeight}
               onChange={event => onChangeDebounced({ imageHeight: event.target.value })}
             />
@@ -50,7 +50,7 @@ function Editor({ column, onChange }) {
 
       <Section>
         <Input
-          label="Title template"
+          label="Шаблон заголовка"
           data-test="Table.ColumnEditor.Image.TitleTemplate"
           defaultValue={column.imageTitleTemplate}
           onChange={event => onChangeDebounced({ imageTitleTemplate: event.target.value })}
@@ -61,14 +61,14 @@ function Editor({ column, onChange }) {
         <ContextHelp
           placement="topLeft"
           arrowPointAtCenter
-          icon={<span style={{ cursor: "default" }}>Format specs {ContextHelp.defaultIcon}</span>}>
+          icon={<span style={{ cursor: "по умолчанию" }}>Format specs {ContextHelp.defaultIcon}</span>}>
           <div>
-            All columns can be referenced using <code>{"{{ column_name }}"}</code> syntax.
+          На все столбцы можно ссылаться с помощью <code>{"{{ column_name }}"}</code> синтаксиса.
           </div>
           <div>
-            Use <code>{"{{ @ }}"}</code> to reference current (this) column.
+            Используйте <code>{"{{ @ }}"}</code> для ссылки на текущий (этот) столбец.
           </div>
-          <div>This syntax is applicable to URL, Title and Size options.</div>
+          <div>Этот синтаксис применим к URL, название и размер.</div>
         </ContextHelp>
       </Section>
     </React.Fragment>

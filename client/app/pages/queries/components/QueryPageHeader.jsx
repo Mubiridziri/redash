@@ -99,31 +99,31 @@ export default function QueryPageHeader({
         {
           archive: {
             isAvailable: !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isArchived,
-            title: "Archive",
+            title: "Архив",
             onClick: archiveQuery,
           },
           managePermissions: {
             isAvailable:
               !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isArchived && clientConfig.showPermissionsControl,
-            title: "Manage Permissions",
+            title: "Управление разрешениями",
             onClick: openPermissionsEditorDialog,
           },
           publish: {
             isAvailable:
               !isDesktop && queryFlags.isDraft && !queryFlags.isArchived && !queryFlags.isNew && queryFlags.canEdit,
-            title: "Publish",
+            title: "Публиковать",
             onClick: publishQuery,
           },
           unpublish: {
             isAvailable: !queryFlags.isNew && queryFlags.canEdit && !queryFlags.isDraft,
-            title: "Unpublish",
+            title: "Не опубликовывать",
             onClick: unpublishQuery,
           },
         },
         {
           showAPIKey: {
             isAvailable: !queryFlags.isNew,
-            title: "Show API Key",
+            title: "Показать ключ API",
             onClick: openApiKeyDialog,
           },
         },
@@ -172,7 +172,7 @@ export default function QueryPageHeader({
         {headerExtra}
         {isDesktop && queryFlags.isDraft && !queryFlags.isArchived && !queryFlags.isNew && queryFlags.canEdit && (
           <Button className="m-r-5" onClick={publishQuery}>
-            <i className="fa fa-paper-plane m-r-5" /> Publish
+            <i className="fa fa-paper-plane m-r-5" /> Опубликовать
           </Button>
         )}
 
@@ -181,7 +181,7 @@ export default function QueryPageHeader({
             {!sourceMode && (
               <Button className="m-r-5" href={query.getUrl(true, selectedVisualization)}>
                 <i className="fa fa-pencil-square-o" aria-hidden="true" />
-                <span className="m-l-5">Edit Source</span>
+                <span className="m-l-5">Изменить источник</span>
               </Button>
             )}
             {sourceMode && (
@@ -190,7 +190,7 @@ export default function QueryPageHeader({
                 href={query.getUrl(false, selectedVisualization)}
                 data-test="QueryPageShowDataOnly">
                 <i className="fa fa-table" aria-hidden="true" />
-                <span className="m-l-5">Show Data Only</span>
+                <span className="m-l-5">Показать только данные</span>
               </Button>
             )}
           </span>

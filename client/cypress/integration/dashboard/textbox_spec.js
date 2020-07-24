@@ -14,7 +14,7 @@ describe("Textbox", () => {
 
   const confirmDeletionInModal = () => {
     cy.get(".ant-modal .ant-btn")
-      .contains("Delete")
+      .contains("Удалить")
       .click({ force: true });
   };
 
@@ -55,7 +55,7 @@ describe("Textbox", () => {
           cy.getByTestId("WidgetDropdownButton").click();
         });
         cy.getByTestId("WidgetDropdownButtonMenu")
-          .contains("Remove from Dashboard")
+          .contains("Удалить из панели инструментов")
           .click();
 
         confirmDeletionInModal();
@@ -110,7 +110,7 @@ describe("Textbox", () => {
           });
 
         cy.getByTestId("WidgetDropdownButtonMenu")
-          .contains("Edit")
+          .contains("Редактировать")
           .click();
 
         const newContent = "[edited]";
@@ -120,7 +120,7 @@ describe("Textbox", () => {
             cy.get("textarea")
               .clear()
               .type(newContent);
-            cy.contains("button", "Save").click();
+            cy.contains("button", "Сохранить").click();
           });
 
         cy.get("@textboxEl").should("contain", newContent);

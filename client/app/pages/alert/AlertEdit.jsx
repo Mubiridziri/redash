@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import HelpTrigger from "@/components/HelpTrigger";
 import { Alert as AlertType } from "@/components/proptypes";
 
 import Form from "antd/lib/form";
@@ -54,18 +53,18 @@ export default class AlertEdit extends React.Component {
         <Title name={name} alert={alert} onChange={onNameChange} editMode>
           <Button className="m-r-5" onClick={() => this.cancel()}>
             <i className="fa fa-times m-r-5" />
-            Cancel
+              Отмена
           </Button>
           <Button type="primary" onClick={() => this.save()}>
             {saving ? <i className="fa fa-spinner fa-pulse m-r-5" /> : <i className="fa fa-check m-r-5" />}
-            Save Changes
+            Сохранить изменения
           </Button>
           {menuButton}
         </Title>
         <div className="bg-white tiled p-20">
           <div className="d-flex">
             <Form className="flex-fill">
-              <HorizontalFormItem label="Query">
+              <HorizontalFormItem label="Запрос">
                 <Query query={query} queryResult={queryResult} onChange={onQuerySelected} editMode />
               </HorizontalFormItem>
               {queryResult && options && (
@@ -97,11 +96,6 @@ export default class AlertEdit extends React.Component {
                 </>
               )}
             </Form>
-            <div>
-              <HelpTrigger className="f-13" type="ALERT_SETUP">
-                Setup Instructions <i className="fa fa-question-circle" />
-              </HelpTrigger>
-            </div>
           </div>
         </div>
       </>

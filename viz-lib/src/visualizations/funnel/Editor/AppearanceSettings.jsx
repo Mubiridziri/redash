@@ -13,7 +13,7 @@ export default function AppearanceSettings({ options, onOptionsChange }) {
           layout="horizontal"
           label={
             <React.Fragment>
-              Number Values Format
+              Формат числовых значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -28,7 +28,7 @@ export default function AppearanceSettings({ options, onOptionsChange }) {
           layout="horizontal"
           label={
             <React.Fragment>
-              Percent Values Format
+              Формат процентных значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
