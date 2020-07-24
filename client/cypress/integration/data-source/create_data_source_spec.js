@@ -1,4 +1,4 @@
-describe("Create Data Source", () => {
+describe("Создать источник данных", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("/data_sources/new");
@@ -19,7 +19,7 @@ describe("Create Data Source", () => {
 
     cy.getByTestId("CreateSourceDialog").should("contain", "PostgreSQL");
     cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
-    cy.percySnapshot("Create Data Source - Types");
+    cy.percySnapshot("Создать источник данных - типы");
   });
 
   it("creates a new PostgreSQL data source", () => {
@@ -35,6 +35,6 @@ describe("Create Data Source", () => {
     cy.getByTestId("Database Name").type("postgres{enter}");
     cy.getByTestId("CreateSourceButton").click();
 
-    cy.contains("Saved.");
+    cy.contains("Сохранено.");
   });
 });

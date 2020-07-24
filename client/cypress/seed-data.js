@@ -3,9 +3,9 @@ exports.seedData = [
     route: "/setup",
     type: "form",
     data: {
-      name: "Example Admin",
+      name: "Пример администратора",
       email: "admin@redash.io",
-      password: "password",
+      password: "пароль",
       org_name: "Redash",
     },
   },
@@ -14,14 +14,14 @@ exports.seedData = [
     type: "form",
     data: {
       email: "admin@redash.io",
-      password: "password",
+      password: "пароль",
     },
   },
   {
     route: "/api/data_sources",
     type: "json",
     data: {
-      name: "Test PostgreSQL",
+      name: "Тест PostgreSQL",
       options: {
         dbname: "postgres",
         host: "postgres",
@@ -36,7 +36,7 @@ exports.seedData = [
     route: "/api/destinations",
     type: "json",
     data: {
-      name: "Test Email Destination",
+      name: "Проверить адрес электронной почты",
       options: {
         addresses: "test@example.com",
       },

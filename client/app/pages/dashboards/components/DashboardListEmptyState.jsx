@@ -6,19 +6,19 @@ import EmptyState from "@/components/empty-state/EmptyState";
 
 export default function DashboardListEmptyState({ page, searchTerm, selectedTags }) {
   if (searchTerm !== "") {
-    return <BigMessage message="Sorry, we couldn't find anything." icon="fa-search" />;
+    return <BigMessage message="Извините, мы ничего не смогли найти." icon="fa-search" />;
   }
   if (selectedTags.length > 0) {
     return <NoTaggedObjectsFound objectType="dashboards" tags={selectedTags} />;
   }
   switch (page) {
     case "favorites":
-      return <BigMessage message="Mark dashboards as Favorite to list them here." icon="fa-star" />;
+      return <BigMessage message="Отметьте панели как избранные, чтобы перечислить их здесь." icon="fa-star" />;
     default:
       return (
         <EmptyState
           icon="zmdi zmdi-view-quilt"
-          description="See the big picture"
+          description="Смотрите на общую картину"
           illustration="dashboard"
           helpLink="https://help.redash.io/category/22-dashboards"
           showDashboardStep

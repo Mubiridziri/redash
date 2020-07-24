@@ -20,7 +20,7 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
             data-test="Chart.DataLabels.ShowDataLabels"
             defaultChecked={options.showDataLabels}
             onChange={event => onOptionsChange({ showDataLabels: event.target.checked })}>
-            Show Data Labels
+            Показать метки данных
           </Checkbox>
         </Section>
       )}
@@ -29,7 +29,7 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
         <Input
           label={
             <React.Fragment>
-              Number Values Format
+              Формат числовых значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -43,7 +43,7 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
         <Input
           label={
             <React.Fragment>
-              Percent Values Format
+              Формат процентных значений
               <ContextHelp.NumberFormatSpecs />
             </React.Fragment>
           }
@@ -57,7 +57,7 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
         <Input
           label={
             <React.Fragment>
-              Date/Time Values Format
+              Формат значений даты / времени
               <ContextHelp.DateTimeFormatSpecs />
             </React.Fragment>
           }
@@ -71,20 +71,20 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
         <Input
           label={
             <React.Fragment>
-              Data Labels
+              Метки данных
               <ContextHelp placement="topRight" arrowPointAtCenter>
                 <div style={{ paddingBottom: 5 }}>Use special names to access additional properties:</div>
                 <div>
-                  <code>{"{{ @@name }}"}</code> series name;
+                  <code>{"{{ @@name }}"}</code> название серии;
                 </div>
                 <div>
-                  <code>{"{{ @@x }}"}</code> x-value;
+                  <code>{"{{ @@x }}"}</code> х-значение;
                 </div>
                 <div>
-                  <code>{"{{ @@y }}"}</code> y-value;
+                  <code>{"{{ @@y }}"}</code> y-значение;
                 </div>
                 <div>
-                  <code>{"{{ @@yPercent }}"}</code> relative y-value;
+                  <code>{"{{ @@yPercent }}"}</code> относительное значение у;
                 </div>
                 <div>
                   <code>{"{{ @@yError }}"}</code> y deviation;
@@ -93,10 +93,10 @@ export default function DataLabelsSettings({ options, onOptionsChange }) {
                   <code>{"{{ @@size }}"}</code> bubble size;
                 </div>
                 <div style={{ paddingTop: 5 }}>
-                  Also, all query result columns can be referenced
+                Кроме того, можно ссылаться на все столбцы результатов запроса
                   <br />
-                  using
-                  <code style={{ whiteSpace: "nowrap" }}>{"{{ column_name }}"}</code> syntax.
+                  с помощью
+                  <code style={{ whiteSpace: "nowrap" }}>{"{{ column_name }}"}</code> синтаксиса.
                 </div>
               </ContextHelp>
             </React.Fragment>

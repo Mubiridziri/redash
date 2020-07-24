@@ -9,7 +9,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
     switch (options.mapType) {
       case "countries":
         return {
-          name: "Short name",
+          name: "Короткое имя",
           name_long: "Full name",
           abbrev: "Abbreviated name",
           iso_a2: "ISO code (2 letters)",
@@ -18,7 +18,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
         };
       case "subdiv_japan":
         return {
-          name: "Name",
+          name: "Имя",
           name_local: "Name (local)",
           iso_3166_2: "ISO-3166-2",
         };
@@ -41,7 +41,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
     <React.Fragment>
       <Section>
         <Select
-          label="Map type"
+          label="Тип карты"
           data-test="Choropleth.Editor.MapType"
           defaultValue={options.mapType}
           onChange={mapType => handleChangeAndInferType({ mapType })}>

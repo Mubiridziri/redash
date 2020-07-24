@@ -7,17 +7,17 @@ import "./ErrorMessage.less";
 function getErrorMessageByStatus(status, defaultMessage) {
   switch (status) {
     case 404:
-      return "It seems like the page you're looking for cannot be found.";
+      return "Кажется, что страница, которую вы ищете, не найдена.";
     case 401:
     case 403:
-      return "It seems like you don’t have permission to see this page.";
+      return "Похоже, у вас нет разрешения на просмотр данной страницы.";
     default:
       return defaultMessage;
   }
 }
 
 function getErrorMessage(error) {
-  const message = "It seems like we encountered an error. Try refreshing this page or contact your administrator.";
+  const message = "Попробуйте обновить эту страницу или обратитесь к администратору.";
   if (isObject(error)) {
     // HTTP errors
     if (error.isAxiosError && isObject(error.response)) {

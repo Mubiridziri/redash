@@ -1,31 +1,31 @@
 import { createAlert, createQuery } from "../../support/redash-api";
 
-describe("Edit Alert", () => {
+describe("Изменить оповещение", () => {
   beforeEach(() => {
     cy.login();
   });
 
-  it("renders the page and takes a screenshot", () => {
+  it("рендерит страницу и делает скриншот", () => {
     createQuery({ query: "select 1 as col_name" })
       .then(({ id: queryId }) => createAlert(queryId, { column: "col_name" }))
       .then(({ id: alertId }) => {
         cy.visit(`/alerts/${alertId}/edit`);
         cy.getByTestId("Criteria").should("exist");
-        cy.percySnapshot("Edit Alert screen");
+        cy.percySnapshot("Изменить экран оповещения");
       });
   });
 
-  it("edits the notification template and takes a screenshot", () => {
+  it("редактирует шаблон уведомления и делает скриншот", () => {
     createQuery()
       .then(({ id: queryId }) => createAlert(queryId, { custom_subject: "FOO", custom_body: "BAR" }))
       .then(({ id: alertId }) => {
         cy.visit(`/alerts/${alertId}/edit`);
         cy.getByTestId("AlertCustomTemplate").should("exist");
-        cy.percySnapshot("Alert Custom Template screen");
+        cy.percySnapshot("Экран пользовательского шаблона оповещения");
       });
   });
 
-  it("previews rendered template correctly", () => {
+  it("предварительный просмотр правильно отрисованного шаблона", () => {
     const options = {
       value: "123",
       op: "==",

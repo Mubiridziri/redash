@@ -13,12 +13,12 @@ export default function ReadOnlyUserProfile({ user }) {
       <h3 className="profile__h3">{user.name}</h3>
       <hr />
       <dl className="profile__dl">
-        <dt>Name:</dt>
+        <dt>Имя:</dt>
         <dd>{user.name}</dd>
         <dt>Email:</dt>
         <dd>{user.email}</dd>
-        <dt className="m-b-5">Groups:</dt>
-        <dd>{isLoadingGroups ? "Loading..." : <UserGroups groups={groups} />}</dd>
+        <dt className="m-b-5">Группы:</dt>
+        <dd>{isLoadingGroups ? "Загрузка..." : <UserGroups groups={groups} />}</dd>
       </dl>
     </div>
   );

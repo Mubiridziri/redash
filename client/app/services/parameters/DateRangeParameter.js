@@ -13,11 +13,11 @@ const DYNAMIC_PREFIX = "d_";
 
 const DYNAMIC_DATE_RANGES = {
   today: {
-    name: "Today",
+    name: "Cегодня",
     value: () => [moment().startOf("day"), moment().endOf("day")],
   },
   yesterday: {
-    name: "Yesterday",
+    name: "Вчера",
     value: () => [
       moment()
         .subtract(1, "day")
@@ -28,19 +28,19 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   this_week: {
-    name: "This week",
+    name: "Эта неделя",
     value: () => [moment().startOf("week"), moment().endOf("week")],
   },
   this_month: {
-    name: "This month",
+    name: "Этот месяц",
     value: () => [moment().startOf("month"), moment().endOf("month")],
   },
   this_year: {
-    name: "This year",
+    name: "Этот год",
     value: () => [moment().startOf("year"), moment().endOf("year")],
   },
   last_week: {
-    name: "Last week",
+    name: "Прошлая неделя",
     value: () => [
       moment()
         .subtract(1, "week")
@@ -51,7 +51,7 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_month: {
-    name: "Last month",
+    name: "Прошлый месяц",
     value: () => [
       moment()
         .subtract(1, "month")
@@ -62,7 +62,7 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_year: {
-    name: "Last year",
+    name: "Прошлый год",
     value: () => [
       moment()
         .subtract(1, "year")
@@ -73,27 +73,27 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_7_days: {
-    name: "Last 7 days",
+    name: "Последние 7 дней",
     value: () => [moment().subtract(7, "days"), moment()],
   },
   last_14_days: {
-    name: "Last 14 days",
+    name: "Последние 14 дней",
     value: () => [moment().subtract(14, "days"), moment()],
   },
   last_30_days: {
-    name: "Last 30 days",
+    name: "Последние 30 дней",
     value: () => [moment().subtract(30, "days"), moment()],
   },
   last_60_days: {
-    name: "Last 60 days",
+    name: "Последние 60 дней",
     value: () => [moment().subtract(60, "days"), moment()],
   },
   last_90_days: {
-    name: "Last 90 days",
+    name: "Последние 90 дней",
     value: () => [moment().subtract(90, "days"), moment()],
   },
   last_12_months: {
-    name: "Last 12 months",
+    name: "Последние 12 месяцев",
     value: () => [moment().subtract(12, "months"), moment()],
   },
 };

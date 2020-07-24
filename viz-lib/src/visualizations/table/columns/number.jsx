@@ -12,7 +12,7 @@ function Editor({ column, onChange }) {
       <Input
         label={
           <React.Fragment>
-            Number format
+            Числовой формат
             <ContextHelp.NumberFormatSpecs />
           </React.Fragment>
         }

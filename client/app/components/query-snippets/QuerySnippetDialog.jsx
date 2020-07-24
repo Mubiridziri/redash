@@ -17,7 +17,7 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
 
       dialog
         .close(querySnippetId ? { id: querySnippetId, ...values } : values)
-        .then(() => successCallback("Saved."))
+        .then(() => successCallback("Сохранено."))
         .catch(() => errorCallback("Failed saving snippet."));
     },
     [dialog, querySnippet]
@@ -26,18 +26,18 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
   const isEditing = !!get(querySnippet, "id");
 
   const formFields = [
-    { name: "trigger", title: "Trigger", type: "text", required: true, autoFocus: !isEditing },
-    { name: "description", title: "Description", type: "text" },
-    { name: "snippet", title: "Snippet", type: "ace", required: true },
+    { name: "trigger", title: "Триггер", type: "text", required: true, autoFocus: !isEditing },
+    { name: "description", title: "Описание", type: "text" },
+    { name: "snippet", title: "Фрагмент", type: "ace", required: true },
   ].map(field => ({ ...field, readOnly, initialValue: get(querySnippet, field.name, "") }));
 
   return (
     <Modal
       {...dialog.props}
-      title={isEditing ? querySnippet.trigger : "Create Query Snippet"}
+      title={isEditing ? querySnippet.trigger : "Создать фрагмент запроса"}
       footer={[
         <Button key="cancel" {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-          {readOnly ? "Close" : "Cancel"}
+          {readOnly ? "Закрыть" : "Отмена"}
         </Button>,
         !readOnly && (
           <Button
@@ -48,7 +48,7 @@ function QuerySnippetDialog({ querySnippet, dialog, readOnly }) {
             type="primary"
             form="querySnippetForm"
             data-test="SaveQuerySnippetButton">
-            {isEditing ? "Save" : "Create"}
+            {isEditing ? "Сохранить" : "Создать"}
           </Button>
         ),
       ]}

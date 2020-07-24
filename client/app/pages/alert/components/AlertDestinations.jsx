@@ -44,7 +44,7 @@ function ListItem({ destination: { name, type }, user, unsubscribe }) {
         <EmailSettingsWarning className="destination-warning" featureName="alert emails" mode="icon" />
       )}
       {canUnsubscribe && (
-        <Tooltip title="Remove" mouseEnterDelay={0.5}>
+        <Tooltip title="Удалить" mouseEnterDelay={0.5}>
           <Icon type="close" className="remove-button" onClick={unsubscribe} />
         </Tooltip>
       )}
@@ -87,16 +87,16 @@ export default class AlertDestinations extends React.Component {
       showCount: true,
       extraFooterContent: (
         <>
-          <i className="fa fa-info-circle" /> Create new destinations in{" "}
-          <Tooltip title="Opens page in a new tab.">
+          <i className="fa fa-info-circle" /> Создание новых направлений в{" "}
+          <Tooltip title="Открывает страницу в новой вкладке.">
             <a href="destinations/new" target="_blank">
               Alert Destinations
             </a>
           </Tooltip>
         </>
       ),
-      dialogTitle: "Add Existing Alert Destinations",
-      inputPlaceholder: "Search destinations...",
+      dialogTitle: "Добавить существующие пункты оповещения",
+      inputPlaceholder: "Поиск пунктов назначения (или направлений)...",
       searchItems: searchTerm => {
         searchTerm = toLower(searchTerm);
         return Promise.resolve(dests.filter(d => includes(toLower(d.name), searchTerm)));
@@ -113,17 +113,17 @@ export default class AlertDestinations extends React.Component {
             </div>
           ),
           isDisabled: alreadyInGroup,
-          className: isSelected || alreadyInGroup ? "selected" : "",
+          className: isSelected || alreadyInGroup ? "Невозможно сохранить подписку" : "",
         };
       },
     }).onClose(items => {
       const promises = map(items, item => this.subscribe(item));
       return Promise.all(promises)
         .then(() => {
-          notification.success("Subscribed.");
+          notification.success("Подписаться.");
         })
         .catch(() => {
-          notification.error("Failed saving subscription.");
+          notification.error("Невозможно сохранить подписку.");
           return Promise.reject(null); // keep dialog visible but suppress its default error message
         });
     });
@@ -163,7 +163,7 @@ export default class AlertDestinations extends React.Component {
         });
       })
       .catch(() => {
-        notification.error("Failed unsubscribing.");
+        notification.error("Не удалось отписаться.");
       });
   };
 
@@ -182,14 +182,14 @@ export default class AlertDestinations extends React.Component {
 
     return (
       <div className="alert-destinations" data-test="AlertDestinations">
-        <Tooltip title='Click to add an existing "Alert Destination"' mouseEnterDelay={0.5}>
+        <Tooltip title='Нажмите, чтобы добавить существующий "пункт назначения оповещения"' mouseEnterDelay={0.5}>
           <Button
             data-test="ShowAddAlertSubDialog"
             type="primary"
             size="small"
             className="add-button"
             onClick={this.showAddAlertSubDialog}>
-            <i className="fa fa-plus f-12 m-r-5" /> Add
+            <i className="fa fa-plus f-12 m-r-5" /> Добавить
           </Button>
         </Tooltip>
         <ul>

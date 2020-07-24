@@ -5,15 +5,15 @@
   <div class="bg-white tiled">
     {% if submitted %}
       <div>
-        If we found an account associated with that email address, you will find an email from us in your inbox shortly.
+        Если мы нашли учетную запись, связанную с этим адресом электронной почты, вы вскоре найдете письмо от нас в своем почтовом ящике.
       </div>
     {% else %}
       <form role="form" method="post">
         <div class="form-group">
-          <label for="email">Enter the email address you used for this account:</label>
+          <label for="email">Введите адрес электронной почты, который вы использовали для этой учетной записи:</label>
           <input type="email" class="form-control" name="email" value="{{email}}">
         </div>
-        <button type="submit" class="btn btn-primary btn-block m-t-25">Reset my password</button>
+        <button type="submit" class="btn btn-primary btn-block m-t-25">Сбросить пароль</button>
       </form>
     {% endif %}
   </div>

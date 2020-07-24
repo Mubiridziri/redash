@@ -12,7 +12,7 @@ import "./DynamicParameters.less";
 
 const DYNAMIC_DATE_OPTIONS = [
   {
-    name: "Today/Now",
+    name: "Сегодня / Сейчас",
     value: getDynamicDateFromString("d_now"),
     label: () =>
       getDynamicDateFromString("d_now")
@@ -20,7 +20,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "Yesterday",
+    name: "Вчера",
     value: getDynamicDateFromString("d_yesterday"),
     label: () =>
       getDynamicDateFromString("d_yesterday")

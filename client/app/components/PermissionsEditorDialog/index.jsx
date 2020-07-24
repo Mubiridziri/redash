@@ -10,7 +10,6 @@ import Tag from "antd/lib/tag";
 import Tooltip from "antd/lib/tooltip";
 import { wrap as wrapDialog, DialogPropType } from "@/components/DialogWrapper";
 import { toHuman } from "@/lib/utils";
-import HelpTrigger from "@/components/HelpTrigger";
 import { UserPreviewCard } from "@/components/PreviewCard";
 import notification from "@/services/notification";
 import User from "@/services/user";
@@ -40,7 +39,7 @@ function useGrantees(url) {
     (userId, accessType = "modify") =>
       axios
         .post(url, { access_type: accessType, user_id: userId })
-        .catch(() => notification.error("Could not grant permission to the user")),
+        .catch(() => notification.error("Не удалось предоставить разрешение пользователю")),
     [url]
   );
 
@@ -48,7 +47,7 @@ function useGrantees(url) {
     (userId, accessType = "modify") =>
       axios
         .delete(url, { data: { access_type: accessType, user_id: userId } })
-        .catch(() => notification.error("Could not remove permission from the user")),
+        .catch(() => notification.error("Не удалось удалить разрешение у пользователя")),
     [url]
   );
 
@@ -63,17 +62,13 @@ const searchUsers = searchTerm =>
 function PermissionsEditorDialogHeader({ context }) {
   return (
     <>
-      Manage Permissions
+      Управление разрешениями
       <div className="modal-header-desc">
         {`Editing this ${context} is enabled for the users in this list and for admins. `}
-        <HelpTrigger type="MANAGE_PERMISSIONS" />
       </div>
     </>
   );
 }
-
-PermissionsEditorDialogHeader.propTypes = { context: PropTypes.oneOf(["query", "dashboard"]) };
-PermissionsEditorDialogHeader.defaultProps = { context: "query" };
 
 function UserSelect({ onSelect, shouldShowUser }) {
   const [loadingUsers, setLoadingUsers] = useState(true);
@@ -99,7 +94,7 @@ function UserSelect({ onSelect, shouldShowUser }) {
   return (
     <Select
       className="w-100 m-b-10"
-      placeholder="Add users..."
+      placeholder="Добавить пользователей..."
       showSearch
       onSearch={setSearchTerm}
       suffixIcon={loadingUsers ? <i className="fa fa-spinner fa-pulse" /> : <i className="fa fa-search" />}
@@ -149,13 +144,13 @@ function PermissionsEditorDialog({ dialog, author, context, aclUrl }) {
       {...dialog.props}
       className="permissions-editor-dialog"
       title={<PermissionsEditorDialogHeader context={context} />}
-      footer={<Button onClick={dialog.dismiss}>Close</Button>}>
+      footer={<Button onClick={dialog.dismiss}>Закрыть</Button>}>
       <UserSelect
         onSelect={userId => addPermission(userId).then(loadUsersWithPermissions)}
         shouldShowUser={user => !userHasPermission(user)}
       />
       <div className="d-flex align-items-center m-t-5">
-        <h5 className="flex-fill">Users with permissions</h5>
+        <h5 className="flex-fill">Пользователи с разрешениями</h5>
         {loadingGrantees && <i className="fa fa-spinner fa-pulse" />}
       </div>
       <div className="scrollbox p-5" style={{ maxHeight: "40vh" }}>
@@ -166,9 +161,9 @@ function PermissionsEditorDialog({ dialog, author, context, aclUrl }) {
             <List.Item>
               <UserPreviewCard key={user.id} user={user}>
                 {user.id === author.id ? (
-                  <Tag className="m-0">Author</Tag>
+                  <Tag className="m-0">Автор</Tag>
                 ) : (
-                  <Tooltip title="Remove user permissions">
+                  <Tooltip title="Удалить пользовательские разрешения">
                     <i
                       className="fa fa-remove clickable"
                       onClick={() => removePermission(user.id).then(loadUsersWithPermissions)}

@@ -14,11 +14,11 @@ const DYNAMIC_PREFIX = "d_";
 
 const DYNAMIC_DATES = {
   now: {
-    name: "Today/Now",
+    name: "Сегодня / Сейчас",
     value: () => moment(),
   },
   yesterday: {
-    name: "Yesterday",
+    name: "Вчера",
     value: () => moment().subtract(1, "day"),
   },
 };

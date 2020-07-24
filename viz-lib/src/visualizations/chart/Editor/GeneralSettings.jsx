@@ -110,7 +110,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
     <React.Fragment>
       <Section>
         <ChartTypeSelect
-          label="Chart Type"
+          label="Тип диаграммы"
           data-test="Chart.GlobalSeriesType"
           defaultValue={options.globalSeriesType}
           onChange={handleGlobalSeriesTypeChange}
@@ -158,7 +158,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
       {includes(["pie"], options.globalSeriesType) && (
         <Section>
           <Select
-            label="Direction"
+            label="Направление"
             data-test="Chart.PieDirection"
             defaultValue={options.direction.type}
             onChange={type => onOptionsChange({ direction: { type } })}>
@@ -175,7 +175,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
       {!includes(["custom", "heatmap"], options.globalSeriesType) && (
         <Section>
           <Select
-            label="Legend Placement"
+            label="Размещение легенды"
             data-test="Chart.LegendPlacement"
             value={options.legend.enabled ? options.legend.placement : "hidden"}
             onChange={handleLegendPlacementChange}>
@@ -198,7 +198,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
             data-test="Chart.ShowPoints"
             defaultChecked={options.showpoints}
             onChange={event => onOptionsChange({ showpoints: event.target.checked })}>
-            Show All Points
+            Показать все точки
           </Checkbox>
         </Section>
       )}
@@ -212,10 +212,10 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
             disabled={!includes(["line", "area", "column"], options.globalSeriesType)}
             onChange={stacking => onOptionsChange({ series: { stacking } })}>
             <Select.Option value={null} data-test="Chart.Stacking.Disabled">
-              Disabled
+              Отключено
             </Select.Option>
             <Select.Option value="stack" data-test="Chart.Stacking.Stack">
-              Stack
+              Стек
             </Select.Option>
           </Select>
         </Section>
@@ -227,7 +227,7 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
             data-test="Chart.NormalizeValues"
             defaultChecked={options.series.percentValues}
             onChange={event => onOptionsChange({ series: { percentValues: event.target.checked } })}>
-            Normalize values to percentage
+            Нормализовать значения в процентах
           </Checkbox>
         </Section>
       )}
@@ -240,10 +240,10 @@ export default function GeneralSettings({ options, data, onOptionsChange }) {
             defaultValue={options.missingValuesAsZero ? 1 : 0}
             onChange={value => onOptionsChange({ missingValuesAsZero: !!value })}>
             <Select.Option value={0} data-test="Chart.MissingValues.Keep">
-              Do not display in chart
+              Не отображать на графике
             </Select.Option>
             <Select.Option value={1} data-test="Chart.MissingValues.Zero">
-              Convert to 0 and display in chart
+              Преобразовать в 0 и отобразить на графике
             </Select.Option>
           </Select>
         </Section>

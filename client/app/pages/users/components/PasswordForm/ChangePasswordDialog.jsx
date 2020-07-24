@@ -25,9 +25,9 @@ class ChangePasswordDialog extends React.Component {
   }
 
   fieldError = (name, value) => {
-    if (value.length === 0) return "This field is required.";
-    if (name !== "currentPassword" && value.length < 6) return "This field is too short.";
-    if (name === "repeatPassword" && value !== this.state.newPassword.value) return "Passwords don't match";
+    if (value.length === 0) return "Это поле обязательно к заполнению.";
+    if (name !== "currentPassword" && value.length < 6) return "Это поле слишком короткое.";
+    if (name === "repeatPassword" && value !== this.state.newPassword.value) return "Пароли не совпадают";
     return null;
   };
 
@@ -69,7 +69,7 @@ class ChangePasswordDialog extends React.Component {
 
           User.save(userData)
             .then(() => {
-              notification.success("Saved.");
+              notification.success("Сохранено.");
               this.props.dialog.close({ success: true });
             })
             .catch(error => {
@@ -112,27 +112,27 @@ class ChangePasswordDialog extends React.Component {
         {...dialog.props}
         okButtonProps={{ loading: updatingPassword }}
         onOk={this.updatePassword}
-        title="Change Password">
+        title="Поменять пароль">
         <Form layout="vertical">
           <Form.Item
             {...formItemProps}
             validateStatus={currentPassword.touched && currentPassword.error ? "error" : null}
             help={currentPassword.touched ? currentPassword.error : null}
-            label="Current Password">
+            label="Текущий пароль">
             <Input.Password {...inputProps} name="currentPassword" data-test="CurrentPassword" autoFocus />
           </Form.Item>
           <Form.Item
             {...formItemProps}
             validateStatus={newPassword.touched && newPassword.error ? "error" : null}
             help={newPassword.touched ? newPassword.error : null}
-            label="New Password">
+            label="Новый пароль">
             <Input.Password {...inputProps} name="newPassword" data-test="NewPassword" />
           </Form.Item>
           <Form.Item
             {...formItemProps}
             validateStatus={repeatPassword.touched && repeatPassword.error ? "error" : null}
             help={repeatPassword.touched ? repeatPassword.error : null}
-            label="Repeat New Password">
+            label="Повторите новый пароль">
             <Input.Password {...inputProps} name="repeatPassword" data-test="RepeatPassword" />
           </Form.Item>
         </Form>

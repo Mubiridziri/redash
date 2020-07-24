@@ -28,7 +28,7 @@ export default function CustomChartSettings({ options, onOptionsChange }) {
           data-test="Chart.Custom.EnableConsoleLogs"
           defaultChecked={options.enableConsoleLogs}
           onChange={enableConsoleLogs => onOptionsChange({ enableConsoleLogs })}>
-          Show errors in the console
+          Показать ошибки в консоли
         </Switch>
       </Section>
 
@@ -38,7 +38,7 @@ export default function CustomChartSettings({ options, onOptionsChange }) {
           data-test="Chart.Custom.AutoUpdate"
           defaultChecked={options.autoRedraw}
           onChange={autoRedraw => onOptionsChange({ autoRedraw })}>
-          Auto update graph
+          Автоматическое обновление графика
         </Switch>
       </Section>
     </React.Fragment>

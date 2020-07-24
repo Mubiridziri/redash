@@ -42,9 +42,9 @@ function TabWithDeleteButton({ visualizationName, canDelete, onDelete, ...props 
     e => {
       e.stopPropagation();
       Modal.confirm({
-        title: "Delete Visualization",
-        content: "Are you sure you want to delete this visualization?",
-        okText: "Delete",
+        title: "Удалить визуализацию",
+        content: "Вы уверены, что хотите удалить эту визуализацию?",
+        okText: "Удалить",
         okType: "danger",
         onOk: onDelete,
         maskClosable: true,
@@ -76,7 +76,7 @@ TabWithDeleteButton.defaultProps = { canDelete: false, onDelete: () => {} };
 const defaultVisualizations = [
   {
     type: "TABLE",
-    name: "Table",
+    name: "Таблица",
     id: null,
     options: {},
   },
@@ -111,7 +111,7 @@ export default function QueryVisualizationTabs({
         type="link"
         onClick={() => onAddVisualization()}>
         <i className="fa fa-plus" />
-        <span className="m-l-5 hidden-xs">Add Visualization</span>
+        <span className="m-l-5 hidden-xs">Добавить визуализацию</span>
       </Button>
     );
   }
@@ -146,8 +146,8 @@ export default function QueryVisualizationTabs({
             <VisualizationRenderer visualization={visualization} queryResult={queryResult} context="query" />
           ) : (
             <EmptyState
-              title="Query Has no Result"
-              message="Execute/Refresh the query to show results."
+              title="Запрос не имеет результата"
+              message="Выполните / обновите запрос, чтобы показать результаты."
               refreshButton={refreshButton}
             />
           )}

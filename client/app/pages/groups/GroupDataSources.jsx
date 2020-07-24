@@ -43,19 +43,19 @@ class GroupDataSources extends React.Component {
     {
       key: "users",
       href: `groups/${this.groupId}`,
-      title: "Members",
+      title: "Участники",
     },
     {
       key: "datasources",
       href: `groups/${this.groupId}/data_sources`,
-      title: "Data Sources",
+      title: "Источники данных",
       isAvailable: () => currentUser.isAdmin,
     },
   ];
 
   listColumns = [
     Columns.custom((text, datasource) => <DataSourcePreviewCard dataSource={datasource} withLink />, {
-      title: "Name",
+      title: "Имя",
       field: "name",
       width: null,
     }),
@@ -65,15 +65,15 @@ class GroupDataSources extends React.Component {
           <Menu
             selectedKeys={[datasource.view_only ? "viewonly" : "full"]}
             onClick={item => this.setDataSourcePermissions(datasource, item.key)}>
-            <Menu.Item key="full">Full Access</Menu.Item>
-            <Menu.Item key="viewonly">View Only</Menu.Item>
+            <Menu.Item key="full">Полный доступ</Menu.Item>
+            <Menu.Item key="viewonly">Только просмотр</Menu.Item>
           </Menu>
         );
 
         return (
           <Dropdown trigger={["click"]} overlay={menu}>
             <Button className="w-100">
-              {datasource.view_only ? "View Only" : "Full Access"}
+              {datasource.view_only ? "Только просмотр" : "Полный доступ"}
               <Icon type="down" />
             </Button>
           </Dropdown>
@@ -88,7 +88,7 @@ class GroupDataSources extends React.Component {
     Columns.custom(
       (text, datasource) => (
         <Button className="w-100" type="danger" onClick={() => this.removeGroupDataSource(datasource)}>
-          Remove
+          Удалить
         </Button>
       ),
       {
@@ -116,7 +116,7 @@ class GroupDataSources extends React.Component {
         this.props.controller.update();
       })
       .catch(() => {
-        notification.error("Failed to remove data source from group.");
+        notification.error("Не удалось удалить источник данных из группы.");
       });
   };
 
@@ -129,7 +129,7 @@ class GroupDataSources extends React.Component {
         this.forceUpdate();
       })
       .catch(() => {
-        notification.error("Failed change data source permissions.");
+        notification.error("Не удалось изменить разрешения источника данных.");
       });
   };
 
@@ -137,9 +137,9 @@ class GroupDataSources extends React.Component {
     const allDataSources = DataSource.query();
     const alreadyAddedDataSources = map(this.props.controller.allItems, ds => ds.id);
     SelectItemsDialog.showModal({
-      dialogTitle: "Add Data Sources",
-      inputPlaceholder: "Search data sources...",
-      selectedItemsTitle: "New Data Sources",
+      dialogTitle: "Добавить источники данных",
+      inputPlaceholder: "Поиск источников данных...",
+      selectedItemsTitle: "Новые источники данных",
       searchItems: searchTerm => {
         searchTerm = toLower(searchTerm);
         return allDataSources.then(items => filter(items, ds => includes(toLower(ds.name), searchTerm)));
@@ -189,11 +189,11 @@ class GroupDataSources extends React.Component {
             {!controller.isLoaded && <LoadingState className="" />}
             {controller.isLoaded && controller.isEmpty && (
               <div className="text-center">
-                <p>There are no data sources in this group yet.</p>
+                <p>В этой группе еще нет источников данных.</p>
                 {currentUser.isAdmin && (
                   <Button type="primary" onClick={this.addDataSources}>
                     <i className="fa fa-plus m-r-5" />
-                    Add Data Sources
+                    Добавить источники данных
                   </Button>
                 )}
               </div>
@@ -247,7 +247,7 @@ routes.register(
   "Groups.DataSources",
   routeWithUserSession({
     path: "/groups/:groupId/data_sources",
-    title: "Group Data Sources",
+    title: "Групповые источники данных",
     render: pageProps => <GroupDataSourcesPage {...pageProps} currentPage="datasources" />,
   })
 );

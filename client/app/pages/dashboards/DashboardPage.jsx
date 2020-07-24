@@ -29,7 +29,7 @@ function DashboardSettings({ dashboardOptions }) {
         checked={!!dashboard.dashboard_filters_enabled}
         onChange={({ target }) => updateDashboard({ dashboard_filters_enabled: target.checked })}
         data-test="DashboardFiltersCheckbox">
-        Use Dashboard Level Filters
+        Уровень Использования Фильтров Панели Мониторинга
       </Checkbox>
     </div>
   );
@@ -46,16 +46,15 @@ function AddWidgetContainer({ dashboardOptions, className, ...props }) {
       <h2>
         <i className="zmdi zmdi-widgets" />
         <span className="hidden-xs hidden-sm">
-          Widgets are individual query visualizations or text boxes you can place on your dashboard in various
-          arrangements.
+          Виджеты - это отдельные визуализации запросов или текстовые поля, которые вы можете размещать на своей панели в различных ситуациях.
         </span>
       </h2>
       <div>
         <Button className="m-r-15" onClick={showAddTextboxDialog} data-test="AddTextboxButton">
-          Add Textbox
+          Добавить текстовое поле
         </Button>
         <Button type="primary" onClick={showAddWidgetDialog} data-test="AddWidgetButton">
-          Add Widget
+          Добавить виджет
         </Button>
       </div>
     </div>

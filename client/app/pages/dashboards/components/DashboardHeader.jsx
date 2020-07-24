@@ -79,7 +79,7 @@ function RefreshButton({ dashboardOptions }) {
       <Tooltip title={refreshRate ? `Auto Refreshing every ${durationHumanize(refreshRate)}` : null}>
         <Button type={buttonType(refreshRate)} onClick={() => refreshDashboard()}>
           <i className={cx("zmdi zmdi-refresh m-r-5", { "zmdi-hc-spin": refreshing })} />
-          {refreshRate ? durationHumanize(refreshRate) : "Refresh"}
+          {refreshRate ? durationHumanize(refreshRate) : "Обновлять каждую/ые/ый:"}
         </Button>
       </Tooltip>
       <Dropdown
@@ -92,12 +92,12 @@ function RefreshButton({ dashboardOptions }) {
                 {durationHumanize(option)}
               </Menu.Item>
             ))}
-            {refreshRate && <Menu.Item key={null}>Disable auto refresh</Menu.Item>}
+            {refreshRate && <Menu.Item key={null}>Отключить автообновление</Menu.Item>}
           </Menu>
         }>
         <Button className="icon-button hidden-xs" type={buttonType(refreshRate)}>
           <i className="fa fa-angle-down" />
-          <span className="sr-only">Split button!</span>
+          <span className="sr-only">Сплит кнопка!</span>
         </Button>
       </Dropdown>
     </Button.Group>
@@ -121,9 +121,9 @@ function DashboardMoreOptionsButton({ dashboardOptions }) {
 
   const archive = () => {
     Modal.confirm({
-      title: "Archive Dashboard",
-      content: `Are you sure you want to archive the "${dashboard.name}" dashboard?`,
-      okText: "Archive",
+      title: "Панель инструментов архива",
+      content: `Вы уверены, что хотите заархивировать "${dashboard.name}" панель инструментов?`,
+      okText: "Архивировать",
       okType: "danger",
       onOk: archiveDashboard,
       maskClosable: true,
@@ -138,20 +138,20 @@ function DashboardMoreOptionsButton({ dashboardOptions }) {
       overlay={
         <Menu data-test="DashboardMoreButtonMenu">
           <Menu.Item className={cx({ hidden: gridDisabled })}>
-            <a onClick={() => setEditingLayout(true)}>Edit</a>
+            <a onClick={() => setEditingLayout(true)}>Редактировать</a>
           </Menu.Item>
           {clientConfig.showPermissionsControl && isDashboardOwnerOrAdmin && (
             <Menu.Item>
-              <a onClick={managePermissions}>Manage Permissions</a>
+              <a onClick={managePermissions}>Управление разрешениями</a>
             </Menu.Item>
           )}
           {!dashboard.is_draft && (
             <Menu.Item>
-              <a onClick={togglePublished}>Unpublish</a>
+              <a onClick={togglePublished}>Не опубликовывать</a>
             </Menu.Item>
           )}
           <Menu.Item>
-            <a onClick={archive}>Archive</a>
+            <a onClick={archive}>Архив</a>
           </Menu.Item>
         </Menu>
       }>
@@ -186,19 +186,19 @@ function DashboardControl({ dashboardOptions }) {
         <span className="hidden-print">
           {showPublishButton && (
             <Button className="m-r-5 hidden-xs" onClick={togglePublished}>
-              <span className="fa fa-paper-plane m-r-5" /> Publish
+              <span className="fa fa-paper-plane m-r-5" /> Опубликовать
             </Button>
           )}
           {showRefreshButton && <RefreshButton dashboardOptions={dashboardOptions} />}
           {showFullscreenButton && (
-            <Tooltip className="hidden-xs" title="Enable/Disable Fullscreen display">
+            <Tooltip className="hidden-xs" title="Включить / выключить полноэкранный режим">
               <Button type={buttonType(fullscreen)} className="icon-button m-l-5" onClick={toggleFullscreen}>
                 <i className="zmdi zmdi-fullscreen" />
               </Button>
             </Tooltip>
           )}
           {showShareButton && (
-            <Tooltip title="Dashboard Sharing Options">
+            <Tooltip title="Параметры общего доступа к панели мониторинга">
               <Button
                 className="icon-button m-l-5"
                 type={buttonType(dashboard.publicAccessEnabled)}
@@ -223,17 +223,17 @@ function DashboardEditControl({ dashboardOptions }) {
   const { setEditingLayout, doneBtnClickedWhileSaving, dashboardStatus, retrySaveDashboardLayout } = dashboardOptions;
   let status;
   if (dashboardStatus === DashboardStatusEnum.SAVED) {
-    status = <span className="save-status">Saved</span>;
+    status = <span className="save-status">Сохранено</span>;
   } else if (dashboardStatus === DashboardStatusEnum.SAVING) {
     status = (
       <span className="save-status" data-saving>
-        Saving
+        Сохранение
       </span>
     );
   } else {
     status = (
       <span className="save-status" data-error>
-        Saving Failed
+        Ошибка сохранения
       </span>
     );
   }
@@ -242,11 +242,11 @@ function DashboardEditControl({ dashboardOptions }) {
       {status}
       {dashboardStatus === DashboardStatusEnum.SAVING_FAILED ? (
         <Button type="primary" onClick={retrySaveDashboardLayout}>
-          Retry
+          Повторить попытку
         </Button>
       ) : (
         <Button loading={doneBtnClickedWhileSaving} type="primary" onClick={() => setEditingLayout(false)}>
-          {!doneBtnClickedWhileSaving && <i className="fa fa-check m-r-5" />} Done Editing
+          {!doneBtnClickedWhileSaving && <i className="fa fa-check m-r-5" />} Закончить редактирование
         </Button>
       )}
     </div>

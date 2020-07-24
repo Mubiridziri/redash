@@ -9,12 +9,12 @@ export default function FeatureFlagsSettings(props) {
 
   return (
     <DynamicComponent name="OrganizationSettings.FeatureFlagsSettings" {...props}>
-      <Form.Item label="Feature Flags">
+      <Form.Item label="Особенность флагов">
         <Checkbox
           name="feature_show_permissions_control"
           checked={values.feature_show_permissions_control}
           onChange={e => onChange({ feature_show_permissions_control: e.target.checked })}>
-          Enable experimental multiple owners support
+          Включить экспериментальную поддержку нескольких владельцев
         </Checkbox>
       </Form.Item>
       <Form.Item>
@@ -30,7 +30,7 @@ export default function FeatureFlagsSettings(props) {
           name="multi_byte_search_enabled"
           checked={values.multi_byte_search_enabled}
           onChange={e => onChange({ multi_byte_search_enabled: e.target.checked })}>
-          Enable multi-byte (Chinese, Japanese, and Korean) search for query names and descriptions (slower)
+          Включить многобайтовый (китайский, японский и корейский) поиск имен и описаний запросов (медленнее)
         </Checkbox>
       </Form.Item>
     </DynamicComponent>

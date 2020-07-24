@@ -31,12 +31,12 @@ class DashboardList extends React.Component {
     {
       key: "all",
       href: "dashboards",
-      title: "All Dashboards",
+      title: "Все панели инструментов",
     },
     {
       key: "favorites",
       href: "dashboards/favorites",
-      title: "Favorites",
+      title: "Избранные",
       icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
     },
   ];
@@ -58,14 +58,14 @@ class DashboardList extends React.Component {
         </React.Fragment>
       ),
       {
-        title: "Name",
+        title: "Название",
         field: "name",
         width: null,
       }
     ),
-    Columns.custom((text, item) => item.user.name, { title: "Created By" }),
+    Columns.custom((text, item) => item.user.name, { title: "Создал(а)" }),
     Columns.dateTime.sortable({
-      title: "Created At",
+      title: "Создано",
       field: "created_at",
       className: "text-nowrap",
       width: "1%",
@@ -83,7 +83,7 @@ class DashboardList extends React.Component {
               currentUser.hasPermission("create_dashboard") ? (
                 <Button block type="primary" onClick={() => CreateDashboardDialog.showModal()}>
                   <i className="fa fa-plus m-r-5" />
-                  New Dashboard
+                  Новая панель инструментов
                 </Button>
               ) : null
             }
@@ -91,7 +91,7 @@ class DashboardList extends React.Component {
           <Layout>
             <Layout.Sidebar className="m-b-0">
               <Sidebar.SearchInput
-                placeholder="Search Dashboards..."
+                placeholder="Поиск панели..."
                 value={controller.searchTerm}
                 onChange={controller.updateSearch}
               />
@@ -163,7 +163,7 @@ routes.register(
   "Dashboards.List",
   routeWithUserSession({
     path: "/dashboards",
-    title: "Dashboards",
+    title: "Панель инструментов",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -171,7 +171,7 @@ routes.register(
   "Dashboards.Favorites",
   routeWithUserSession({
     path: "/dashboards/favorites",
-    title: "Favorite Dashboards",
+    title: "Избранные панели мониторинга",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
   })
 );

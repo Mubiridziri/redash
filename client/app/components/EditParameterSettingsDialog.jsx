@@ -33,17 +33,17 @@ function NameInput({ name, type, onChange, existingNames, setValidation }) {
   let validateStatus = "";
 
   if (!name) {
-    helpText = "Choose a keyword for this parameter";
+    helpText = "Выберите ключевое слово для этого параметра";
     setValidation(false);
   } else if (includes(existingNames, name)) {
-    helpText = "Parameter with this name already exists";
+    helpText = "Параметр с таким именем уже существует";
     setValidation(false);
     validateStatus = "error";
   } else {
     if (isTypeDateRange(type)) {
       helpText = (
         <React.Fragment>
-          Appears in query as{" "}
+          Отображается в запросе как{" "}
           <code style={{ display: "inline-block", color: "inherit" }}>{`{{${name}.start}} {{${name}.end}}`}</code>
         </React.Fragment>
       );
@@ -52,7 +52,7 @@ function NameInput({ name, type, onChange, existingNames, setValidation }) {
   }
 
   return (
-    <Form.Item required label="Keyword" help={helpText} validateStatus={validateStatus} {...formItemProps}>
+    <Form.Item required label="Ключевое слово" help={helpText} validateStatus={validateStatus} {...formItemProps}>
       <Input onChange={e => onChange(e.target.value)} autoFocus />
     </Form.Item>
   );
@@ -116,11 +116,11 @@ function EditParameterSettingsDialog(props) {
   return (
     <Modal
       {...props.dialog.props}
-      title={isNew ? "Add Parameter" : param.name}
+      title={isNew ? "Добавить параметр" : param.name}
       width={600}
       footer={[
         <Button key="cancel" onClick={props.dialog.dismiss}>
-          Cancel
+          Отмена
         </Button>,
         <Button
           key="submit"
@@ -129,7 +129,7 @@ function EditParameterSettingsDialog(props) {
           type="primary"
           form="paramForm"
           data-test="SaveParameterSettings">
-          {isNew ? "Add Parameter" : "OK"}
+          {isNew ? "Добавить параметр" : "OK"}
         </Button>,
       ]}>
       <Form layout="horizontal" onSubmit={onConfirm} id="paramForm">
@@ -142,45 +142,45 @@ function EditParameterSettingsDialog(props) {
             type={param.type}
           />
         )}
-        <Form.Item label="Title" {...formItemProps}>
+        <Form.Item label="Заголовок" {...formItemProps}>
           <Input
             value={isNull(param.title) ? getDefaultTitle(param.name) : param.title}
             onChange={e => setParam({ ...param, title: e.target.value })}
             data-test="ParameterTitleInput"
           />
         </Form.Item>
-        <Form.Item label="Type" {...formItemProps}>
+        <Form.Item label="Тип" {...formItemProps}>
           <Select value={param.type} onChange={type => setParam({ ...param, type })} data-test="ParameterTypeSelect">
             <Option value="text" data-test="TextParameterTypeOption">
-              Text
+              Текст
             </Option>
             <Option value="number" data-test="NumberParameterTypeOption">
-              Number
+              Номер
             </Option>
-            <Option value="enum">Dropdown List</Option>
-            <Option value="query">Query Based Dropdown List</Option>
+            <Option value="enum">Раскрывающийся список</Option>
+            <Option value="query">Раскрывающийся список на основе запросов</Option>
             <Option disabled key="dv1">
               <Divider className="select-option-divider" />
             </Option>
             <Option value="date" data-test="DateParameterTypeOption">
-              Date
+              Дата
             </Option>
             <Option value="datetime-local" data-test="DateTimeParameterTypeOption">
-              Date and Time
+              Дата и время
             </Option>
-            <Option value="datetime-with-seconds">Date and Time (with seconds)</Option>
+            <Option value="datetime-with-seconds">Дата и время (с секундами)</Option>
             <Option disabled key="dv2">
               <Divider className="select-option-divider" />
             </Option>
             <Option value="date-range" data-test="DateRangeParameterTypeOption">
-              Date Range
+              Диапазон дат
             </Option>
-            <Option value="datetime-range">Date and Time Range</Option>
-            <Option value="datetime-range-with-seconds">Date and Time Range (with seconds)</Option>
+            <Option value="datetime-range">Диапазон дат и времени</Option>
+            <Option value="datetime-range-with-seconds">Диапазон дат и времени (с секундами)</Option>
           </Select>
         </Form.Item>
         {param.type === "enum" && (
-          <Form.Item label="Values" help="Dropdown list values (newline delimited)" {...formItemProps}>
+          <Form.Item label="Значения" help="Значения выпадающего списка (разделить новой строкой)" {...formItemProps}>
             <Input.TextArea
               rows={3}
               value={param.enumOptions}
@@ -189,7 +189,7 @@ function EditParameterSettingsDialog(props) {
           </Form.Item>
         )}
         {param.type === "query" && (
-          <Form.Item label="Query" help="Select query to load dropdown values from" {...formItemProps}>
+          <Form.Item label="Запрос" help="Выберите запрос для загрузки выпадающих значений из" {...formItemProps}>
             <QuerySelector
               selectedQuery={initialQuery}
               onChange={q => setParam({ ...param, queryId: q && q.id })}
@@ -214,16 +214,16 @@ function EditParameterSettingsDialog(props) {
                 })
               }
               data-test="AllowMultipleValuesCheckbox">
-              Allow multiple values
+              Разрешить несколько значений
             </Checkbox>
           </Form.Item>
         )}
         {(param.type === "enum" || param.type === "query") && param.multiValuesOptions && (
           <Form.Item
-            label="Quotation"
+            label="Кавычки"
             help={
               <React.Fragment>
-                Placed in query as: <code>{joinExampleList(param.multiValuesOptions)}</code>
+                Размещено в запросе как: <code>{joinExampleList(param.multiValuesOptions)}</code>
               </React.Fragment>
             }
             {...formItemProps}>
@@ -240,10 +240,10 @@ function EditParameterSettingsDialog(props) {
                 })
               }
               data-test="QuotationSelect">
-              <Option value="">None (default)</Option>
-              <Option value="'">Single Quotation Mark</Option>
+              <Option value="">Нет (по умолчанию)</Option>
+              <Option value="'">Одинарная кавычка</Option>
               <Option value={'"'} data-test="DoubleQuotationMarkOption">
-                Double Quotation Mark
+                Двойная кавычка
               </Option>
             </Select>
           </Form.Item>

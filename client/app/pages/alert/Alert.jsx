@@ -27,7 +27,7 @@ const defaultNameBuilder = template("<%= query.name %>: <%= options.column %> <%
 
 export function getDefaultName(alert) {
   if (!alert.query) {
-    return "New Alert";
+    return "Новое оповещение";
   }
   return defaultNameBuilder(alert);
 }
@@ -113,7 +113,7 @@ class Alert extends React.Component {
 
     return AlertService.save(alert)
       .then(alert => {
-        notification.success("Saved.");
+        notification.success("Сохранено.");
         navigateTo(`alerts/${alert.id}`, true);
         this.setState({ alert, mode: MODES.VIEW });
       })
@@ -257,7 +257,7 @@ routes.register(
   "Alerts.New",
   routeWithUserSession({
     path: "/alerts/new",
-    title: "New Alert",
+    title: "Новое оповещение",
     render: pageProps => <Alert {...pageProps} mode={MODES.NEW} />,
   })
 );
@@ -265,7 +265,7 @@ routes.register(
   "Alerts.View",
   routeWithUserSession({
     path: "/alerts/:alertId",
-    title: "Alert",
+    title: "Оповещение",
     render: pageProps => <Alert {...pageProps} mode={MODES.VIEW} />,
   })
 );
@@ -273,7 +273,7 @@ routes.register(
   "Alerts.Edit",
   routeWithUserSession({
     path: "/alerts/:alertId/edit",
-    title: "Alert",
+    title: "Оповещение",
     render: pageProps => <Alert {...pageProps} mode={MODES.EDIT} />,
   })
 );

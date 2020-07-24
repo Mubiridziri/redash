@@ -115,7 +115,7 @@ function VisualizationEmbedFooter({
       )}
       {queryUrl && (
         <span className="hidden-print">
-          <Tooltip title="Open in Redash">
+          <Tooltip title="Открыть в Redash">
             <Button className="icon-button" href={queryUrl} target="_blank">
               <i className="fa fa-external-link" />
             </Button>
@@ -123,7 +123,7 @@ function VisualizationEmbedFooter({
           {!query.hasParameters() && (
             <Dropdown overlay={downloadMenu} disabled={!queryResults} trigger={["click"]} placement="topLeft">
               <Button loading={!queryResults && !!refreshStartedAt} className="m-l-5">
-                Download Dataset
+              Скачать набор данных
                 <i className="fa fa-caret-up m-l-5" />
               </Button>
             </Dropdown>

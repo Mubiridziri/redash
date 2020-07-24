@@ -45,11 +45,11 @@ class AlertsList extends React.Component {
         </div>
       ),
       {
-        title: "Name",
+        title: "Имя",
         field: "name",
       }
     ),
-    Columns.custom((text, item) => item.user.name, { title: "Created By" }),
+    Columns.custom((text, item) => item.user.name, { title: "Создано" }),
     Columns.custom.sortable(
       (text, alert) => (
         <div>
@@ -62,8 +62,8 @@ class AlertsList extends React.Component {
         width: "1%",
       }
     ),
-    Columns.timeAgo.sortable({ title: "Last Updated At", field: "updated_at", className: "text-nowrap", width: "1%" }),
-    Columns.dateTime.sortable({ title: "Created At", field: "created_at", className: "text-nowrap", width: "1%" }),
+    Columns.timeAgo.sortable({ title: "Последнее обновление в", field: "updated_at", className: "text-nowrap", width: "1%" }),
+    Columns.dateTime.sortable({ title: "Создано", field: "created_at", className: "text-nowrap", width: "1%" }),
   ];
 
   render() {
@@ -78,7 +78,7 @@ class AlertsList extends React.Component {
               currentUser.hasPermission("list_alerts") ? (
                 <Button block type="primary" href="alerts/new">
                   <i className="fa fa-plus m-r-5" />
-                  New Alert
+                  Новые оповещения
                 </Button>
               ) : null
             }
@@ -89,7 +89,7 @@ class AlertsList extends React.Component {
               <EmptyState
                 icon="fa fa-bell-o"
                 illustration="alert"
-                description="Get notified on certain events"
+                description="Получайте уведомления о некоторых событиях"
                 helpLink="https://redash.io/help/user-guide/alerts/"
                 showAlertStep
               />
@@ -137,7 +137,7 @@ routes.register(
   "Alerts.List",
   routeWithUserSession({
     path: "/alerts",
-    title: "Alerts",
+    title: "Оповещения",
     render: pageProps => <AlertsListPage {...pageProps} currentPage="alerts" />,
   })
 );

@@ -17,11 +17,11 @@ export default function PasswordLinkAlert(props) {
   return (
     <DynamicComponent name="UserProfile.PasswordLinkAlert" {...props}>
       <Alert
-        message="Email not sent!"
+        message="Письмо не отправлено!"
         description={
           <React.Fragment>
             <p>
-              The mail server is not configured, please send the following link to <b>{user.name}</b>:
+            Почтовый сервер не настроен, пожалуйста, отправьте следующую ссылку на <b>{user.name}</b>:
             </p>
             <InputWithCopy value={absoluteUrl(passwordLink)} readOnly />
           </React.Fragment>

@@ -44,17 +44,17 @@ class EmbedQueryDialog extends React.Component {
       <Modal
         {...dialog.props}
         className="embed-query-dialog"
-        title="Embed Query"
-        footer={<Button onClick={dialog.dismiss}>Close</Button>}>
+        title="Вставить запрос"
+        footer={<Button onClick={dialog.dismiss}>Закрыть</Button>}>
         {query.is_safe ? (
           <React.Fragment>
-            <h5 className="m-t-0">Public URL</h5>
+            <h5 className="m-t-0">Общедоступный URL</h5>
             <div className="m-b-30">
               <CodeBlock data-test="EmbedIframe" copyable>
                 {this.embedUrl}
               </CodeBlock>
             </div>
-            <h5 className="m-t-0">IFrame Embed</h5>
+            <h5 className="m-t-0">Встраивание IFrame</h5>
             <div>
               <CodeBlock copyable>
                 {`<iframe src="${this.embedUrl}" width="${iframeWidth}" height="${iframeHeight}"></iframe>`}
@@ -95,7 +95,7 @@ class EmbedQueryDialog extends React.Component {
           </React.Fragment>
         ) : (
           <Alert
-            message="Currently it is not possible to embed queries that contain text parameters."
+            message="В настоящее время невозможно встраивать запросы, содержащие текстовые параметры."
             type="error"
             data-test="EmbedErrorAlert"
           />

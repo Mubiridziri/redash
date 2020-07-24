@@ -41,8 +41,8 @@ export default class InputWithCopy extends React.Component {
 
   render() {
     const copyButton = (
-      <Tooltip title={this.state.copied || "Copy"}>
-        <Icon type="copy" style={{ cursor: "pointer" }} onClick={this.copy} />
+      <Tooltip title={this.state.copied || "Копировать"}>
+        <Icon type="copy" style={{ cursor: "указатель" }} onClick={this.copy} />
       </Tooltip>
     );
 

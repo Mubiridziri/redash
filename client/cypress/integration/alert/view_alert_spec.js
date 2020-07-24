@@ -1,6 +1,6 @@
 import { createAlert, createQuery, createUser, addDestinationSubscription } from "../../support/redash-api";
 
-describe("View Alert", () => {
+describe("Просмотреть оповещение", () => {
   beforeEach(function() {
     cy.login();
     createQuery({ query: "select 1 as col_name" })
@@ -11,16 +11,16 @@ describe("View Alert", () => {
       });
   });
 
-  it("renders the page and takes a screenshot", function() {
+  it("рендерит страницу и делает скриншот", function() {
     cy.visit(this.alertUrl);
     cy.getByTestId("Criteria").should("exist");
-    cy.percySnapshot("View Alert screen");
+    cy.percySnapshot("Просмотр экрана оповещений");
   });
 
   it("allows adding new destinations", function() {
     cy.visit(this.alertUrl);
     cy.getByTestId("AlertDestinations")
-      .contains("Test Email Destination")
+      .contains("Проверить адрес электронной почты")
       .should("not.exist");
 
     cy.server();
@@ -31,11 +31,11 @@ describe("View Alert", () => {
 
     cy.wait(["@Destinations", "@Subscriptions"]);
     cy.getByTestId("ShowAddAlertSubDialog").click();
-    cy.contains("Test Email Destination").click();
-    cy.contains("Save").click();
+    cy.contains("Проверить адрес электронной почты").click();
+    cy.contains("Сохранить").click();
 
     cy.getByTestId("AlertDestinations")
-      .contains("Test Email Destination")
+      .contains("Проверить адрес электронной почты")
       .should("exist");
   });
 
@@ -43,26 +43,26 @@ describe("View Alert", () => {
     before(() => {
       cy.login();
       createUser({
-        name: "Example User",
+        name: "Пример пользователя",
         email: "user@redash.io",
-        password: "password",
+        password: "пароль",
       });
     });
 
-    it("hides remove button from non-author", function() {
+    it("скрывает кнопку удалить от неавторизованных пользователей", function() {
       cy.server();
       cy.route("GET", "api/alerts/*/subscriptions").as("Subscriptions");
 
       cy.logout()
         .then(() => cy.login()) // as admin
-        .then(() => addDestinationSubscription(this.alertId, "Test Email Destination"))
+        .then(() => addDestinationSubscription(this.alertId, "Проверить адрес электронной почты"))
         .then(() => {
           cy.visit(this.alertUrl);
 
           // verify remove button appears for author
           cy.wait(["@Subscriptions"]);
           cy.getByTestId("AlertDestinations")
-            .contains("Test Email Destination")
+            .contains("Проверить адрес электронной почты")
             .parent()
             .within(() => {
               cy.get(".remove-button")
@@ -81,20 +81,20 @@ describe("View Alert", () => {
         });
     });
 
-    it("shows remove button for non-author admin", function() {
+    it("показывает кнопку удаления для администратора, не являющегося автором", function() {
       cy.server();
       cy.route("GET", "api/alerts/*/subscriptions").as("Subscriptions");
 
       cy.logout()
         .then(() => cy.login("user@redash.io", "password"))
-        .then(() => addDestinationSubscription(this.alertId, "Test Email Destination"))
+        .then(() => addDestinationSubscription(this.alertId, "Проверить адрес электронной почты"))
         .then(() => {
           cy.visit(this.alertUrl);
 
           // verify remove button appears for author
           cy.wait(["@Subscriptions"]);
           cy.getByTestId("AlertDestinations")
-            .contains("Test Email Destination")
+            .contains("Проверить адрес электронной почты")
             .parent()
             .within(() => {
               cy.get(".remove-button")

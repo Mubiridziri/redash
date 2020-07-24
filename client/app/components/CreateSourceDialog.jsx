@@ -11,7 +11,6 @@ import { PreviewCard } from "@/components/PreviewCard";
 import EmptyState from "@/components/items-list/components/EmptyState";
 import DynamicForm from "@/components/dynamic-form/DynamicForm";
 import helper from "@/components/dynamic-form/dynamicFormHelper";
-import HelpTrigger, { TYPES as HELP_TRIGGER_TYPES } from "@/components/HelpTrigger";
 
 const { Step } = Steps;
 const { Search } = Input;
@@ -61,7 +60,7 @@ class CreateSourceDialog extends React.Component {
       this.props
         .onCreate(selectedType, values)
         .then(data => {
-          successCallback("Saved.");
+          successCallback("Сохранено.");
           this.props.dialog.close({ success: true, data });
         })
         .catch(error => {
@@ -80,7 +79,7 @@ class CreateSourceDialog extends React.Component {
     return (
       <div className="m-t-10">
         <Search
-          placeholder="Search..."
+          placeholder="Поиск..."
           onChange={e => this.setState({ searchText: e.target.value })}
           autoFocus
           data-test="SearchSource"
@@ -97,29 +96,21 @@ class CreateSourceDialog extends React.Component {
   }
 
   renderForm() {
-    const { imageFolder, helpTriggerPrefix } = this.props;
+    const { imageFolder } = this.props;
     const { selectedType } = this.state;
     const fields = helper.getFields(selectedType);
-    const helpTriggerType = `${helpTriggerPrefix}${toUpper(selectedType.type)}`;
     return (
       <div>
         <div className="d-flex justify-content-center align-items-center">
           <img className="p-5" src={`${imageFolder}/${selectedType.type}.png`} alt={selectedType.name} width="48" />
           <h4 className="m-0">{selectedType.name}</h4>
         </div>
-        <div className="text-right">
-          {HELP_TRIGGER_TYPES[helpTriggerType] && (
-            <HelpTrigger className="f-13" type={helpTriggerType}>
-              Setup Instructions <i className="fa fa-question-circle" />
-            </HelpTrigger>
-          )}
-        </div>
         <DynamicForm id="sourceForm" fields={fields} onSubmit={this.createSource} feedbackIcons hideSubmitButton />
         {selectedType.type === "databricks" && (
           <small>
-            By using the Databricks Data Source you agree to the Databricks JDBC/ODBC{" "}
+            Используя источник данных Databricks Data Source вы соглашаетесь с Databricks JDBC/ODBC{" "}
             <a href="https://databricks.com/spark/odbc-driver-download" target="_blank" rel="noopener noreferrer">
-              Driver Download Terms and Conditions
+              Правила и условия загрузки драйверов
             </a>
             .
           </small>
@@ -150,20 +141,20 @@ class CreateSourceDialog extends React.Component {
     return (
       <Modal
         {...dialog.props}
-        title={`Create a New ${sourceType}`}
+        title={`Создать новый ${sourceType}`}
         footer={
           currentStep === StepEnum.SELECT_TYPE
             ? [
                 <Button key="cancel" onClick={() => dialog.dismiss()}>
-                  Cancel
+                  Отмена
                 </Button>,
                 <Button key="submit" type="primary" disabled>
-                  Create
+                  Создать
                 </Button>,
               ]
             : [
                 <Button key="previous" onClick={this.resetType}>
-                  Previous
+                  Назад
                 </Button>,
                 <Button
                   key="submit"
@@ -172,19 +163,19 @@ class CreateSourceDialog extends React.Component {
                   type="primary"
                   loading={savingSource}
                   data-test="CreateSourceButton">
-                  Create
+                  Создать
                 </Button>,
               ]
         }>
         <div data-test="CreateSourceDialog">
           <Steps className="hidden-xs m-b-10" size="small" current={currentStep} progressDot>
             {currentStep === StepEnum.CONFIGURE_IT ? (
-              <Step title={<a>Type Selection</a>} className="clickable" onClick={this.resetType} />
+              <Step title={<a>Выбор типа</a>} className="clickable" onClick={this.resetType} />
             ) : (
-              <Step title="Type Selection" />
+              <Step title="Выбор типа" />
             )}
-            <Step title="Configuration" />
-            <Step title="Done" />
+            <Step title="Конфигурация" />
+            <Step title="Готово" />
           </Steps>
           {currentStep === StepEnum.SELECT_TYPE && this.renderTypeSelector()}
           {currentStep !== StepEnum.SELECT_TYPE && this.renderForm()}

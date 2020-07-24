@@ -35,24 +35,24 @@ class QueriesList extends React.Component {
     {
       key: "all",
       href: "queries",
-      title: "All Queries",
+      title: "Все запросы",
     },
     {
       key: "favorites",
       href: "queries/favorites",
-      title: "Favorites",
+      title: "Избранное",
       icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
     },
     {
       key: "archive",
       href: "queries/archive",
-      title: "Archived",
+      title: "Архивы",
       icon: () => <Sidebar.MenuIcon icon="fa fa-archive" />,
     },
     {
       key: "my",
       href: "queries/my",
-      title: "My Queries",
+      title: "Мой запрос",
       icon: () => <Sidebar.ProfileImage user={currentUser} />,
       isAvailable: () => currentUser.hasPermission("create_query"),
     },
@@ -75,16 +75,16 @@ class QueriesList extends React.Component {
         </React.Fragment>
       ),
       {
-        title: "Name",
+        title: "Имя",
         field: "name",
         width: null,
       }
     ),
-    Columns.custom((text, item) => item.user.name, { title: "Created By" }),
-    Columns.dateTime.sortable({ title: "Created At", field: "created_at" }),
-    Columns.dateTime.sortable({ title: "Last Executed At", field: "retrieved_at", orderByField: "executed_at" }),
+    Columns.custom((text, item) => item.user.name, { title: "Создал(а)" }),
+    Columns.dateTime.sortable({ title: "Создано", field: "created_at" }),
+    Columns.dateTime.sortable({ title: "Последнее выполнение в", field: "retrieved_at", orderByField: "executed_at" }),
     Columns.custom.sortable((text, item) => <SchedulePhrase schedule={item.schedule} isNew={item.isNew()} />, {
-      title: "Refresh Schedule",
+      title: "Расписание Обновления",
       field: "schedule",
     }),
   ];
@@ -116,7 +116,7 @@ class QueriesList extends React.Component {
               currentUser.hasPermission("create_query") ? (
                 <Button block type="primary" href="queries/new">
                   <i className="fa fa-plus m-r-5" />
-                  New Query
+                    Новый запрос
                 </Button>
               ) : null
             }
@@ -124,7 +124,7 @@ class QueriesList extends React.Component {
           <Layout>
             <Layout.Sidebar className="m-b-0">
               <Sidebar.SearchInput
-                placeholder="Search Queries..."
+                placeholder="Поиск..."
                 value={controller.searchTerm}
                 onChange={controller.updateSearch}
               />
@@ -194,7 +194,7 @@ routes.register(
   "Queries.List",
   routeWithUserSession({
     path: "/queries",
-    title: "Queries",
+    title: "Запросы",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -202,7 +202,7 @@ routes.register(
   "Queries.Favorites",
   routeWithUserSession({
     path: "/queries/favorites",
-    title: "Favorite Queries",
+    title: "Созданные Запросы",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="favorites" />,
   })
 );
@@ -210,7 +210,7 @@ routes.register(
   "Queries.Archived",
   routeWithUserSession({
     path: "/queries/archive",
-    title: "Archived Queries",
+    title: "Архивные Запросы",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="archive" />,
   })
 );
@@ -218,7 +218,7 @@ routes.register(
   "Queries.My",
   routeWithUserSession({
     path: "/queries/my",
-    title: "My Queries",
+    title: "Мой запрос",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="my" />,
   })
 );

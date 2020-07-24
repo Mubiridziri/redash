@@ -17,12 +17,11 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
     message = (
       <React.Fragment>
         <Typography.Title level={4}>
-          You don't have permission to create new queries on any of the data sources available to you.
+          У вас нет разрешения на создание новых запросов ни в одном из доступных вам источников данных.
         </Typography.Title>
         <p>
           <Typography.Text type="secondary">
-            You can either <a href="queries">browse existing queries</a>, or ask for additional permissions from your
-            Redash admin.
+            Вы можете <a href="queries">либо спросить дополнительные разрешения у своего администратора Redash</a>, либо запросить их у него.
           </Typography.Text>
         </p>
       </React.Fragment>
@@ -32,18 +31,18 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
       message = (
         <React.Fragment>
           <Typography.Title level={4}>
-            Looks like no data sources were created yet or none of them available to the group(s) you're member of.
+            Похоже, источники данных еще не созданы или ни один из них не доступен для группы (групп), членом которой вы являетесь.
           </Typography.Title>
           <p>
-            <Typography.Text type="secondary">Please create one first, and then start querying.</Typography.Text>
+            <Typography.Text type="secondary">Пожалуйста, сначала создайте его, а затем начните запрашивать.</Typography.Text>
           </p>
 
           <div className="query-source-alerts-actions">
             <Button type="primary" href="data_sources/new">
-              Create Data Source
+              Создать источник данных
             </Button>
             <Button type="default" href="groups">
-              Manage Group Permissions
+              Управление разрешениями группы
             </Button>
           </div>
         </React.Fragment>
@@ -52,10 +51,10 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
       message = (
         <React.Fragment>
           <Typography.Title level={4}>
-            Looks like no data sources were created yet or none of them available to the group(s) you're member of.
+            Похоже, источники данных еще не созданы или ни один из них не доступен для группы (групп), членом которой вы являетесь.
           </Typography.Title>
           <p>
-            <Typography.Text type="secondary">Please ask your Redash admin to create one first.</Typography.Text>
+            <Typography.Text type="secondary">Пожалуйста, попросите вашего администратора Redash создать его первым.</Typography.Text>
           </p>
         </React.Fragment>
       );

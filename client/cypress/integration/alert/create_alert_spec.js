@@ -1,11 +1,11 @@
 import { createQuery } from "../../support/redash-api";
 
-describe("Create Alert", () => {
+describe("Создать оповещение", () => {
   beforeEach(() => {
     cy.login();
   });
 
-  it("renders the initial page and takes a screenshot", () => {
+  it("отображает начальную страницу и делает снимок экрана", () => {
     cy.visit("/alerts/new");
     cy.getByTestId("QuerySelector").should("exist");
     cy.percySnapshot("Create Alert initial screen");

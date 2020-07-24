@@ -2,7 +2,7 @@
 
 import { createQuery } from "../../support/redash-api";
 
-describe("Edit visualization dialog", () => {
+describe("Редактировать диалог визуализации", () => {
   beforeEach(() => {
     cy.login();
     createQuery().then(({ id }) => {
@@ -11,7 +11,7 @@ describe("Edit visualization dialog", () => {
     });
   });
 
-  it("opens New Visualization dialog", () => {
+  it("открывает новый диалог визуализации", () => {
     cy.getByTestId("NewVisualization")
       .should("exist")
       .click();
@@ -25,7 +25,7 @@ describe("Edit visualization dialog", () => {
       .should("have.value", "Chart");
   });
 
-  it("opens Edit Visualization dialog", () => {
+  it("открывает диалог редактирования визуализации", () => {
     cy.getByTestId("EditVisualization").click();
     cy.getByTestId("EditVisualizationDialog").should("exist");
     // Default `Table` visualization should be selected
@@ -37,7 +37,7 @@ describe("Edit visualization dialog", () => {
       .should("have.value", "Table");
   });
 
-  it("creates visualization with custom name", () => {
+  it("создает визуализацию с произвольным именем", () => {
     const visualizationName = "Custom name";
 
     cy.clickThrough(`
@@ -51,7 +51,7 @@ describe("Edit visualization dialog", () => {
       .type(visualizationName);
 
     cy.getByTestId("EditVisualizationDialog")
-      .contains("button", "Save")
+      .contains("button", "Сохранить")
       .click();
     cy.getByTestId("QueryPageVisualizationTabs")
       .contains("span", visualizationName)

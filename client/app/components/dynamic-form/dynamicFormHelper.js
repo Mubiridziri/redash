@@ -92,7 +92,7 @@ function getFields(type = {}, target = { options: {} }) {
   const inputs = [
     {
       name: "name",
-      title: "Name",
+      title: "Имя",
       type: "text",
       required: true,
       initialValue: target.name,

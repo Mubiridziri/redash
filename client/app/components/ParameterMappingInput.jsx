@@ -17,7 +17,6 @@ import Tooltip from "antd/lib/tooltip";
 import ParameterValueInput from "@/components/ParameterValueInput";
 import { ParameterMappingType } from "@/services/widget";
 import { Parameter, cloneParameter } from "@/services/parameters";
-import HelpTrigger from "@/components/HelpTrigger";
 
 import "./ParameterMappingInput.less";
 
@@ -175,21 +174,21 @@ export class ParameterMappingInput extends React.Component {
     return (
       <Radio.Group value={this.props.mapping.type} onChange={e => this.updateSourceType(e.target.value)}>
         <Radio className="radio" value={MappingType.DashboardAddNew} data-test="NewDashboardParameterOption">
-          New dashboard parameter
+          Новый параметр панели инструментов (мониторинга)
         </Radio>
         <Radio className="radio" value={MappingType.DashboardMapToExisting} disabled={noExisting}>
-          Existing dashboard parameter{" "}
+        Существующий параметр панели мониторинга{" "}
           {noExisting ? (
-            <Tooltip title="There are no dashboard parameters corresponding to this data type">
+            <Tooltip title="Нет параметров панели, соответствующих этому типу данных">
               <Icon type="question-circle" theme="filled" />
             </Tooltip>
           ) : null}
         </Radio>
         <Radio className="radio" value={MappingType.WidgetLevel} data-test="WidgetParameterOption">
-          Widget parameter
+          Параметр виджета
         </Radio>
         <Radio className="radio" value={MappingType.StaticValue} data-test="StaticValueOption">
-          Static value
+          Статическое значение
         </Radio>
       </Radio.Group>
     );
@@ -327,7 +326,7 @@ class MappingEditor extends React.Component {
     return (
       <div className="parameter-mapping-editor" data-test="EditParamMappingPopover">
         <header>
-          Edit Source and Value <HelpTrigger type="VALUE_SOURCE_OPTIONS" />
+          Изменить источник и значение
         </header>
         <ParameterMappingInput
           mapping={mapping}
@@ -336,7 +335,7 @@ class MappingEditor extends React.Component {
           inputError={inputError}
         />
         <footer>
-          <Button onClick={this.hide}>Cancel</Button>
+          <Button onClick={this.hide}>Отмена</Button>
           <Button onClick={this.save} disabled={!!inputError} type="primary">
             OK
           </Button>
@@ -447,7 +446,7 @@ class TitleEditor extends React.Component {
     const { mapping } = this.props;
     if (mapping.type === MappingType.StaticValue) {
       return (
-        <Tooltip placement="right" title="Titles for static values don't appear in widgets">
+        <Tooltip placement="right" title="Заголовки для статических значений не отображаются в виджетах">
           <i className="fa fa-eye-slash" />
         </Tooltip>
       );
@@ -546,7 +545,7 @@ export class ParameterMappingListInput extends React.Component {
       case MappingType.DashboardMapToExisting:
         return (
           <Fragment>
-            Dashboard <Tag className="tag">{mapTo}</Tag>
+            Панель приборов <Tag className="tag">{mapTo}</Tag>
           </Fragment>
         );
       case MappingType.WidgetLevel:
@@ -578,7 +577,7 @@ export class ParameterMappingListInput extends React.Component {
       <div className="parameters-mapping-list">
         <Table dataSource={dataSource} size="middle" pagination={false} rowKey={(record, idx) => `row${idx}`}>
           <Table.Column
-            title="Title"
+            title="Заголовок"
             dataIndex="mapping"
             key="title"
             render={mapping => (
@@ -590,20 +589,20 @@ export class ParameterMappingListInput extends React.Component {
             )}
           />
           <Table.Column
-            title="Keyword"
+            title="Ключевое слово"
             dataIndex="mapping"
             key="keyword"
             className="keyword"
             render={mapping => <code>{`{{ ${mapping.name} }}`}</code>}
           />
           <Table.Column
-            title="Default Value"
+            title="Значение по умолчанию"
             dataIndex="mapping"
             key="value"
             render={mapping => this.constructor.getDefaultValue(mapping, this.props.existingParams)}
           />
           <Table.Column
-            title="Value Source"
+            title="Исходное значение"
             dataIndex="mapping"
             key="source"
             render={mapping => {

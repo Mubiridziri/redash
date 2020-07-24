@@ -6,7 +6,7 @@ import { Section, Select } from "@/components/visualizations/editor";
 const MappingTypes = {
   x: { label: "X Column" },
   y: { label: "Y Columns", multiple: true },
-  series: { label: "Group by" },
+  series: { label: "Группа по" },
   yError: { label: "Errors column" },
   size: { label: "Bubble Size Column" },
   zVal: { label: "Color Column" },
@@ -24,7 +24,7 @@ export default function ColumnMappingSelect({ value, availableColumns, type, onC
         mode={multiple ? "multiple" : "default"}
         allowClear
         showSearch
-        placeholder={multiple ? "Choose columns..." : "Choose column..."}
+        placeholder={multiple ? "Выберите столбцы..." : "Выберите столбец..."}
         value={value || undefined}
         onChange={column => onChange(column || null, type)}>
         {map(options, c => (

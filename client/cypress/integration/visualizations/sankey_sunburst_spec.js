@@ -44,7 +44,7 @@ describe("Sankey and Sunburst", () => {
         .should("exist");
 
       cy.getByTestId("EditVisualizationDialog")
-        .contains("button", "Save")
+        .contains("button", "Сохранить")
         .click();
       cy.getByTestId("QueryPageVisualizationTabs")
         .contains("span", visualizationName)
@@ -65,7 +65,7 @@ describe("Sankey and Sunburst", () => {
         .should("exist");
 
       cy.getByTestId("EditVisualizationDialog")
-        .contains("button", "Save")
+        .contains("button", "Сохранить")
         .click();
       cy.getByTestId("QueryPageVisualizationTabs")
         .contains("span", visualizationName)

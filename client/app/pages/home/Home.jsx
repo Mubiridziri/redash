@@ -7,7 +7,6 @@ import Icon from "antd/lib/icon";
 import routeWithUserSession from "@/components/ApplicationArea/routeWithUserSession";
 import EmptyState from "@/components/empty-state/EmptyState";
 import DynamicComponent from "@/components/DynamicComponent";
-import BeaconConsent from "@/components/BeaconConsent";
 
 import { axios } from "@/services/axios";
 import recordEvent from "@/services/recordEvent";
@@ -26,13 +25,13 @@ function DeprecatedEmbedFeatureAlert() {
       type="warning"
       message={
         <>
-          You have enabled <code>ALLOW_PARAMETERS_IN_EMBEDS</code>. This setting is now deprecated and should be turned
-          off. Parameters in embeds are supported by default.{" "}
+          Вы включили <code>ALLOW_PARAMETERS_IN_EMBEDS</code>. Этот параметр устарел и должен быть выключен.
+          Параметры встраивания поддерживаются по умолчанию. {" "}
           <a
             href="https://discuss.redash.io/t/support-for-parameters-in-embedded-visualizations/3337"
             target="_blank"
             rel="noopener noreferrer">
-            Read more
+            Читать далее
           </a>
           .
         </>
@@ -54,10 +53,10 @@ function EmailNotVerifiedAlert() {
       type="warning"
       message={
         <>
-          We have sent an email with a confirmation link to your email address. Please follow the link to verify your
-          email address.{" "}
+          Мы отправили письмо с ссылкой для подтверждения на ваш адрес электронной почты. Пожалуйста, перейдите по ссылке, чтобы подтвердить свой
+          адрес электронной почты.{" "}
           <a className="clickable" onClick={verifyEmail}>
-            Resend email
+          Переслать письмо
           </a>
           .
         </>
@@ -92,7 +91,7 @@ function FavoriteList({ title, resource, itemUrl, emptyState }) {
                 <i className="fa fa-star" aria-hidden="true" />
               </span>
               {item.name}
-              {item.is_draft && <span className="label label-default m-l-5">Unpublished</span>}
+              {item.is_draft && <span className="label label-default m-l-5">Неопубликован</span>}
             </a>
           ))}
         </div>
@@ -117,7 +116,7 @@ function DashboardAndQueryFavoritesList() {
         <div className="row home-favorites-list">
           <div className="col-sm-6 m-t-20">
             <FavoriteList
-              title="Favorite Dashboards"
+              title="Созданные панели"
               resource={Dashboard}
               itemUrl={dashboard => `dashboard/${dashboard.slug}`}
               emptyState={
@@ -125,14 +124,14 @@ function DashboardAndQueryFavoritesList() {
                   <span className="btn-favourite m-r-5">
                     <i className="fa fa-star" aria-hidden="true" />
                   </span>
-                  Favorite <a href="dashboards">Dashboards</a> will appear here
+                  Созданные <a href="dashboards">панели</a> появятся здесь
                 </p>
               }
             />
           </div>
           <div className="col-sm-6 m-t-20">
             <FavoriteList
-              title="Favorite Queries"
+              title="Созданные запросы"
               resource={Query}
               itemUrl={query => `queries/${query.id}`}
               emptyState={
@@ -140,7 +139,7 @@ function DashboardAndQueryFavoritesList() {
                   <span className="btn-favourite m-r-5">
                     <i className="fa fa-star" aria-hidden="true" />
                   </span>
-                  Favorite <a href="queries">Queries</a> will appear here
+                  Созданные <a href="queries">запросы</a> появятся здесь
                 </p>
               }
             />
@@ -162,17 +161,15 @@ function Home() {
         {includes(messages, "using-deprecated-embed-feature") && <DeprecatedEmbedFeatureAlert />}
         {includes(messages, "email-not-verified") && <EmailNotVerifiedAlert />}
         <EmptyState
-          header="Welcome to Redash 👋"
-          description="Connect to any data source, easily visualize and share your data"
+          header="Добро пожаловать 👋"
+          description="Подключайтесь к любому источнику данных, легко визуализируйте и делитесь своими данными"
           illustration="dashboard"
-          helpLink="https://redash.io/help/user-guide/getting-started"
           showDashboardStep
           showInviteStep
           onboardingMode
         />
         <DynamicComponent name="HomeExtra" />
         <DashboardAndQueryFavoritesList />
-        <BeaconConsent />
       </div>
     </div>
   );

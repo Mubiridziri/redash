@@ -21,7 +21,7 @@ describe("Dashboard Filters", () => {
     cy.login();
 
     const queryData = {
-      name: "Query Filters",
+      name: "Фильтры запросов",
       query: `SELECT stage1 AS "stage1::filter", stage2, value FROM (${SQL}) q`,
     };
     createDashboard("Dashboard Filters").then(dashboard => {

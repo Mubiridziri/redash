@@ -34,7 +34,7 @@ describe("Parameter", () => {
       createQuery(queryData, false).then(({ id }) => cy.visit(`/queries/${id}`));
     });
 
-    it("updates the results after clicking Apply", () => {
+    it("обновляет результаты после нажатия кнопки Применить", () => {
       cy.getByTestId("ParameterName-test-parameter")
         .find("input")
         .type("Redash");
@@ -66,7 +66,7 @@ describe("Parameter", () => {
       createQuery(queryData, false).then(({ id }) => cy.visit(`/queries/${id}`));
     });
 
-    it("updates the results after clicking Apply", () => {
+    it("обновляет результаты после нажатия кнопки Применить", () => {
       cy.getByTestId("ParameterName-test-parameter")
         .find("input")
         .type("{selectall}42");
@@ -93,10 +93,10 @@ describe("Parameter", () => {
     });
   });
 
-  describe("Dropdown Parameter", () => {
+  describe("Выпадающий параметр", () => {
     beforeEach(() => {
       const queryData = {
-        name: "Dropdown Parameter",
+        name: "Выпадающий параметр",
         query: "SELECT '{{test-parameter}}' AS parameter",
         options: {
           parameters: [
@@ -108,7 +108,7 @@ describe("Parameter", () => {
       createQuery(queryData, false).then(({ id }) => cy.visit(`/queries/${id}/source`));
     });
 
-    it("updates the results after selecting a value", () => {
+    it("обновляет результаты после выбора значения", () => {
       cy.getByTestId("ParameterName-test-parameter")
         .find(".ant-select")
         .click();
@@ -122,7 +122,7 @@ describe("Parameter", () => {
       cy.getByTestId("TableVisualization").should("contain", "value2");
     });
 
-    it("supports multi-selection", () => {
+    it("поддерживает множественный выбор", () => {
       cy.clickThrough(`
         ParameterSettings-test-parameter
         AllowMultipleValuesCheckbox
@@ -160,16 +160,16 @@ describe("Parameter", () => {
     });
   });
 
-  describe("Query Based Dropdown Parameter", () => {
-    context("based on a query with no results", () => {
+  describe("Параметр раскрывающегося списка на основе запроса", () => {
+    context("на основе запроса без результатов", () => {
       beforeEach(() => {
         const dropdownQueryData = {
-          name: "Dropdown Query",
+          name: "Выпадающий запрос",
           query: "",
         };
         createQuery(dropdownQueryData, true).then(dropdownQuery => {
           const queryData = {
-            name: "Query Based Dropdown Parameter",
+            name: "Параметр раскрывающегося списка на основе запроса",
             query: "SELECT '{{test-parameter}}' AS parameter",
             options: {
               parameters: [
@@ -182,7 +182,7 @@ describe("Parameter", () => {
         });
       });
 
-      it("should show a 'No options available' message when you click", () => {
+      it("должно появиться сообщение 'нет доступных опций', когда вы нажмете кнопку", () => {
         cy.getByTestId("ParameterName-test-parameter")
           .find(".ant-select:not(.ant-select-disabled) .ant-select-selection")
           .click();
@@ -191,21 +191,21 @@ describe("Parameter", () => {
       });
     });
 
-    context("based on a query with 3 results", () => {
+    context("на основе запроса с 3 результатами", () => {
       beforeEach(() => {
         const dropdownQueryData = {
-          name: "Dropdown Query",
+          name: "Выпадающий запрос",
           query: `SELECT 'value1' AS name, 1 AS value UNION ALL
                   SELECT 'value2' AS name, 2 AS value UNION ALL
                   SELECT 'value3' AS name, 3 AS value`,
         };
         createQuery(dropdownQueryData, true).then(dropdownQuery => {
           const queryData = {
-            name: "Query Based Dropdown Parameter",
+            name: "Параметр раскрывающегося списка на основе запроса",
             query: "SELECT '{{test-parameter}}' AS parameter",
             options: {
               parameters: [
-                { name: "test-parameter", title: "Test Parameter", type: "query", queryId: dropdownQuery.id },
+                { name: "test-parameter", title: "Тестовый параметр", type: "query", queryId: dropdownQuery.id },
               ],
             },
           };
@@ -221,7 +221,7 @@ describe("Parameter", () => {
         });
       });
 
-      it("supports multi-selection", () => {
+      it("поддерживает множественный выбор", () => {
         cy.clickThrough(`
           ParameterSettings-test-parameter
           AllowMultipleValuesCheckbox
@@ -281,7 +281,7 @@ describe("Parameter", () => {
       cy.clock().then(clock => clock.restore());
     });
 
-    it("updates the results after selecting a date", function() {
+    it("обновляет результаты после выбора даты", function() {
       selectCalendarDate("15");
 
       cy.getByTestId("ParameterApplyButton").click();
@@ -289,11 +289,11 @@ describe("Parameter", () => {
       cy.getByTestId("TableVisualization").should("contain", Cypress.moment(this.now).format("15/MM/YY"));
     });
 
-    it("allows picking a dynamic date", function() {
+    it("позволяет выбрать динамическую дату", function() {
       cy.getByTestId("DynamicButton").click();
 
       cy.getByTestId("DynamicButtonMenu")
-        .contains("Today/Now")
+        .contains("Сегодня / Сейчас")
         .click();
 
       cy.getByTestId("ParameterApplyButton").click();
@@ -328,7 +328,7 @@ describe("Parameter", () => {
       cy.clock().then(clock => clock.restore());
     });
 
-    it("updates the results after selecting a date and clicking in ok", function() {
+    it("обновляет результаты после выбора даты и нажатия ОК", function() {
       cy.getByTestId("ParameterName-test-parameter")
         .find("input")
         .as("Input")
@@ -345,14 +345,14 @@ describe("Parameter", () => {
       cy.getByTestId("TableVisualization").should("contain", Cypress.moment(this.now).format("YYYY-MM-15 HH:mm"));
     });
 
-    it("shows the current datetime after clicking in Now", function() {
+    it("показывает текущую дату и время после нажатия кнопки «Сейчас»", function() {
       cy.getByTestId("ParameterName-test-parameter")
         .find("input")
         .as("Input")
         .click();
 
       cy.get(".ant-calendar-date-panel")
-        .contains("Now")
+        .contains("Сейчас")
         .click();
 
       cy.getByTestId("ParameterApplyButton").click();
@@ -360,11 +360,11 @@ describe("Parameter", () => {
       cy.getByTestId("TableVisualization").should("contain", Cypress.moment(this.now).format("YYYY-MM-DD HH:mm"));
     });
 
-    it("allows picking a dynamic date", function() {
+    it("позволяет выбрать динамическую дату", function() {
       cy.getByTestId("DynamicButton").click();
 
       cy.getByTestId("DynamicButtonMenu")
-        .contains("Today/Now")
+        .contains("Сегодня / Сейчас")
         .click();
 
       cy.getByTestId("ParameterApplyButton").click();
@@ -379,7 +379,7 @@ describe("Parameter", () => {
           .click();
 
         cy.get(".ant-calendar-date-panel")
-          .contains("Now")
+          .contains("Сейчас")
           .click();
       });
     });
@@ -422,7 +422,7 @@ describe("Parameter", () => {
       cy.clock().then(clock => clock.restore());
     });
 
-    it("updates the results after selecting a date range", function() {
+    it("обновляет результаты после выбора диапазона дат", function() {
       selectCalendarDateRange("15", "20");
 
       cy.getByTestId("ParameterApplyButton").click();
@@ -434,7 +434,7 @@ describe("Parameter", () => {
       );
     });
 
-    it("allows picking a dynamic date range", function() {
+    it("позволяет выбрать динамический диапазон дат", function() {
       cy.getByTestId("DynamicButton").click();
 
       cy.getByTestId("DynamicButtonMenu")
@@ -537,7 +537,7 @@ describe("Parameter", () => {
       });
     });
 
-    it('disables "Execute" button', () => {
+    it('disables "Выполнить" button', () => {
       cy.getByTestId("ParameterName-test-parameter-1")
         .find("input")
         .as("Input")
@@ -556,10 +556,10 @@ describe("Parameter", () => {
         query: "SELECT '{{param1}}', '{{param2}}', '{{param3}}', '{{param4}}' AS parameter",
         options: {
           parameters: [
-            { name: "param1", title: "Parameter 1", type: "text" },
-            { name: "param2", title: "Parameter 2", type: "text" },
-            { name: "param3", title: "Parameter 3", type: "text" },
-            { name: "param4", title: "Parameter 4", type: "text" },
+            { name: "param1", title: "Параметр 1", type: "text" },
+            { name: "param2", title: "Параметр 2", type: "text" },
+            { name: "param3", title: "Параметр 3", type: "text" },
+            { name: "param4", title: "Параметр 4", type: "text" },
           ],
         },
       };
@@ -615,11 +615,11 @@ describe("Parameter", () => {
       cy.getByTestId("ParameterSettings-parameter").click();
     });
 
-    it("changes the parameter title", () => {
+    it("изменения название параметра ", () => {
       cy.getByTestId("ParameterTitleInput").type("{selectall}New Parameter Name");
       cy.getByTestId("SaveParameterSettings").click();
 
-      cy.contains("Query saved");
+      cy.contains("Запрос сохранен");
       cy.reload();
 
       cy.getByTestId("ParameterName-parameter").contains("label", "New Parameter Name");

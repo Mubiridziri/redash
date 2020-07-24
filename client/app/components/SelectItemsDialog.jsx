@@ -86,7 +86,7 @@ function SelectItemsDialog({
   const save = useCallback(() => {
     dialog.close(selectedItems).catch(error => {
       if (error) {
-        notification.error("Failed to save some of selected items.");
+        notification.error("Не удалось сохранить некоторые из выбранных элементов.");
       }
     });
   }, [dialog, selectedItems]);
@@ -103,14 +103,14 @@ function SelectItemsDialog({
             {extraFooterContent}
           </span>
           <Button {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-            Cancel
+            Отмена
           </Button>
           <Button
             {...dialog.props.okButtonProps}
             onClick={save}
             disabled={selectedItems.length === 0 || dialog.props.okButtonProps.disabled}
             type="primary">
-            Save
+            Сохранить
             {showCount && !isEmpty(selectedItems) ? ` (${size(selectedItems)})` : null}
           </Button>
         </div>
@@ -130,7 +130,7 @@ function SelectItemsDialog({
         <div className="flex-fill scrollbox">
           {isLoading && <LoadingState className="" />}
           {!isLoading && !hasResults && (
-            <BigMessage icon="fa-search" message="No items match your search." className="" />
+            <BigMessage icon="fa-search" message="По вашему запросу ничего не найдено." className="" />
           )}
           {!isLoading && hasResults && (
             <ItemsList
@@ -178,8 +178,8 @@ SelectItemsDialog.propTypes = {
 };
 
 SelectItemsDialog.defaultProps = {
-  dialogTitle: "Add Items",
-  inputPlaceholder: "Search...",
+  dialogTitle: "Добавление элементов",
+  inputPlaceholder: "Поиск...",
   selectedItemsTitle: "Selected items",
   itemKey: item => item.id,
   renderItem: () => "",

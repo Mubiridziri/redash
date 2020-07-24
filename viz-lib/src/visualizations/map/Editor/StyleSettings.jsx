@@ -99,14 +99,14 @@ export default function StyleSettings({ options, onOptionsChange }) {
         </Select>
       </Section>
 
-      <Section.Title>Markers</Section.Title>
+      <Section.Title>Маркеры</Section.Title>
 
       <Section>
         <Checkbox
           data-test="Map.Editor.ClusterMarkers"
           defaultChecked={options.clusterMarkers}
           onChange={event => onOptionsChange({ clusterMarkers: event.target.checked })}>
-          Cluster Markers
+          Кластерные маркеры
         </Checkbox>
       </Section>
 
@@ -116,13 +116,13 @@ export default function StyleSettings({ options, onOptionsChange }) {
           disabled={!isCustomMarkersStyleAllowed}
           defaultChecked={options.customizeMarkers}
           onChange={event => onOptionsChange({ customizeMarkers: event.target.checked })}>
-          Override default style
+          Переопределить стиль по умолчанию
         </Checkbox>
         {!isCustomMarkersStyleAllowed && (
           <ContextHelp placement="topLeft" arrowPointAtCenter>
-            Custom marker styles are not available
+            Пользовательские стили маркеров недоступны,
             <br />
-            when <b>Group By</b> column selected.
+            если выбран столбец <b>«Группировать по».</b>
           </ContextHelp>
         )}
       </Section>
@@ -163,10 +163,10 @@ export default function StyleSettings({ options, onOptionsChange }) {
                 layout="horizontal"
                 label={
                   <React.Fragment>
-                    Icon
+                    Иконка
                     <ContextHelp placement="topLeft" arrowPointAtCenter>
                       <div style={{ marginBottom: 5 }}>
-                        Enter an icon name from{" "}
+                          Введите имя значка из{" "}
                         <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener noreferrer">
                           Font-Awesome 4.7
                         </a>

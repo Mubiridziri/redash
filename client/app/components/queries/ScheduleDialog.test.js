@@ -63,31 +63,31 @@ function findByTestID(wrapper, id) {
 
 describe("ScheduleDialog", () => {
   describe("Sets correct schedule settings", () => {
-    test('Sets to "Never"', () => {
+    test('Устанавливает значение "Никогда"', () => {
       const [wrapper] = getWrapper();
       const el = findByTestID(wrapper, "interval");
       expect(el).toMatchSnapshot();
     });
 
-    test('Sets to "5 Minutes"', () => {
+    test('Устанавливает значение "5 минут"', () => {
       const [wrapper] = getWrapper({ interval: 300 });
       const el = findByTestID(wrapper, "interval");
       expect(el).toMatchSnapshot();
     });
 
-    test('Sets to "2 Hours"', () => {
+    test('Устанавливает значение "2 часа"', () => {
       const [wrapper] = getWrapper({ interval: 7200 });
       const el = findByTestID(wrapper, "interval");
       expect(el).toMatchSnapshot();
     });
 
-    describe('Sets to "1 Day 22:15"', () => {
+    describe('Устанавливает значение "1 день 22:15"', () => {
       const [wrapper] = getWrapper({
         interval: 86400,
         time: "22:15",
       });
 
-      test("Sets to correct interval", () => {
+      test("Устанавливает правильный интервал", () => {
         const el = findByTestID(wrapper, "interval");
         expect(el).toMatchSnapshot();
       });
@@ -189,7 +189,7 @@ describe("ScheduleDialog", () => {
     });
 
     describe("Supports 30 days interval with no time value", () => {
-      test("Time is none", () => {
+      test("Времени нет", () => {
         const [wrapper] = getWrapper({ interval: 30 * 24 * 3600 });
         const el = findByTestID(wrapper, "time");
         expect(el).toMatchSnapshot();
@@ -198,7 +198,7 @@ describe("ScheduleDialog", () => {
   });
 
   describe("Adheres to user permissions", () => {
-    test("Shows correct interval options", () => {
+    test("Показывает правильные параметры интервала", () => {
       const refreshOptions = [60, 300, 3600, 7200]; // 1 min, 1 hour
       const [wrapper] = getWrapper(null, { refreshOptions });
 
@@ -216,7 +216,7 @@ describe("ScheduleDialog", () => {
       ).find("MenuItem");
 
       const texts = options.map(node => node.text());
-      const expected = ["Never", "1 minute", "5 minutes", "1 hour", "2 hours"];
+      const expected = ["Никогда", "минуту", "5 минут", "час", "2 часа"];
 
       // eslint-disable-next-line jest/prefer-to-have-length
       expect(options.length).toEqual(expected.length);

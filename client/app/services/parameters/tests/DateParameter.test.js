@@ -15,7 +15,7 @@ describe("DateParameter", () => {
       param.setValue(moment("2019-10-06 10:00:00"));
     });
 
-    test("formats value as a string date", () => {
+    test("форматирует значение в виде Строковой даты", () => {
       const executionValue = param.getExecutionValue();
       expect(executionValue).toBe("2019-10-06");
     });
@@ -25,7 +25,7 @@ describe("DateParameter", () => {
         type = "datetime-local";
       });
 
-      test("formats value as a string datetime", () => {
+      test("форматирует значение в виде строки datetime", () => {
         const executionValue = param.getExecutionValue();
         expect(executionValue).toBe("2019-10-06 10:00");
       });
@@ -36,7 +36,7 @@ describe("DateParameter", () => {
         type = "datetime-with-seconds";
       });
 
-      test("formats value as a string datetime with seconds", () => {
+      test("форматирует значение в виде строки datetime с секундами", () => {
         const executionValue = param.getExecutionValue();
         expect(executionValue).toBe("2019-10-06 10:00:00");
       });
@@ -44,31 +44,31 @@ describe("DateParameter", () => {
   });
 
   describe("normalizeValue", () => {
-    test("recognizes dates from strings", () => {
+    test("распознает даты из строк", () => {
       const normalizedValue = param.normalizeValue("2019-10-06");
       expect(moment.isMoment(normalizedValue)).toBeTruthy();
       expect(normalizedValue.format("YYYY-MM-DD")).toBe("2019-10-06");
     });
 
-    test("recognizes dates from moment values", () => {
+    test("распознает даты по значениям моментов", () => {
       const normalizedValue = param.normalizeValue(moment("2019-10-06"));
       expect(moment.isMoment(normalizedValue)).toBeTruthy();
       expect(normalizedValue.format("YYYY-MM-DD")).toBe("2019-10-06");
     });
 
-    test("normalizes unrecognized values as null", () => {
+    test("нормализует нераспознанные значения как ноль", () => {
       const normalizedValue = param.normalizeValue("value");
       expect(normalizedValue).toBeNull();
     });
 
     describe("Dynamic values", () => {
-      test("recognizes dynamic values from string index", () => {
+      test("распознает динамические значения из строкового индекса", () => {
         const normalizedValue = param.normalizeValue("d_now");
         expect(normalizedValue).not.toBeNull();
         expect(normalizedValue).toEqual(getDynamicDateFromString("d_now"));
       });
 
-      test("recognizes dynamic values from a dynamic date", () => {
+      test("распознает динамические значения из динамической даты", () => {
         const dynamicDate = getDynamicDateFromString("d_now");
         const normalizedValue = param.normalizeValue(dynamicDate);
         expect(normalizedValue).not.toBeNull();

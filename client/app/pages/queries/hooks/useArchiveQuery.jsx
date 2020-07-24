@@ -8,14 +8,14 @@ import useImmutableCallback from "@/lib/hooks/useImmutableCallback";
 function confirmArchive() {
   return new Promise((resolve, reject) => {
     Modal.confirm({
-      title: "Archive Query",
+      title: "Запрос архивов",
       content: (
         <React.Fragment>
           <div className="m-b-5">Are you sure you want to archive this query?</div>
           <div>All alerts and dashboard widgets created with its visualizations will be deleted.</div>
         </React.Fragment>
       ),
-      okText: "Archive",
+      okText: "Архив",
       okType: "danger",
       onOk: () => {
         resolve();

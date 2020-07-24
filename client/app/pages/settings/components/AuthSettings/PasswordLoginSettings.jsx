@@ -17,8 +17,7 @@ export default function PasswordLoginSettings(props) {
     <DynamicComponent name="OrganizationSettings.PasswordLoginSettings" {...props}>
       {!settings.auth_password_login_enabled && (
         <Alert
-          message="Password based login is currently disabled and users will
-            be able to login only with the enabled SSO options."
+          message="Вход на основе пароля в настоящее время отключен, и пользователи смогут войти только с включенными опциями единого входа."
           type="warning"
           className="m-t-15 m-b-15"
         />
@@ -30,10 +29,10 @@ export default function PasswordLoginSettings(props) {
           onChange={e => onChange({ auth_password_login_enabled: e.target.checked })}>
           <Tooltip
             title={
-              isTheOnlyAuthMethod ? "Password login can be disabled only if another login method is enabled." : null
+              isTheOnlyAuthMethod ? "Вход с паролем может быть отключен, только если включен другой способ входа." : null
             }
             placement="right">
-            Password Login Enabled
+            Пароль и логин включены
           </Tooltip>
         </Checkbox>
       </Form.Item>

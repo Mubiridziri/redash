@@ -30,31 +30,31 @@ export default function MobileNavbar({ getPopupContainer }) {
             <Menu mode="vertical" theme="dark" selectable={false} className="mobile-navbar-menu">
               {currentUser.hasPermission("list_dashboards") && (
                 <Menu.Item key="dashboards">
-                  <a href="dashboards">Dashboards</a>
+                  <a href="dashboards">Панель инструментов</a>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("view_query") && (
                 <Menu.Item key="queries">
-                  <a href="queries">Queries</a>
+                  <a href="queries">Запросы</a>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("list_alerts") && (
                 <Menu.Item key="alerts">
-                  <a href="alerts">Alerts</a>
+                  <a href="alerts">Оповещения</a>
                 </Menu.Item>
               )}
               <Menu.Item key="profile">
-                <a href="users/me">Edit Profile</a>
+                <a href="users/me">Редактировать профиль</a>
               </Menu.Item>
               <Menu.Divider />
               {firstSettingsTab && (
                 <Menu.Item key="settings">
-                  <a href={firstSettingsTab.path}>Settings</a>
+                  <a href={firstSettingsTab.path}>Настройки</a>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && (
                 <Menu.Item key="status">
-                  <a href="admin/status">System Status</a>
+                  <a href="admin/status">Состояние системы</a>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && <Menu.Divider />}
@@ -65,7 +65,7 @@ export default function MobileNavbar({ getPopupContainer }) {
                 </a>
               </Menu.Item>
               <Menu.Item key="logout" onClick={() => Auth.logout()}>
-                Log out
+                Выйти из системы
               </Menu.Item>
             </Menu>
           }>

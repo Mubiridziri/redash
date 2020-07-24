@@ -26,33 +26,33 @@ export default function AxisSettings({ id, options, features, onChange }) {
     <React.Fragment>
       <Section>
         <Select
-          label="Scale"
+          label="Масштаб"
           data-test={`Chart.${id}.Type`}
           defaultValue={options.type}
           onChange={type => optionsChanged({ type })}>
           {features.autoDetectType && (
             <Select.Option value="-" data-test={`Chart.${id}.Type.Auto`}>
-              Auto Detect
+              Определять автоматически
             </Select.Option>
           )}
           <Select.Option value="datetime" data-test={`Chart.${id}.Type.DateTime`}>
-            Datetime
+            Дата и время
           </Select.Option>
           <Select.Option value="linear" data-test={`Chart.${id}.Type.Linear`}>
-            Linear
+            Линейный
           </Select.Option>
           <Select.Option value="logarithmic" data-test={`Chart.${id}.Type.Logarithmic`}>
-            Logarithmic
+            Логарифмический
           </Select.Option>
           <Select.Option value="category" data-test={`Chart.${id}.Type.Category`}>
-            Category
+            Категория
           </Select.Option>
         </Select>
       </Section>
 
       <Section>
         <Input
-          label="Name"
+          label="Название"
           data-test={`Chart.${id}.Name`}
           defaultValue={isObject(options.title) ? options.title.text : null}
           onChange={event => handleNameChange(event.target.value)}
@@ -64,7 +64,7 @@ export default function AxisSettings({ id, options, features, onChange }) {
           <Grid.Row gutter={15} type="flex" align="middle">
             <Grid.Col span={12}>
               <InputNumber
-                label="Min Value"
+                label="Минимальное значение"
                 placeholder="Auto"
                 data-test={`Chart.${id}.RangeMin`}
                 defaultValue={toNumber(options.rangeMin)}
@@ -73,7 +73,7 @@ export default function AxisSettings({ id, options, features, onChange }) {
             </Grid.Col>
             <Grid.Col span={12}>
               <InputNumber
-                label="Max Value"
+                label="Максимальное значение"
                 placeholder="Auto"
                 data-test={`Chart.${id}.RangeMax`}
                 defaultValue={toNumber(options.rangeMax)}

@@ -20,7 +20,7 @@ const DateTimeInput = React.forwardRef(({ defaultValue, value, withSeconds, onSe
       showTime
       {...additionalAttributes}
       format={format}
-      placeholder="Select Date and Time"
+      placeholder="Выберите дату и время"
       onChange={onSelect}
       {...props}
     />

@@ -41,23 +41,23 @@ class QuerySnippetsList extends React.Component {
         </div>
       ),
       {
-        title: "Trigger",
+        title: "Триггер",
         field: "trigger",
         className: "text-nowrap",
       }
     ),
     Columns.custom.sortable(text => text, {
-      title: "Description",
+      title: "Описание",
       field: "description",
       className: "text-nowrap",
     }),
     Columns.custom(snippet => <code className="snippet-content">{snippet}</code>, {
-      title: "Snippet",
+      title: "Фрагмент",
       field: "snippet",
     }),
     Columns.avatar({ field: "user", className: "p-l-0 p-r-0" }, name => `Created by ${name}`),
     Columns.date.sortable({
-      title: "Created At",
+      title: "Создано",
       field: "created_at",
       className: "text-nowrap",
       width: "1%",
@@ -65,8 +65,8 @@ class QuerySnippetsList extends React.Component {
     Columns.custom(
       (text, querySnippet) =>
         canEditQuerySnippet(querySnippet) && (
-          <Button type="danger" className="w-100" onClick={e => this.deleteQuerySnippet(e, querySnippet)}>
-            Delete
+          <Button type="danger" className="w-100" cancelText="Отмена" onClick={e => this.deleteQuerySnippet(e, querySnippet)}>
+            Удалить
           </Button>
         ),
       {
@@ -102,19 +102,19 @@ class QuerySnippetsList extends React.Component {
 
   deleteQuerySnippet = (event, querySnippet) => {
     Modal.confirm({
-      title: "Delete Query Snippet",
-      content: "Are you sure you want to delete this query snippet?",
-      okText: "Yes",
+      title: "Удалить фрагмент запроса",
+      content: "Вы уверены, что хотите удалить этот фрагмент запроса?",
+      okText: "Да",
       okType: "danger",
-      cancelText: "No",
+      cancelText: "Нет",
       onOk: () => {
         QuerySnippet.delete(querySnippet)
           .then(() => {
-            notification.success("Query snippet deleted successfully.");
+            notification.success("Фрагмент запроса успешно удален.");
             this.props.controller.update();
           })
           .catch(() => {
-            notification.error("Failed deleting query snippet.");
+            notification.error("Не удалось удалить фрагмент запроса.");
           });
       },
     });
@@ -148,20 +148,20 @@ class QuerySnippetsList extends React.Component {
             onClick={() => this.showSnippetDialog()}
             disabled={!policy.isCreateQuerySnippetEnabled()}>
             <i className="fa fa-plus m-r-5" />
-            New Query Snippet
+            Новый фрагмент запроса
           </Button>
         </div>
 
         {!controller.isLoaded && <LoadingState className="" />}
         {controller.isLoaded && controller.isEmpty && (
           <div className="text-center">
-            There are no query snippets yet.
+            Фрагментов запросов пока нет.
             {policy.isCreateQuerySnippetEnabled() && (
               <div className="m-t-5">
                 <a className="clickable" onClick={() => this.showSnippetDialog()}>
-                  Click here
+                  Кликните здесь
                 </a>{" "}
-                to add one.
+                чтобы добавить.
               </div>
             )}
           </div>
@@ -193,7 +193,7 @@ const QuerySnippetsListPage = wrapSettingsTab(
   "QuerySnippets.List",
   {
     permission: "create_query",
-    title: "Query Snippets",
+    title: "Запрос фрагментов",
     path: "query_snippets",
     order: 5,
   },
@@ -217,7 +217,7 @@ routes.register(
   "QuerySnippets.List",
   routeWithUserSession({
     path: "/query_snippets",
-    title: "Query Snippets",
+    title: "Запрос фрагментов",
     render: pageProps => <QuerySnippetsListPage {...pageProps} currentPage="query_snippets" />,
   })
 );
@@ -225,7 +225,7 @@ routes.register(
   "QuerySnippets.NewOrEdit",
   routeWithUserSession({
     path: "/query_snippets/:querySnippetId",
-    title: "Query Snippets",
+    title: "Запрос фрагментов",
     render: pageProps => <QuerySnippetsListPage {...pageProps} currentPage="query_snippets" isNewOrEditPage />,
   })
 );

@@ -8,7 +8,6 @@ import navigateTo from "@/components/ApplicationArea/navigateTo";
 import LoadingState from "@/components/items-list/components/LoadingState";
 import DynamicForm from "@/components/dynamic-form/DynamicForm";
 import helper from "@/components/dynamic-form/dynamicFormHelper";
-import HelpTrigger, { TYPES as HELP_TRIGGER_TYPES } from "@/components/HelpTrigger";
 import wrapSettingsTab from "@/components/SettingsWrapper";
 
 import DataSource, { IMG_ROOT } from "@/services/data-source";
@@ -45,7 +44,7 @@ class EditDataSource extends React.Component {
     const { dataSource } = this.state;
     helper.updateTargetWithValues(dataSource, values);
     DataSource.save(dataSource)
-      .then(() => successCallback("Saved."))
+      .then(() => successCallback("Сохранено."))
       .catch(error => {
         const message = get(error, "response.data.message", "Failed saving.");
         errorCallback(message);
@@ -58,7 +57,7 @@ class EditDataSource extends React.Component {
     const doDelete = () => {
       DataSource.delete(dataSource)
         .then(() => {
-          notification.success("Data source deleted successfully.");
+          notification.success("Источник данных успешно удален.");
           navigateTo("data_sources");
         })
         .catch(() => {
@@ -67,9 +66,9 @@ class EditDataSource extends React.Component {
     };
 
     Modal.confirm({
-      title: "Delete Data Source",
-      content: "Are you sure you want to delete this data source?",
-      okText: "Delete",
+      title: "Удалить источник данных",
+      content: "Вы уверены, что хотите удалить этот источник данных?",
+      okText: "Удалить",
       okType: "danger",
       onOk: doDelete,
       onCancel: callback,
@@ -83,16 +82,16 @@ class EditDataSource extends React.Component {
     DataSource.test({ id: dataSource.id })
       .then(httpResponse => {
         if (httpResponse.ok) {
-          notification.success("Success");
+          notification.success("Успех");
         } else {
-          notification.error("Connection Test Failed:", httpResponse.message, { duration: 10 });
+          notification.error("Проверка соединения не пройдена:", httpResponse.message, { duration: 10 });
         }
         callback();
       })
       .catch(() => {
         notification.error(
-          "Connection Test Failed:",
-          "Unknown error occurred while performing connection test. Please try again later.",
+          "Проверка соединения не пройдена:",
+          "Произошла неизвестная ошибка при выполнении проверки соединения. Пожалуйста, попробуйте позже.",
           { duration: 10 }
         );
         callback();
@@ -107,8 +106,8 @@ class EditDataSource extends React.Component {
       fields,
       type,
       actions: [
-        { name: "Delete", type: "danger", callback: this.deleteDataSource },
-        { name: "Test Connection", pullRight: true, callback: this.testConnection, disableWhenDirty: true },
+        { name: "Удалить", type: "danger", callback: this.deleteDataSource },
+        { name: "Тестовое соединение", pullRight: true, callback: this.testConnection, disableWhenDirty: true },
       ],
       onSubmit: this.saveDataSource,
       feedbackIcons: true,
@@ -116,13 +115,6 @@ class EditDataSource extends React.Component {
 
     return (
       <div className="row" data-test="DataSource">
-        <div className="text-right m-r-10">
-          {HELP_TRIGGER_TYPES[helpTriggerType] && (
-            <HelpTrigger className="f-13" type={helpTriggerType}>
-              Setup Instructions <i className="fa fa-question-circle" />
-            </HelpTrigger>
-          )}
-        </div>
         <div className="text-center m-b-10">
           <img className="p-5" src={`${IMG_ROOT}/${type.type}.png`} alt={type.name} width="64" />
           <h3 className="m-0">{type.name}</h3>
@@ -145,7 +137,7 @@ routes.register(
   "DataSources.Edit",
   routeWithUserSession({
     path: "/data_sources/:dataSourceId",
-    title: "Data Sources",
+    title: "Источники данных",
     render: pageProps => <EditDataSourcePage {...pageProps} />,
   })
 );

@@ -1,7 +1,7 @@
 function fillProfileDataAndSave(name, email) {
   cy.getByTestId("Name").type(`{selectall}${name}`);
   cy.getByTestId("Email").type(`{selectall}${email}{enter}`);
-  cy.contains("Saved.");
+  cy.contains("Сохранено.");
 }
 
 function fillChangePasswordAndSave(currentPassword, newPassword, repeatPassword) {
@@ -10,13 +10,13 @@ function fillChangePasswordAndSave(currentPassword, newPassword, repeatPassword)
   cy.getByTestId("RepeatPassword").type(`${repeatPassword}{enter}`);
 }
 
-describe("Edit Profile", () => {
+describe("Редактировать профиль", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("/users/me");
   });
 
-  it("updates the user after Save", () => {
+  it("обновляет пользователя после сохранения", () => {
     fillProfileDataAndSave("Jian Yang", "jian.yang@redash.io");
     cy.logout();
     cy.login("jian.yang@redash.io")
@@ -24,25 +24,25 @@ describe("Edit Profile", () => {
       .should("eq", 200);
     cy.visit("/users/me");
     cy.contains("Jian Yang");
-    fillProfileDataAndSave("Example Admin", "admin@redash.io");
+    fillProfileDataAndSave("Пример администратора", "admin@redash.io");
   });
 
-  it("regenerates API Key", () => {
+  it("регенерирует API ключ", () => {
     cy.getByTestId("ApiKey").then($apiKey => {
       const previousApiKey = $apiKey.val();
 
       cy.getByTestId("RegenerateApiKey").click();
       cy.get(".ant-btn-primary")
-        .contains("Regenerate")
+        .contains("Регенерировать")
         .click({ force: true });
 
       cy.getByTestId("ApiKey").should("not.eq", previousApiKey);
     });
   });
 
-  it("renders the page and takes a screenshot", () => {
+  it("рендерит страницу и делает скриншот", () => {
     cy.getByTestId("Groups").should("contain", "admin");
-    cy.percySnapshot("User Profile");
+    cy.percySnapshot("Профиль пользователя");
   });
 
   context("changing password", () => {
@@ -50,9 +50,9 @@ describe("Edit Profile", () => {
       cy.getByTestId("ChangePassword").click();
     });
 
-    it("updates user password when password is correct", () => {
+    it("обновляет пароль пользователя, если пароль верный", () => {
       fillChangePasswordAndSave("password", "newpassword", "newpassword");
-      cy.contains("Saved.");
+      cy.contains("Сохранено.");
       cy.logout();
       cy.login(undefined, "newpassword")
         .its("status")
@@ -60,12 +60,12 @@ describe("Edit Profile", () => {
       cy.visit("/users/me");
       cy.getByTestId("ChangePassword").click();
       fillChangePasswordAndSave("newpassword", "password", "password");
-      cy.contains("Saved.");
+      cy.contains("Сохранено.");
     });
 
-    it("shows an error when current password is wrong", () => {
+    it("показывает ошибку, если текущий пароль неверен", () => {
       fillChangePasswordAndSave("wrongpassword", "newpassword", "newpassword");
-      cy.contains("Incorrect current password.");
+      cy.contains("Неверный текущий пароль.");
     });
   });
 });
