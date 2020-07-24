@@ -7,10 +7,10 @@ import "./ErrorMessage.less";
 function getErrorMessageByStatus(status, defaultMessage) {
   switch (status) {
     case 404:
-      return "Кажется, что страница, которую вы ищете, не найдена.";
+      return "Страница, которую вы ищете, не найдена.";
     case 401:
     case 403:
-      return "Похоже, у вас нет разрешения на просмотр данной страницы.";
+      return "У вас нет разрешения на просмотр данной страницы.";
     default:
       return defaultMessage;
   }

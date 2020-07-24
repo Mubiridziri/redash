@@ -17,7 +17,7 @@ const DEFAULT_OPTIONS = {
 
 export default {
   type: "PIVOT",
-  name: "Сводная таблица",
+  name: "Группированная таблица",
   getOptions: options => merge({}, DEFAULT_OPTIONS, options),
   Renderer,
   Editor,

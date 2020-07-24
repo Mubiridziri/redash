@@ -25,7 +25,7 @@ function mount(options, done) {
 }
 
 describe("Visualizations -> Table -> Editor -> Grid Settings", () => {
-  test("Изменение элементов на странице", done => {
+  test("Изменение количества записей на странице", done => {
     const el = mount(
       {
         itemsPerPage: 25,

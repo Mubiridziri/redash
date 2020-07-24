@@ -19,7 +19,7 @@ function Editor({ column, onChange }) {
         <Input
           label={
             <React.Fragment>
-              Значение для <code>false</code>
+              Значение для <code>лжи</code>
             </React.Fragment>
           }
           data-test="Table.ColumnEditor.Boolean.False"

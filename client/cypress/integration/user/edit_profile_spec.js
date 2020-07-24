@@ -45,7 +45,7 @@ describe("Редактировать профиль", () => {
     cy.percySnapshot("Профиль пользователя");
   });
 
-  context("changing password", () => {
+  context("смена пароля", () => {
     beforeEach(() => {
       cy.getByTestId("ChangePassword").click();
     });

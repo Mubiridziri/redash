@@ -161,7 +161,7 @@ function Home() {
         {includes(messages, "using-deprecated-embed-feature") && <DeprecatedEmbedFeatureAlert />}
         {includes(messages, "email-not-verified") && <EmailNotVerifiedAlert />}
         <EmptyState
-          header="Добро пожаловать 👋"
+          header="Добро пожаловать"
           description="Подключайтесь к любому источнику данных, легко визуализируйте и делитесь своими данными"
           illustration="dashboard"
           showDashboardStep

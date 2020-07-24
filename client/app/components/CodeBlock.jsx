@@ -40,7 +40,7 @@ export default class CodeBlock extends React.Component {
       if (!success) {
         throw new Error();
       }
-      this.setState({ copied: "Copied!" });
+      this.setState({ copied: "Скопировано!!" });
     } catch (err) {
       this.setState({
         copied: "Copy failed",

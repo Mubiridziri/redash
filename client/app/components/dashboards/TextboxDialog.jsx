@@ -78,9 +78,9 @@ function TextboxDialog({ dialog, isNew, ...props }) {
           placeholder="Вот здесь вы пишете какой-то текст"
         />
         <small>
-          Поддерживает базовое{" "}
+          Поддерживает базовую {" "}
           <a target="_blank" rel="noopener noreferrer" href="https://www.markdownguide.org/cheat-sheet/#basic-syntax">
-            <Tooltip title="Руководство по уценке откроется в новом окне">снижение</Tooltip>
+            <Tooltip title="Руководство по уценке откроется в новом окне">Markdown-разметку</Tooltip>
           </a>
           .
         </small>

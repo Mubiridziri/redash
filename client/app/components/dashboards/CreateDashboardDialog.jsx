@@ -29,7 +29,7 @@ function CreateDashboardDialog({ dialog }) {
         dialog.close();
         navigateTo(`dashboard/${data.slug}?edit`);
       });
-      recordEvent("создать", "панель приборов");
+      recordEvent("create", "dashboard");
     }
   }
 
