@@ -22,7 +22,7 @@ export default function FeatureFlagsSettings(props) {
           name="send_email_on_failed_scheduled_queries"
           checked={values.send_email_on_failed_scheduled_queries}
           onChange={e => onChange({ send_email_on_failed_scheduled_queries: e.target.checked })}>
-          Email query owners when scheduled queries fail
+          Отправлять владельцам запросов сообщения на электронную почту при сбое запланированных запросов
         </Checkbox>
       </Form.Item>
       <Form.Item>

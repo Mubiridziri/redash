@@ -34,7 +34,7 @@ export default function QuerySourceAlerts({ query, dataSourcesAvailable }) {
             Похоже, источники данных еще не созданы или ни один из них не доступен для группы (групп), членом которой вы являетесь.
           </Typography.Title>
           <p>
-            <Typography.Text type="secondary">Пожалуйста, сначала создайте его, а затем начните запрашивать.</Typography.Text>
+            <Typography.Text type="secondary">Пожалуйста, сначала создайте, а затем начните запрашивать.</Typography.Text>
           </p>
 
           <div className="query-source-alerts-actions">

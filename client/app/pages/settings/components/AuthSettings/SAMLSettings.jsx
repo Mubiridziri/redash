@@ -21,19 +21,19 @@ export default function SAMLSettings(props) {
       </Form.Item>
       {values.auth_saml_enabled && (
         <div>
-          <Form.Item label="SAML Metadata URL">
+          <Form.Item label="URL-адрес метаданных SAML">
             <Input
               value={values.auth_saml_metadata_url}
               onChange={e => onChange({ auth_saml_metadata_url: e.target.value })}
             />
           </Form.Item>
-          <Form.Item label="SAML Entity ID">
+          <Form.Item label="SAML ID организации">
             <Input
               value={values.auth_saml_entity_id}
               onChange={e => onChange({ auth_saml_entity_id: e.target.value })}
             />
           </Form.Item>
-          <Form.Item label="SAML NameID Format">
+          <Form.Item label="SAML NameID Формат">
             <Input
               value={values.auth_saml_nameid_format}
               onChange={e => onChange({ auth_saml_nameid_format: e.target.value })}

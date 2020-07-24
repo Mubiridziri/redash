@@ -68,6 +68,7 @@ class EditDataSource extends React.Component {
     Modal.confirm({
       title: "Удалить источник данных",
       content: "Вы уверены, что хотите удалить этот источник данных?",
+      cancelText: "Отмена",
       okText: "Удалить",
       okType: "danger",
       onOk: doDelete,

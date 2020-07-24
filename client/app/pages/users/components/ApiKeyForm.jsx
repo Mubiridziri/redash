@@ -32,6 +32,7 @@ export default function ApiKeyForm(props) {
     Modal.confirm({
       title: "Регенерация ключа API",
       content: "Вы уверены, что хотите регенерировать?",
+      cancelText: "Отмена",
       okText: "Регенерировать",
       onOk: doRegenerate,
       maskClosable: true,
